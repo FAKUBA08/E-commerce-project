@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <!-- announcement  bar -->
+
+<!-- SIGN UP PAGE -->
+
+<div class="signup-page">
+    <header>
+        <nav>
+        <div class="announcement-text">
+            <p>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!</p>
+        </div>
+        <div class="announcement-button">
+            <p>Shop Now</p>
+        </div>
+        </nav>
+    </header>
+    <!-- home  announcement -->
+    <div class="home-header">
+        <div class="home-header-inner">
+             <div class="logo">
+                <p>Exclusive</p>
+             </div>
+             <div class="menus">
+                <ul>
+                <li  class="clicked" >Home</li>
+                <li>Contact</li>
+                <li>About</li>
+                <li class="signUp">Sign Up</li></ul>
+             </div>
+             <div class="search">
+               <input type="text"  placeholder="What are you looking for?">
+               <!-- <div class="img-search"> -->
+                <img src="Pictures/flat-icon-design-of-magnifying-glass-or-search-icon-isolated-on-white-background-eps10-free-vector-removebg-preview.png" alt="">
+             <!-- </div> -->
+             </div>
+        </div>
+ 
+    </div>
+    <!-- section -->
+    <div class="section">
+        <div class="section-inner">
+            <form action="" class="passwordReset">
+                    <div class="password-text">
+                        <p>Password Reset<span>Provide the email address asssociated with your account to recover your password </span></p>
+
+                    </div>
+                    <p class="emailSeen">Email <span>*</span>
+                    <input type="email" id="email">
+                </p>
+                <button class="reset">Reset Password</button>
+                <div class="logins">
+                    <div class="login">Log in</div>
+                    <div class="signup">Sign up</div>
+                </div>
+            </form>
+        
+        </div>
+
+    </div>
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <p>Exclusive</p>
+                <ul>
+                    <li>Subscribe</li>
+                    <li>Get 10% of your first order</li>
+                </ul>
+                <input type="email" placeholder="Enter your Email"   id="email-footer">
+            </div>
+            <div class="footer-support">
+                <p>Support</p>
+                <ul>
+                    <li>111 Bijoy sarani, Dhaka, <br> DH 1515, Bangladesh.</li>
+                    <li>badmusfaruq@gmail.com</li>
+                    <li>+234 9025-479-011</li>
+                </ul>
+            </div>
+            <div class="footer-account">
+                <p>Account</p>
+                <ul><li>My Account</li>
+                <li>Login / Register</li>
+                <li>Cart</li>
+                <li>Wishlist</li>
+            </ul>
+            </div>
+            <div class="quick-link">
+                <p>Quick Link</p>
+                <ul><li>
+                    Privacy Policy
+                </li>
+                <li>
+                    Terms Of Use
+                </li>
+                <li>
+                    FAQ
+                </li>
+                <li>
+                    Contact
+                </li></ul>
+            </div>
+          
+            <div class="download-app">
+                <p>Download App</p>
+                <ul><li>Save $3 with App New User Only</li></ul>
+                <div class="plays">
+                    <div class="qr">
+                        <img src="pic1/Qr Code.png" alt="">
+                    </div>
+                    <div class="goggle">
+                        <div class="playstore">
+                            <img src="pic1/GooglePlay.png" alt="">
+                        </div>
+                        <div class="apple">
+                            <img src="pic1/download-appstore.png" alt="">
+                        </div>
+                    </div>
+            
+                </div>
+                <div class="web">
+                    <div class="facebook">
+                        <img src="pic1/Icon-Facebook.png" alt="" srcset="">
+                    </div>
+                    <div class="instagram">
+                        <img src="pic1/Group.png" alt="">
+                    </div>
+                    <div class="linkdeln">
+                        <img src="pic1/Vector.png" alt="">
+                    </div>
+                    <div class="twitter"></div>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+<script src="index.js"></script>
+<script type="module">
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged, signOut,sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {getFirestore,  collection, setDoc,doc, getDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+apiKey: "AIzaSyDPF--p3fzATWasmeh_Lhq8XIDfX7WII_o",
+authDomain: "details-9e162.firebaseapp.com",
+projectId: "details-9e162",
+storageBucket: "details-9e162.appspot.com",
+messagingSenderId: "91758916888",
+appId: "1:91758916888:web:f72964b229d3af1b1ada6d"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+// get auth
+const auth=getAuth()
+const db=getFirestore(app)
+
+const passwordReset=document.querySelector('.passwordReset')
+passwordReset.addEventListener('submit',async(event)=>{
+    // alert('jhgfds')
+event.preventDefault()
+let email =passwordReset.email.value;
+try {
+    if (email==="") {
+alert('*Enter a valid Email Address')
+    }
+await sendPasswordResetEmail(auth, email)
+console.log('Password reset email has been sent');
+alert('Password reset email has been sent')
+passwordReset.reset()
+} catch (error) {
+console.log(error);
+}
+})
+
+</script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+crossorigin="anonymous"></script>
+     -->
+</html>
+</html> 

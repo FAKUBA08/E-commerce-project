@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Home - Exclusive E-Commerce Website</title>
+  </head>
+  <body>
+    <div class="top_nav">
+      <div class="container top_nav_container">
+        <div class="top_nav_wrapper">
+          <p class="tap_nav_p">
+            Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
+          </p>
+          <a href="#" class="top_nav_link">SHOP NOW</a>
+        </div>
+      </div>
+    </div>
+    <nav class="nav">
+      <div class="container nav_container">
+        <a href="#" class="nav_logo">EXCLUSIVE</a>
+        <ul class="nav_list">
+          <li class="nav_item"><a href="/" class="nav_link">Home</a></li>
+          <li class="nav_item"><a href="#" class="nav_link">About</a></li>
+          <li class="nav_item"><a href="#" class="nav_link">Contact</a></li>
+          <li class="nav_item">
+            <a href="/sign-up.html" class="nav_link">Sign up</a>
+          </li>
+        </ul>
+        <div class="nav_items">
+          <form action="#" class="nav_form">
+            <input
+              type="text"
+              class="nav_input"
+              placeholder="search here...." />
+            <img src="./image/search.png" alt="" class="nav_search" />
+          </form>
+          <img src="./image/heart.png" alt="" class="nav_heart" />
+          <a href="cart/index.html">
+            <img src="./image/cart.png" alt="" class="nav_cart" />
+            <span id="cartItemCount" class="cart_item_count">0</span>
+          </a>
+        </div>
+        <p class="greetingP">HELLO,GUEST</p>
+        <span class="hamburger">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </span>
+      </div>
+    </nav>
+    <nav class="mobile_nav mobile_nav_hide">
+      <ul class="mobile_nav_list">
+        <li class="mobile_nav_item">
+          <a href="/" class="mobile_nav_link">Home</a>
+        </li>
+        <li class="mobile_nav_item">
+          <a href="#" class="mobile_nav_link">About</a>
+        </li>
+        <li class="mobile_nav_item">
+          <a href="#" class="mobile_nav_link">Contact</a>
+        </li>
+        <li class="mobile_nav_item">
+          <a href="/sign-up.html" class="mobile_nav_link">Sign Up</a>
+        </li>
+        <li class="mobile_nav_item">
+          <a href="/cart.html" class="mobile_nav_link">Cart</a>
+          <span id="cartItemCount" class="cart_item_count"></span>
+        </li>
+        <p class="greetingP"></p>
+      </ul>
+    </nav>
+    <header class="header">
+      <div class="container header_container">
+        <div class="header_filter">
+          <a href="#" class="header_filter_link">Woman’s Fashion</a>
+          <a href="#" class="header_filter_link">Men’s Fashion</a>
+          <a href="#" class="header_filter_link">Electronics</a>
+          <a href="#" class="header_filter_link">Home & Lifestyle</a>
+          <a href="#" class="header_filter_link">Medicine</a>
+          <a href="#" class="header_filter_link">Sports & Outdoor</a>
+          <a href="#" class="header_filter_link">Baby’s & Toys</a>
+          <a href="#" class="header_filter_link">Groceries & Pets</a>
+          <a href="#" class="header_filter_link">Health & Beauty</a>
+        </div>
+        <img src="./image/header.png" alt="" class="header_img" />
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container">
+        <div class="section_category">
+          <p class="section_category_p">Today's</p>
+        </div>
+        <div class="section_header">
+          <h3 class="section_title">Flash Sale</h3>
+          <p id="demo"></p>
+        </div>
+        <!-- Swiper -->
+  
+    </section>
+       <div id="show" class="flex justify-center gap-4 flex-wrap p-4"></div>
+    <!-- <div id="cartDetails" class="p-4"></div> This is where selected products will be displayed -->
+    <section class="section">
+      <div class="container">
+        <div class="section_category">
+          <p class="section_category_p">Featured</p>
+        </div>
+        <div class="section_header">
+          <h3 class="section_title">New Arrivals</h3>
+        </div>
+        <div class="gallery">
+          <div class="gallery_item gallery_item_1">
+            <img
+              src="./image/gallery/gallery-1.png"
+              alt=""
+              class="gallery_item_img" />
+            <div class="gallery_item_content">
+              <div class="gallery_item_title">Playstation 5</div>
+              <p class="gallery_item_p">
+                Lorem ipsum dolor sit amet consectetur adipisicing.
+              </p>
+              <a href="#" class="gallery_item_link">SHOP NOW</a>
+            </div>
+          </div>
+          <div class="gallery_item gallery_item_2">
+            <img
+              src="./image/gallery/gallery-2.png"
+              alt=""
+              class="gallery_item_img" />
+            <div class="gallery_item_content">
+              <div class="gallery_item_title">Playstation 5</div>
+              <p class="gallery_item_p">
+                Lorem ipsum dolor sit amet consectetur adipisicing.
+              </p>
+              <a href="#" class="gallery_item_link">SHOP NOW</a>
+            </div>
+          </div>
+          <div class="gallery_item gallery_item_3">
+            <img
+              src="./image/gallery/gallery-3.png"
+              alt=""
+              class="gallery_item_img" />
+            <div class="gallery_item_content">
+              <div class="gallery_item_title">Playstation 5</div>
+              <p class="gallery_item_p">
+                Lorem ipsum dolor sit amet consectetur adipisicing.
+              </p>
+              <a href="#" class="gallery_item_link">SHOP NOW</a>
+            </div>
+          </div>
+          <div class="gallery_item gallery_item_4">
+            <img
+              src="./image/gallery/gallery-4.png"
+              alt=""
+              class="gallery_item_img" />
+            <div class="gallery_item_content">
+              <div class="gallery_item_title">Playstation 5</div>
+              <p class="gallery_item_p">
+                Lorem ipsum dolor sit amet consectetur adipisicing.
+              </p>
+              <a href="#" class="gallery_item_link">SHOP NOW</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+   
+    <section class="section">
+      <div class="container services_container">
+        <div class="service">
+          <img src="./image/icons/service-1.png" alt="" class="service_img" />
+          <h3 class="service_title">FAST AND FREE DELIVERY</h3>
+          <p class="service_p">Lorem ipsum dolor sit amet consectetur.</p>
+        </div>
+        <div class="service">
+          <img src="./image/icons/service-2.png" alt="" class="service_img" />
+          <h3 class="service_title">24/7 SUPPORT</h3>
+          <p class="service_p">Lorem ipsum dolor sit amet consectetur.</p>
+        </div>
+        <div class="service">
+          <img src="./image/icons/service-3.png" alt="" class="service_img" />
+          <h3 class="service_title">MONEY BACK GUARANTY</h3>
+          <p class="service_p">Lorem ipsum dolor sit amet consectetur.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+          <div class="footer-logo">
+              <p>Exclusive</p>
+              <ul>
+                  <li>Subscribe</li>
+                  <li>Get 10% of your first order</li>
+              </ul>
+              <input type="email" placeholder="Enter your Email"   id="email-footer">
+          </div>
+          <div class="footer-support">
+              <p>Support</p>
+              <ul>
+                  <li>111 Bijoy sarani, Dhaka, <br> DH 1515, Bangladesh.</li>
+                  <li>badmusfaruq@gmail.com</li>
+                  <li>+234 9025-479-011</li>
+              </ul>
+          </div>
+          <div class="footer-account">
+              <p>Account</p>
+              <ul><li>My Account</li>
+              <li>Login / Register</li>
+              <li>Cart</li>
+              <li>Wishlist</li>
+          </ul>
+          </div>
+          <div class="quick-link">
+              <p>Quick Link</p>
+              <ul><li>
+                  Privacy Policy
+              </li>
+              <li>
+                  Terms Of Use
+              </li>
+              <li>
+                  FAQ
+              </li>
+              <li>
+                  Contact
+              </li></ul>
+          </div>
+        
+          <div class="download-app">
+              <p>Download App</p>
+              <ul><li>Save $3 with App New User Only</li></ul>
+              <div class="plays">
+                  <div class="qr">
+                      <img src="Pictures/Qr Code.png" alt="">
+                  </div>
+                  <div class="goggle">
+                      <div class="playstore">
+                          <img src="Pictures/GooglePlay.png" alt="">
+                      </div>
+                      <div class="apple">
+                          <img src="Pictures/download-appstore.png" alt="">
+                      </div>
+                  </div>
+          
+              </div>
+              <div class="web">
+                  <div class="facebook">
+                      <img src="Pictures/Icon-Facebook.png" alt="" srcset="">
+                  </div>
+                  <div class="instagram">
+                      <img src="Pictures/Group.png" alt="">
+                  </div>
+                  <div class="linkdeln">
+                      <img src="Pictures/Vector.png" alt="">
+                  </div>
+                  <div class="twitter"></div>
+              </div>
+          </div>
+    <p class="showJewelry"></p>
+      </div>
+  </footer>
+</div>
+
+
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="./js/app.js"></script>
+    
+  </body>
+   <!-- Firebase SDKs -->
+   <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, collection, addDoc, query, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDPF--p3fzATWasmeh_Lhq8XIDfX7WII_o",
+        authDomain: "details-9e162.firebaseapp.com",
+        projectId: "details-9e162",
+        storageBucket: "details-9e162.appspot.com",
+        messagingSenderId: "91758916888",
+        appId: "1:91758916888:web:f72964b229d3af1b1ada6d"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+    const db = getFirestore(app);
+    const greetingP = document.querySelector('.greetingP');
+    let  showJewelry=document.querySelector('.showJewelry')
+
+    onAuthStateChanged(auth, async (user) => {
+        if (user) {
+            const docRef = doc(db, 'users', user.uid);
+            const docSnapshot = await getDoc(docRef);
+            const userData = docSnapshot.data();
+            if (userData) {
+                greetingP.textContent = `HELLO, ${userData.name}`;
+            }
+            loadCartItems(user.uid); // Load cart items for authenticated user
+        } else {
+            greetingP.textContent = 'HELLO, GUEST';
+        }
+    });
+
+    const selectedProducts = []; // Array to store selected products
+
+    async function allProduct() {
+        try {
+            const res = await fetch("https://fakestoreapi.com/products");
+            if (res.ok) {
+                const data = await res.json();
+                seen(data);
+                console.log(data);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    allProduct();
+    
+    function seen(data) {
+      data.forEach(element => {
+            document.getElementById('show').innerHTML += `
+                <div class="max-w-sm w-full bg-white shadow-md rounded-lg dark:bg-gray-800 dark:border-gray-700 product-card">
+                    <a href="#">
+                        <img class="rounded-t-lg" src="${element.image}" alt="product image">
+                    </a>
+                    <div class="px-5 pb-5">
+                        <a href="#">
+                            <h3>${element.title}</h3>
+                        </a>
+                        <div class="rating mt-2.5 mb-5">
+                            <!-- Rating SVGs -->
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="price text-gray-900 dark:text-white">$${element.price}</span>
+                            <!-- Add to cart button -->
+                            <button class="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" data-title="${element.title}" data-price="${element.price}" data-image="${element.image}">Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        // Add event listeners to all buttons
+        document.querySelectorAll('button[data-title]').forEach(button => {
+            button.addEventListener('click', function() {
+                const title = this.getAttribute('data-title');
+                const price = this.getAttribute('data-price');
+                const image = this.getAttribute('data-image');
+                addToCart(title, price, image);
+            });
+        });
+    }
+    async function addToCart(title, price, image) {
+const user = auth.currentUser;
+if (user) {
+    const uid = user.uid;
+    const product = { title, price, image };
+    selectedProducts.push(product);
+
+    try {
+        const docRef = await addDoc(collection(db, "users", uid, "cartItems"), product);
+        console.log("Document written with ID: ", docRef.id);
+        updateCartDetails();
+    } catch (error) {
+        console.error("Error adding document: ", error);
+    }
+} else {
+    // Redirect to signup page if user is not signed in
+    window.location.href = "signup.html";
+}
+}
+
+    async function loadCartItems(uid) {
+        const cartDetailsElement = document.getElementById('cartDetails');
+        let cartHTML = '<h2>Cart</h2>';
+
+        const q = query(collection(db, "users", uid, "cartItems"));
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.empty) {
+            cartHTML += '<p>No items in cart</p>';
+        } else {
+            querySnapshot.forEach((doc) => {
+                const product = doc.data();
+                cartHTML += `
+                    <div class="flex items-center mb-2">
+                        <img src="${product.image}" alt="${product.title}" class="w-12 h-12 mr-2 rounded-md">
+                        <div>${product.title} - $${product.price}</div>
+                    </div>
+                `;
+            });
+        }
+        cartDetailsElement.innerHTML = cartHTML;
+    }
+    async function updateCartDetails() {
+    const user = auth.currentUser;
+    if (user) {
+        const uid = user.uid;
+        const q = query(collection(db, "users", uid, "cartItems"));
+        const querySnapshot = await getDocs(q);
+        const cartItemCount = querySnapshot.size; // Get the number of items in the cart
+        document.getElementById('cartItemCount').textContent = cartItemCount.toString(); // Update the cart item count
+    } else {
+        console.error("No user is signed in");
+        console.error("Element with ID 'cartItemCount' not found");
+    }
+}
+
+</script>
+</html>

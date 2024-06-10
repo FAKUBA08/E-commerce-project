@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+
+    <title>Document</title>
+</head>
+<body>
+    <!-- announcement  bar -->
+
+<!-- SIGN UP PAGE -->
+
+<div class="signup-page">
+    <header>
+        <nav>
+        <div class="announcement-text">
+            <p>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!</p>
+        </div>
+        <div class="announcement-button">
+            <p>Shop Now</p>
+        </div>
+        </nav>
+    </header>
+    <!-- home  announcement -->
+    <div class="home-header">
+        <div class="home-header-inner">
+             <div class="logo">
+                <p>Exclusive</p>
+             </div>
+             <div class="menus">
+                <ul>
+                <li  class="clicked" >Home</li>
+                <li>Contact</li>
+                <li>About</li>
+                <li class="signUp">Sign Up</li></ul>
+             </div>
+             <div class="search">
+               <input type="text"  placeholder="What are you looking for?">
+               <!-- <div class="img-search"> -->
+                <img src="Pictures/flat-icon-design-of-magnifying-glass-or-search-icon-isolated-on-white-background-eps10-free-vector-removebg-preview.png" alt="">
+             <!-- </div> -->
+             </div>
+        </div>
+    </div>
+        <!-- home  announcement ends-->
+    <!-- section start -->
+  <div class="passwordValid">
+    <p>*password must be at least 8 characters long.
+
+
+    </p>
+  </div>
+  <div class="emailValid">
+    <p>*Enter a valid Email Address.
+ </p>
+  </div>
+    <div class="section">
+        <div class="section-inner">
+            <div class="section-image">
+                <img src="Pictures/dl.beatsnoop 1.png" alt="">
+            </div>
+            <form action="" id="signUpForm">
+                <div class="form-text">
+                    <p>Create an account<span>Enter your details below</span></p>
+                  <div class="input-text" >  <input type="text" id="name" placeholder="Name"></div>
+             <div class="email-text">
+                <input type="email" id="email" placeholder="Email">
+                
+             </div>
+               <div class="password-text">
+                <input type="password" id="password" placeholder="Password">
+                
+             <span id="togglePassword" class="password-toggle">👁️</span>
+
+                <p id="user"></p>
+               </div>
+                </div>
+                <button class="createAccount">Create Account</button>
+                <svg viewBox="25 25 50 50" class="boxRoll" hidden>
+                    <circle r="20" cy="50" cx="50"></circle>
+                  </svg>
+                 <p class="regex">*password must be at least one uppercase letter,<br> at least one lowercase letter, at least one symbol,<br> and is at least 8 characters long.
+
+
+
+                 </p>
+                <div class="accountExisted">
+                    <p>Already have an account?<span class="logIn">Log in</span></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <p>Exclusive</p>
+                <ul>
+                    <li>Subscribe</li>
+                    <li>Get 10% of your first order</li>
+                </ul>
+                <input type="email" placeholder="Enter your Email"   id="email-footer">
+            </div>
+            <div class="footer-support">
+                <p>Support</p>
+                <ul>
+                    <li>111 Bijoy sarani, Dhaka, <br> DH 1515, Bangladesh.</li>
+                    <li>badmusfaruq@gmail.com</li>
+                    <li>+234 9025-479-011</li>
+                </ul>
+            </div>
+            <div class="footer-account">
+                <p>Account</p>
+                <ul><li>My Account</li>
+                <li>Login / Register</li>
+                <li>Cart</li>
+                <li>Wishlist</li>
+            </ul>
+            
+            </div>
+            <a href="../"></a>
+            <div class="quick-link">
+                <p>Quick Link</p>
+                <ul><li>
+                    Privacy Policy
+                </li>
+                <li>
+                    Terms Of Use
+                </li>
+                <li>
+                    FAQ
+                </li>
+                <li>
+                    Contact
+                </li></ul>
+            </div>
+          
+            <div class="download-app">
+                <p>Download App</p>
+                <ul><li>Save $3 with App New User Only</li></ul>
+                <div class="plays">
+                    <div class="qr">
+                        <img src="Pictures/Qr Code.png" alt="">
+                    </div>
+                    <div class="goggle">
+                        <div class="playstore">
+                            <img src="Pictures/GooglePlay.png" alt="">
+                        </div>
+                        <div class="apple">
+                            <img src="Pictures/download-appstore.png" alt="">
+                        </div>
+                    </div>
+            
+                </div>
+                <div class="web">
+                    <div class="facebook">
+                        <img src="Pictures/Icon-Facebook.png" alt="" srcset="">
+                    </div>
+                    <div class="instagram">
+                        <img src="Pictures/Group.png" alt="">
+                    </div>
+                    <div class="linkdeln">
+                        <img src="Pictures/Vector.png" alt="">
+                    </div>
+                    <div class="twitter"></div>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+</div>
+ 
+
+    <!-- SIGN UP PAGE ENDS -->
+
+</body>
+<script src="index.js"></script>
+<script type="module">
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged, signOut,sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {getFirestore,  collection, setDoc,doc, getDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+apiKey: "AIzaSyDPF--p3fzATWasmeh_Lhq8XIDfX7WII_o",
+authDomain: "details-9e162.firebaseapp.com",
+projectId: "details-9e162",
+storageBucket: "details-9e162.appspot.com",
+messagingSenderId: "91758916888",
+appId: "1:91758916888:web:f72964b229d3af1b1ada6d"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+// get auth
+const auth=getAuth()
+const db=getFirestore(app)
+const signupForm=document.getElementById('signUpForm')
+
+const spinner = document.querySelector('.boxRoll');
+
+function showSpinner() {
+    spinner.removeAttribute('hidden',false);
+}
+
+function hideSpinner() {
+    spinner.setAttribute('hidden',true);
+}
+
+
+signUpForm.addEventListener('submit', async function(event) {
+event.preventDefault();
+const passwordValid = document.querySelector('.passwordValid');
+const emailValid = document.querySelector('.emailValid');
+let email = signUpForm.email.value;
+let password = signUpForm.password.value;
+let name = document.getElementById('name');
+let user = document.getElementById('user');
+const createAccount = document.querySelector('.createAccount');
+// createAccount.disabled = true;
+
+const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()_+{}|:"<>?[\];',./-]).{8,}$/;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (!emailRegex.test(email)) {
+emailValid.style.display = 'block';
+const resEmail = setInterval(() => {
+emailValid.style.display = 'none';
+clearInterval(resEmail);
+}, 5000);
+createAccount.disabled = false;
+return;
+} 
+
+if (!passwordRegex.test(password)) {
+passwordValid.style.display = 'block';
+const resPassword = setInterval(() => {
+passwordValid.style.display = 'none';
+clearInterval(resPassword);
+}, 5000);
+createAccount.disabled = false;
+return;
+}
+
+
+try {
+    showSpinner(); // Show spinner before form submission
+const res = await createUserWithEmailAndPassword(auth, email, password);
+const docRef = await doc(db, "users", res.user.uid);
+await setDoc(docRef, { name: name.value });
+console.log("Account Created Successfully");
+alert('Account Created Successfully');
+signUpForm.reset(); // Reset form fields
+createAccount.disabled = true;
+passwordValid.style.display = 'none';
+window.location.href='../index.html'
+}
+
+catch (error) {
+if (error.message == 'Firebase: Error (auth/email-already-in-use).') {
+user.style.display = 'block';
+user.textContent = 'User Already Exists';
+const res = setInterval(() => {
+user.style.display = 'none';
+clearInterval(res);
+}, 3000);
+emailValid.style.display = 'block';
+const resEmail = setInterval(() => {
+emailValid.style.display = 'none';
+clearInterval(resEmail);
+}, 5000);
+
+}
+} finally {
+hideSpinner(); 
+}
+});
+
+
+
+
+const signInForm = document.getElementById('signInForm');
+signInForm.addEventListener('submit', async function(event) {
+event.preventDefault();
+let email = signInForm.email.value;
+let password = signInForm.password.value;
+const textP = document.getElementById('textP');
+try {
+const res = await signInWithEmailAndPassword(auth, email, password);
+console.log("Login Successfully");
+alert('Login Successfully');
+// Retrieve user's name
+const docRef = doc(collection(db, 'users'), res.user.uid);
+const docSnap = await getDoc(docRef);
+if (docSnap.exists()) {
+const userData = docSnap.data();
+const name = userData.name;
+} else {
+console.error('User document does not exist');
+}
+textP.textContent = '';
+signInForm.email.value = '';
+signInForm.password.value = '';
+} catch (error) {
+if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+textP.textContent = 'Invalid email or password';
+} else {
+console.error(error);
+}
+}
+});
+
+
+
+
+// const signOutBTN=document.getElementById('signOutBTN')
+//  signOutBTN.addEventListener('click', async () => {
+//         try {
+//             await signOut(auth);
+//             alert('Signed out Successfully')
+//             console.log('User signed out successfully');
+//         } catch (error) {
+//             console.log(error);
+//         }
+//     })
+const resetPassword=document.getElementById('resetPassword')
+resetPassword.addEventListener('submit',async(event)=>{
+event.preventDefault()
+let email = resetPassword.email.value;
+try {
+await sendPasswordResetEmail(auth, email)
+console.log('Password reset email has been sent');
+alert('Password reset email has been sent')
+} catch (error) {
+console.log(error);
+}
+})
+// const passwordInput = document.getElementById('password');
+
+</script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+crossorigin="anonymous"></script>
+     -->
+</html>
+</html> 

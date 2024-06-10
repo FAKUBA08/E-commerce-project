@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Home - Exclusive E-Commerce Website</title>
+  </head>
+  <body>
+   
+    <p class="greetingP">HELLO,GUEST</p>
+
+       <!-- <div id="show" class="flex justify-center gap-4 flex-wrap p-4"></div> -->
+    <div id="cartDetails" class="p-4"></div> <!-- This is where selected products will be displayed -->
+ 
+      
+</div>
+
+
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="./js/app.js"></script>
+    
+  </body>
+   <!-- Firebase SDKs -->
+   <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, collection, addDoc, query, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDPF--p3fzATWasmeh_Lhq8XIDfX7WII_o",
+        authDomain: "details-9e162.firebaseapp.com",
+        projectId: "details-9e162",
+        storageBucket: "details-9e162.appspot.com",
+        messagingSenderId: "91758916888",
+        appId: "1:91758916888:web:f72964b229d3af1b1ada6d"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+    const db = getFirestore(app);
+    const greetingP = document.querySelector('.greetingP');
+
+    onAuthStateChanged(auth, async (user) => {
+        if (user) {
+            const docRef = doc(db, 'users', user.uid);
+            const docSnapshot = await getDoc(docRef);
+            const userData = docSnapshot.data();
+            if (userData) {
+                greetingP.textContent = `HELLO, ${userData.name}`;
+            }
+            loadCartItems(user.uid); // Load cart items for authenticated user
+        } else {
+            greetingP.textContent = 'HELLO, GUEST';
+        }
+    });
+
+    const selectedProducts = []; // Array to store selected products
+
+    async function allProduct() {
+        try {
+            const res = await fetch("https://fakestoreapi.com/products");
+            if (res.ok) {
+                const data = await res.json();
+                seen(data);
+                console.log(data);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    allProduct();
+    
+    function seen(data) {
+        data.splice(0,7).forEach(element => {
+            document.getElementById('show').innerHTML += `
+                <div class="max-w-sm w-full bg-white shadow-md rounded-lg dark:bg-gray-800 dark:border-gray-700 product-card">
+                    <a href="#">
+                        <img class="rounded-t-lg" src="${element.image}" alt="product image">
+                    </a>
+                    <div class="px-5 pb-5">
+                        <a href="#">
+                            <h3>${element.title}</h3>
+                        </a>
+                        <div class="rating mt-2.5 mb-5">
+                            <!-- Rating SVGs -->
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="price text-gray-900 dark:text-white">$${element.price}</span>
+                            <!-- Add to cart button -->
+                            <button class="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" data-title="${element.title}" data-price="${element.price}" data-image="${element.image}">Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        // Add event listeners to all buttons
+        document.querySelectorAll('button[data-title]').forEach(button => {
+            button.addEventListener('click', function() {
+                const title = this.getAttribute('data-title');
+                const price = this.getAttribute('data-price');
+                const image = this.getAttribute('data-image');
+                addToCart(title, price, image);
+            });
+        });
+    }
+    async function addToCart(title, price, image) {
+const user = auth.currentUser;
+if (user) {
+    const uid = user.uid;
+    const product = { title, price, image };
+    selectedProducts.push(product);
+
+    try {
+        const docRef = await addDoc(collection(db, "users", uid, "cartItems"), product);
+        console.log("Document written with ID: ", docRef.id);
+        updateCartDetails();
+    } catch (error) {
+        console.error("Error adding document: ", error);
+    }
+} else {
+    // Redirect to signup page if user is not signed in
+    window.location.href = "signup.html";
+}
+}
+
+    async function loadCartItems(uid) {
+        const cartDetailsElement = document.getElementById('cartDetails');
+        let cartHTML = '<h2>Cart</h2>';
+
+        const q = query(collection(db, "users", uid, "cartItems"));
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.empty) {
+            cartHTML += '<p>No items in cart</p>';
+        } else {
+            querySnapshot.forEach((doc) => {
+                const product = doc.data();
+                cartHTML += `
+                    <div class="flex items-center mb-2">
+                        <img src="${product.image}" alt="${product.title}" class="w-12 h-12 mr-2 rounded-md">
+                        <div>${product.title} - $${product.price}</div>
+                    </div>
+                `;
+            });
+        }
+        cartDetailsElement.innerHTML = cartHTML;
+    }
+    async function updateCartDetails() {
+    const user = auth.currentUser;
+    if (user) {
+        const uid = user.uid;
+        const q = query(collection(db, "users", uid, "cartItems"));
+        const querySnapshot = await getDocs(q);
+        const cartItemCount = querySnapshot.size; // Get the number of items in the cart
+        document.getElementById('cartItemCount').textContent = cartItemCount.toString(); // Update the cart item count
+    } else {
+        console.error("No user is signed in");
+        console.error("Element with ID 'cartItemCount' not found");
+    }
+}
+
+</script>
+</html>
