@@ -47,7 +47,7 @@ ul {
   background-color: var(--colo-dark-1);
 }
 .top_nav_container {
-  width: 100%;
+  width: 93%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -155,6 +155,7 @@ ul {
   margin-bottom: 1.5rem;
   color: var(--colo-primary);
   font-size: 1.3rem;
+  /* font-weight: bold; */
 }
 .section_header {
   display: flex;
@@ -164,6 +165,7 @@ ul {
 .section_title {
   margin-right: 2rem;
   font-size: 2.6rem;
+  font-weight: bold;
 }
 #demo {
   font-size: 1.8rem;
@@ -610,4 +612,343 @@ ul {
 }
 .product-card .rating svg {
   margin-right: 0.1rem;
+}
+.product-card { 
+   /* background-color: #F5F5F5; */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  perspective: 1000px;
+}
+.product-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+.product-card:hover .product-card-inner {
+  transform: rotateY(180deg);
+}
+.product-card-front,
+.product-card-back {
+  position: absolute;
+  width: 100%;
+  backface-visibility: hidden;
+  height: 200px;
+  /* background-color: #F5F5F5  */
+}
+
+.product-card-back {
+  transform: rotateY(180deg);
+}
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  padding: 1rem;
+  /* width: 100%; */
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+
+}
+.product-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.product-card .price {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.product-card .rating {
+  background-color: #db4444;
+}
+.product-card .rating svg {
+  margin-right: 0.1rem;
+}
+.add-to-cart-btn {
+  display: inline-block;
+  /* padding: 0.75rem 1.25rem; */
+  margin-top: 0.5rem;
+  background-color: #ff4500;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 90%;
+}
+.add-to-cart-btn:hover {
+  background-color: #e03e00;
+}/* Add these styles to the existing CSS */
+
+/* Container for the product cards */
+.product-card {
+  perspective: 1000px; /* Add perspective to the container */
+}
+
+/* Add transition for hover effect */
+.product-card img {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.product-card:hover img {
+  transform: rotateY(180deg);
+}
+
+/* Front and back side of the image */
+.product-card .front,
+.product-card .back {
+  position: absolute;
+  width: 100%;
+  backface-visibility: hidden;
+  border-radius: inherit;
+}
+
+.product-card .back {
+  transform: rotateY(180deg);
+}
+.showApi{
+  max-width:80%;
+  margin: 0 auto;
+  column-gap: 2.4rem;
+}
+
+.add-to-cart-btn {
+  background-color: #e60023; /* Red background */
+  border: none; /* Remove default border */
+}
+.add-to-cart-btn:hover {
+  background-color: #cc001f; /* Slightly darker red when hovered */
+}
+/* Add this CSS to your styles.css file */
+
+/* Ensure product cards have a consistent background and structure */
+.product-card {
+  background-color: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 250px; /* Adjust the width as needed */
+  height: 350px; /* Set a maximum height */
+  overflow: hidden; /* Hide overflow content */
+}
+
+/* Ensure the inner content of the card is flex and space between */
+.product-card .card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Add consistent styles for the Add to Cart button */
+.add-to-cart-btn {
+  background-color: #FF6347; /* Tomato color */
+  color: #fff; /* White text color */
+  border: none;
+  padding: 7px;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  width: 60%;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #FF4500; /* Darker tomato color */
+}
+
+/* Ensure the flexbox parent of product cards aligns items properly */
+#show {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-evenly;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#demo{
+  font-size: 28px;
+   margin-top: -14rem;
+   font-weight: bolder;
+   letter-spacing: 1px;
+   position: relative;
+   left: 6%;
+font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.secCategory{
+display: grid;
+grid-template-columns: repeat(auto-fit,minmax(9rem,4fr));
+margin: 0 auto;
+max-width: 82%;
+align-items: center;
+margin-bottom: -1rem;
+column-gap: 2rem;
+transform: translateY(2rem);
+}
+.display{
+  position: absolute;
+  left: 19%;
+  font-size: 10px;
+  margin-top: -2rem;
+  font-weight: bold;
+}
+.days{
+  position: relative;
+  left: -8%;
+}
+.hours{
+  position: relative;
+  left: 10%;
+}
+.minutes{
+  position: relative;
+  left: 25%;
+}
+.seconds{
+  position: relative;
+  left: 44%;
+}
+.womens-cloc img{
+  width: 18%;
+  position: relative;
+  left: 40%;
+  top: 2rem;
+}
+.elctronics img{
+  position: relative;
+  left: 39%;
+  top: 1.5rem;
+
+}
+.mens-cloc img{
+  width: 25%;
+  position: relative;
+  left: 40%;
+  top: 2rem;
+}
+.head-phone img{
+  position: relative;
+  left: 35%;
+  top: 1.5rem;
+}
+.gaming img{ 
+  position: relative;
+  left: 35%;
+  top: 1.5rem;
+
+}
+.elctronics{
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  text-align: center;
+  border: 1px solid black;
+  height: 14rem;
+  cursor: pointer;
+}
+.elctronics{
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.442);
+  height: 14rem;
+  cursor: pointer;
+}
+.mens-clothing{
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.442);
+  height: 14rem;
+  cursor: pointer;
+}
+.womens-cloc{
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.442);
+  height: 14rem;
+  cursor: pointer;
+}
+.gaming{
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.442);
+  height: 14rem;
+  cursor: pointer;
+}
+.head-phone{
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.442);
+  height: 14rem;
+  cursor: pointer;
+}
+.mens-text{
+  position: relative;
+  top: 20%;
+}
+.womens-text{
+  position: relative;
+  top: 20%;
+}
+.gaming-text{
+  position: relative;
+  top: 20%;
+}
+.head-text{
+  position: relative;
+  top: 20%;
+}
+.elc-text{
+  position: relative;
+  top: 37%;
+}
+#categories{
+  margin-top: 9rem;
+  font-weight: bold;
+}
+.showAll{
+  cursor: pointer;
+}
+.showAllCon button{
+  background-color: #DB4444;
+  width: 20%;
+  color: white;
+  height: 4rem;
+  align-items: center;
+  text-align: center;
+  font-size: 12px;
+  position: relative;
+  left: 40%;
+  margin-top: 5rem;
+  border-radius: 5px;
+  /* padding: 2rem; */
+}
+.showAllCon button{
+  margin-top: 1rem;
 }
