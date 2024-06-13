@@ -44,6 +44,13 @@
         messagingSenderId: "91758916888",
         appId: "1:91758916888:web:f72964b229d3af1b1ada6d"
     };
+    // const staticProducts = [
+    //         { id: 1, title: 'HAVIT HV-G92 Gamepad', price: 220, image: 'image/items/item-1.png' },
+    //         { id: 2, title: 'AK-900 Wired Keyboard', price: 150, image: 'image/items/item-2.png' },
+    //         { id: 3, title: 'IPS LCD Gaming Monitor', price: 370, image: 'image/items/item-3.png' },
+    //         { id: 4, title: 'S-Series Comfort Chair', price: 300, image: 'image/items/item-4.png' },
+    //         { id: 5, title: 'AVI-400 Wireless Headphone', price: 150, image: 'image/items/item-5.png' },
+    //     ];
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
@@ -65,21 +72,6 @@
         }
     });
 
-    const selectedProducts = []; // Array to store selected products
-
-    async function allProduct() {
-        try {
-            const res = await fetch("https://fakestoreapi.com/products");
-            if (res.ok) {
-                const data = await res.json();
-                seen(data);
-                console.log(data);
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
-    allProduct();
     
     function seen(data) {
         data.splice(0,7).forEach(element => {
@@ -130,8 +122,8 @@ if (user) {
         console.error("Error adding document: ", error);
     }
 } else {
-    // Redirect to signup page if user is not signed in
-    window.location.href = "signup.html";
+    
+    window.location.href = "./SIGNUP PAGE/index.html";
 }
 }
 
@@ -170,6 +162,7 @@ if (user) {
         console.error("Element with ID 'cartItemCount' not found");
     }
 }
+
 
 </script>
 </html>
