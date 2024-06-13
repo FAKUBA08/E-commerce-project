@@ -721,8 +721,17 @@
     .footer-inner{
     max-width: 98%;
     }
-    .footer-support{
-    display: none;
+    .footer-inner{
+        /* flex-direction: column-reverse; */
+        display: block;
+        /* left: 30%; */
+        min-width: 80%;
+        position: relative;
+        padding: 0 0 0 4rem;
+        font-size: 30px;
+    }
+    #email-footer{
+        display: none;
     }
     .section-image{
     display: none;
@@ -817,14 +826,6 @@
 
     width: 42%;
 
-    }
-    }
-    @media only  screen  and (max-width:708px){
-    .download-app{
-    display: none;
-    }
-    .web{
-    display: block;
     }
     }
     @media only  screen  and (max-width:700px){
