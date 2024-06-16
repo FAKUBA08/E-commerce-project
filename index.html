@@ -129,14 +129,22 @@
     
      <div class="showApi">
       <div id="show" class="flex justify-center gap-16 flex-wrap p-18"></div>
+      <div id="loader" class="loader" style="display: none;"></div>
       <div class="showAllCon"><button class="showAll" id="toggleProductsBtn">
           View All Products
       </button></div>
      </div>
      <div id="spinner" class="spinner" style="display: none;">
-      <!-- You can use an image or CSS for the spinner -->
       <img src="spinner.gif" alt="Loading...">
      </div>
+    <!-- Popup container -->
+<div id="popupContainer" class="popup-container">
+  <div id="popup" class="popup">
+    <span id="popupText" class="popup-text">Product added to cart successfully!</span>
+    <button id="closePopupBtn" class="close-popup-btn">Close</button>
+  </div>
+</div>
+
      <div class="container" id="categories">
       <div class="section_category">
         <p class="section_category_p" >Categories</p>
@@ -296,7 +304,7 @@
           <img src="image/items/item-6.png" alt="" />
         </div>
         <div class="product-1-title">RGB liquid CPU Cooler</div>
-        <div class="product-1-prize">$170.00 <span class="discount">$100.00</span></div>
+        <div class="product-1-prize">170.00 <span class="discount">$100.00</span></div>
         <div class="product-1-cart">
           <img src="image/items/Frame 573 (1).png" alt="">
           <button id="product1" class="add-to-cart" data-product-id="1">Add to cart</button>
@@ -424,7 +432,7 @@
           <img src="image/items/item-15.png" alt="" />
         </div>
         <div class="product-1-title">Quilted Satin Jacket</div>
-        <div class="product-1-prize">$750.00 <span class="discount">$420.00</span></div>
+        <div class="product-1-prize">$300 <span class="discount">$420.00</span></div>
         <div class="product-1-cart">
           <img src="image/items/Frame 566 (1).png" alt="">
           <button id="product5" class="add-to-cart" data-product-id="5">Add to cart</button>
@@ -576,10 +584,10 @@
                   </div>
                   <div class="goggle">
                       <div class="playstore">
-                          <!-- <img src="image/GooglePlay.png" alt=""> -->
+                          <img src="image/GooglePlay.png" alt="">
                       </div>
                       <div class="apple">
-                          <!-- <img src="image/download-appstore.png" alt=""> -->
+                          <img src="image/download-appstore.png" alt="">
                       </div>
                   </div>
           
@@ -613,141 +621,166 @@
     
   </body>
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-    import { getFirestore, collection, addDoc, query, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-  
-    const firebaseConfig = {
-      apiKey: "AIzaSyDPF--p3fzATWasmeh_Lhq8XIDfX7WII_o",
-      authDomain: "details-9e162.firebaseapp.com",
-      projectId: "details-9e162",
-      storageBucket: "details-9e162.appspot.com",
-      messagingSenderId: "91758916888",
-      appId: "1:91758916888:web:f72964b229d3af1b1ada6d"
-    };
-  
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth();
-    const db = getFirestore(app);
-    const greetingP = document.querySelector('.greetingP');
-    let showJewelry = document.querySelector('.showJewelry');
-  
-    onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        const docRef = doc(db, 'users', user.uid);
-        const docSnapshot = await getDoc(docRef);
-        const userData = docSnapshot.data();
-        if (userData) {
-          greetingP.textContent = `HELLO, ${userData.name}`;
-        }
-        loadCartItems(user.uid);
-      } else {
-        greetingP.textContent = 'HELLO, GUEST';
-      }
-    });
-  
-    const selectedProducts = [];
-    
-  
-    async function allProduct() {
-    try {
-        const res = await fetch("https://fakestoreapi.com/products");
-        if (res.ok) {
-            const data = await res.json();
-            seen(data);
-        }
-    } catch (error) {
-        console.log(error);
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, collection, addDoc, query, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDPF--p3fzATWasmeh_Lhq8XIDfX7WII_o",
+  authDomain: "details-9e162.firebaseapp.com",
+  projectId: "details-9e162",
+  storageBucket: "details-9e162.appspot.com",
+  messagingSenderId: "91758916888",
+  appId: "1:91758916888:web:f72964b229d3af1b1ada6d"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
+const db = getFirestore(app);
+const greetingP = document.querySelector('.greetingP');
+let showJewelry = document.querySelector('.showJewelry');
+
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    const docRef = doc(db, 'users', user.uid);
+    const docSnapshot = await getDoc(docRef);
+    const userData = docSnapshot.data();
+    if (userData) {
+      greetingP.textContent = `HELLO, ${userData.name}`;
     }
+    loadCartItems(user.uid);
+    showCongratsAnimation();
+  } else {
+    greetingP.textContent = 'HELLO, GUEST';
+  }
+});
+
+const selectedProducts = [];
+
+async function allProduct() {
+  try {
+    const res = await fetch("https://fakestoreapi.com/products");
+    if (res.ok) {
+      const data = await res.json();
+      seen(data);
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function seen(data) {
-    const showContainer = document.getElementById('show');
-    const toggleButton = document.getElementById('toggleProductsBtn');
+  const showContainer = document.getElementById('show');
+  const toggleButton = document.getElementById('toggleProductsBtn');
 
-    data.slice(0, 10).forEach(element => {
+  data.slice(0, 10).forEach(element => {
+    showContainer.innerHTML += createProductCard(element);
+  });
+
+  let showingAll = false;
+
+  toggleButton.addEventListener('click', function () {
+    showContainer.innerHTML = '';
+
+    if (!showingAll) {
+      data.slice(0, 20).forEach(element => {
         showContainer.innerHTML += createProductCard(element);
-    });
-
-    let showingAll = false;
-
-    toggleButton.addEventListener('click', function () {
-        showContainer.innerHTML = ''; 
-
-        if (!showingAll) {
-            data.slice(0, 20).forEach(element => {
-                showContainer.innerHTML += createProductCard(element);
-            });
-            toggleButton.textContent = 'Show Less';
-        } else {
-            data.slice(0, 10).forEach(element => {
-                showContainer.innerHTML += createProductCard(element);
-            });
-            toggleButton.textContent = 'View All Products';
-        }
-
-        addEventListenersToButtons();
-
-        showingAll = !showingAll; 
-    });
+      });
+      toggleButton.textContent = 'Show Less';
+    } else {
+      data.slice(0, 10).forEach(element => {
+        showContainer.innerHTML += createProductCard(element);
+      });
+      toggleButton.textContent = 'View All Products';
+    }
 
     addEventListenersToButtons();
+
+    showingAll = !showingAll;
+  });
+
+  addEventListenersToButtons();
 }
 
 function createProductCard(element) {
-    return `
-        <div class="max-w-sm w-full shadow-md rounded-lg product-card">
-            <a href="#">
-                <img class="rounded-t-lg" src="${element.image}" alt="product image">
-            </a>
-            <div class="card-content">
-                <div>
-                    <a href="#">
-                        <h3>${element.title}</h3>
-                    </a>
-                    <div class="rating mt-2.5 mb-5">
-                        <!-- Rating SVGs -->
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <span class="price text-gray-900">$${element.price}</span>
-                    <button class="add-to-cart-btn" data-title="${element.title}" data-price="${element.price}" data-image="${element.image}">Add to cart</button>
-                </div>
-            </div>
+  return `
+    <div class="max-w-sm w-full shadow-md rounded-lg product-card">
+      <a href="#">
+        <img class="rounded-t-lg" src="${element.image}" alt="product image">
+      </a>
+      <div class="card-content">
+        <div>
+          <a href="#">
+            <h3>${element.title}</h3>
+          </a>
+          <div class="rating mt-2.5 mb-5">
+            <!-- Rating SVGs -->
+          </div>
         </div>
-    `;
+        <div class="card-footer">
+          <span class="price text-gray-900">$${element.price}</span>
+          <button class="add-to-cart-btn" data-title="${element.title}" data-price="${element.price}" data-image="${element.image}">Add to cart</button>
+        </div>
+      </div>
+    </div>
+  `;
 }
 
 function addEventListenersToButtons() {
-    document.querySelectorAll('button[data-title]').forEach(button => {
-        button.addEventListener('click', function() {
-            const title = this.getAttribute('data-title');
-            const price = this.getAttribute('data-price');
-            const image = this.getAttribute('data-image');
-            addToCart(title, price, image);
-        });
+  document.querySelectorAll('button[data-title]').forEach(button => {
+    button.addEventListener('click', function() {
+      const title = this.getAttribute('data-title');
+      const price = this.getAttribute('data-price');
+      const image = this.getAttribute('data-image');
+      addToCart(title, price, image, this);
     });
+  });
 }
 
-async function addToCart(title, price, image) {
-    const user = auth.currentUser;
-    if (user) {
-        const uid = user.uid;
-        const product = { title, price, image };
-        selectedProducts.push(product);
 
-        try {
-            const docRef = await addDoc(collection(db, "users", uid, "cartItems"), product);
-            console.log("Document written with ID: ", docRef.id);
-            alert('Added to cart Successfully')
-            updateCartDetails();
-        } catch (error) {
-            console.error("Error adding document: ", error);
-        }
-    } else {
+function showPopup(message) {
+  const popupContainer = document.getElementById('popupContainer');
+  const popupText = document.getElementById('popupText');
+  popupText.textContent = message;
+  popupContainer.style.display = 'block';
 
-        window.location.href = "SIGNUP PAGE/index.html";
+
+  const closePopupBtn = document.getElementById('closePopupBtn');
+  closePopupBtn.addEventListener('click', function() {
+    popupContainer.style.display = 'none';
+  });
+
+  setTimeout(function() {
+    popupContainer.style.display = 'none';
+  }, 3000); 
+}
+async function addToCart(title, price, image, button) {
+  const user = auth.currentUser;
+  const loader = document.getElementById('loader');
+  if (user) {
+    const uid = user.uid;
+    const product = { title, price, image };
+    selectedProducts.push(product);
+
+   
+    loader.style.display = 'block';
+    button.classList.add('disabled');
+
+    try {
+      const docRef = await addDoc(collection(db, "users", uid, "cartItems"), product);
+      console.log("Document written with ID: ", docRef.id);
+      showPopup('Product added to cart successfully!');
+      updateCartDetails();
+    } catch (error) {
+      console.error("Error adding document: ", error);
+    } finally {
+      // Hide loader and enable button
+      loader.style.display = 'none';
+      button.classList.remove('disabled');
     }
+  } else {
+    window.location.href = "SIGNUP PAGE/index.html";
+  }
 }
 
 
@@ -757,29 +790,30 @@ async function updateCartDetails() {
     const uid = user.uid;
     const q = query(collection(db, "users", uid, "cartItems"));
     const querySnapshot = await getDocs(q);
-    const cartItemCount = querySnapshot.size; // Get the number of items in the cart
-    document.getElementById('cartItemCount').textContent = cartItemCount.toString(); // Update the cart item count
+    const cartItemCount = querySnapshot.size;
+    document.getElementById('cartItemCount').textContent = cartItemCount.toString();
   } else {
     console.error("No user is signed in");
     console.error("Element with ID 'cartItemCount' not found");
   }
 }
 
-
 allProduct();
+
 document.querySelectorAll('.add-to-cart').forEach(button => {
   button.addEventListener('click', function() {
     const productId = this.getAttribute('data-product-id');
     const productTitle = this.parentElement.previousElementSibling.textContent;
     const productPrice = this.parentElement.previousElementSibling.previousElementSibling.textContent;
     const productImage = this.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.src;
-    const product = { id: productId, title: productTitle, price: productPrice, image: productImage };
+    const product = { id: productId, title: productPrice, price: productTitle, image: productImage };
 
-    saveProductToFirestore(product);
+    saveProductToFirestore(product, this);
   });
 });
 
-async function saveProductToFirestore(product) {
+async function saveProductToFirestore(product, button) {
+  const loader = document.getElementById('loader');
   try {
     const user = auth.currentUser;
     if (!user) {
@@ -787,15 +821,22 @@ async function saveProductToFirestore(product) {
       return;
     }
     const uid = user.uid;
+
+    loader.style.display = 'block';
+    button.classList.add('disabled');
+
     const docRef = await addDoc(collection(db, "users", uid, "cartItems"), product);
     console.log("Product added to Firestore with ID: ", docRef.id);
-    alert('Added to cart Successfully');
-  
-    updateCartUI(); 
+    showPopup('Product added to cart successfully!');
+    updateCartUI();
   } catch (error) {
     console.error("Error adding product to Firestore: ", error);
+  } finally {
+    loader.style.display = 'none';
+    button.classList.remove('disabled');
   }
 }
+
 function updateCartUI() {
   const cartItemCountElement = document.getElementById('cartItemCount');
   if (cartItemCountElement) {
@@ -805,8 +846,8 @@ function updateCartUI() {
       const q = query(collection(db, "users", uid, "cartItems"));
       getDocs(q)
         .then((querySnapshot) => {
-          const cartItemCount = querySnapshot.size; 
-          cartItemCountElement.textContent = cartItemCount.toString(); // Update the cart item count
+          const cartItemCount = querySnapshot.size;
+          cartItemCountElement.textContent = cartItemCount.toString();
         })
         .catch((error) => {
           console.error("Error getting cart items: ", error);
@@ -819,9 +860,5 @@ function updateCartUI() {
   }
 }
 
-
-
-  </script>
-  
 </script>
 </html>

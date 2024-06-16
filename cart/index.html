@@ -5,21 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Link Swiper's CSS -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="index.css">
     <title>Home - Exclusive E-Commerce Website</title>
   </head>
   <body>
-   
-    <p class="greetingP">HELLO,GUEST</p>
-
-       <!-- <div id="show" class="flex justify-center gap-4 flex-wrap p-4"></div> -->
-    <div id="cartDetails" class="p-4"></div> <!-- This is where selected products will be displayed -->
- 
-      
+    <div class="top_nav">
+        <div class="container top_nav_container">
+          <div class="top_nav_wrapper">
+            <p class="tap_nav_p">
+              Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
+            </p>
+            <a href="#" class="top_nav_link">SHOP NOW</a>
+          </div>
+        </div>
+      </div>
+      <nav class="nav">
+        <div class="container nav_container">
+          <a href="#" class="nav_logo">EXCLUSIVE</a>
+          <ul class="nav_list">
+            <li class="nav_item"><a href="/" class="nav_link">Home</a></li>
+            <li class="nav_item"><a href="#" class="nav_link">About</a></li>
+            <li class="nav_item"><a href="#" class="nav_link">Contact</a></li>
+            <li class="nav_item">
+              <a href="SIGNUP PAGE/index.html" class="nav_link">Sign up</a>
+            </li>
+          </ul>
+          <div class="nav_items">
+            <form action="#" class="nav_form">
+              <input
+                type="text"
+                class="nav_input"
+                placeholder="search here...." />
+              <img src="../image/search.png" alt="" class="nav_search" />
+            </form>
+            <img src="../image/heart.png" alt="" class="nav_heart" />
+            <a href="cart/index.html">
+              <img src="../image/cart.png" alt="" class="nav_cart" />
+              <span id="cartItemCount" class="cart_item_count">0</span>
+            </a>
+          </div>
+          <p class="greetingP">HELLO,GUEST</p>
+          <span class="hamburger">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </span>
+        </div>
+      </nav>
+      <nav class="mobile_nav mobile_nav_hide">
+        <ul class="mobile_nav_list">
+          <li class="mobile_nav_item">
+            <a href="/" class="mobile_nav_link">Home</a>
+          </li>
+          <li class="mobile_nav_item">
+            <a href="#" class="mobile_nav_link">About</a>
+          </li>
+          <li class="mobile_nav_item">
+            <a href="#" class="mobile_nav_link">Contact</a>
+          </li>
+          <li class="mobile_nav_item">
+            <a href="./SIGNUP PAGE/index.html" class="mobile_nav_link">Sign Up</a>
+          </li>
+          <li class="mobile_nav_item">
+            <a href="cart/index.html" class="mobile_nav_link">Cart</a>
+            <span id="cartItemCount" class="cart_item_count"></span>
+          </li>
+          <p class="greetingP"></p>
+        </ul>
+      </nav>
+</div>
+<div id="spinner" class="spinner" style="display: none;">
+  <div class="loading">Loading...</div>
+</div>
+<div class="return">
+    <p class="home">Home <span class="cart">/ Cart</span></p>
+</div>
+<div class="list">
+    <div class="pro">Product</div>
+    <div class="price">Price</div>
+    <div class="quantity">Quantity</div>
+    <div class="subtotal">Subtotal</div>
+    <!-- <div class="actions">Actions</div> -->
+</div>
+<div class="card">
+    <div id="cartDetails" class="p-4"></div> 
 </div>
 
 
@@ -34,7 +116,7 @@
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-    import { getFirestore, collection, addDoc, query, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { getFirestore, collection, addDoc, query, getDocs, doc, getDoc,deleteDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
     const firebaseConfig = {
         apiKey: "AIzaSyDPF--p3fzATWasmeh_Lhq8XIDfX7WII_o",
@@ -44,15 +126,6 @@
         messagingSenderId: "91758916888",
         appId: "1:91758916888:web:f72964b229d3af1b1ada6d"
     };
-    // const staticProducts = [
-    //         { id: 1, title: 'HAVIT HV-G92 Gamepad', price: 220, image: 'image/items/item-1.png' },
-    //         { id: 2, title: 'AK-900 Wired Keyboard', price: 150, image: 'image/items/item-2.png' },
-    //         { id: 3, title: 'IPS LCD Gaming Monitor', price: 370, image: 'image/items/item-3.png' },
-    //         { id: 4, title: 'S-Series Comfort Chair', price: 300, image: 'image/items/item-4.png' },
-    //         { id: 5, title: 'AVI-400 Wireless Headphone', price: 150, image: 'image/items/item-5.png' },
-    //     ];
-
-    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth();
     const db = getFirestore(app);
@@ -74,82 +147,113 @@
 
     
     function seen(data) {
-        data.splice(0,7).forEach(element => {
-            document.getElementById('show').innerHTML += `
-                <div class="max-w-sm w-full bg-white shadow-md rounded-lg dark:bg-gray-800 dark:border-gray-700 product-card">
+    data.splice(0, 7).forEach(element => {
+        document.getElementById('show').innerHTML += `
+            <div class="max-w-sm w-full bg-white shadow-md rounded-lg dark:bg-gray-800 dark:border-gray-700 product-card">
+                <a href="#">
+                    <img class="rounded-t-lg" src="${element.image}" alt="product image">
+                </a>
+                <div class="px-5 pb-5">
                     <a href="#">
-                        <img class="rounded-t-lg" src="${element.image}" alt="product image">
+                        <h3>${element.title}</h3>
                     </a>
-                    <div class="px-5 pb-5">
-                        <a href="#">
-                            <h3>${element.title}</h3>
-                        </a>
-                        <div class="rating mt-2.5 mb-5">
-                            <!-- Rating SVGs -->
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="price text-gray-900 dark:text-white">$${element.price}</span>
-                            <!-- Add to cart button -->
-                            <button class="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" data-title="${element.title}" data-price="${element.price}" data-image="${element.image}">Add to cart</button>
-                        </div>
+                    <div class="rating mt-2.5 mb-5">
+                        <!-- Rating SVGs -->
+                    </div>
+                    <div class="flex items-center">
+                        <span class="price text-gray-900 dark:text-white">$${element.price}</span>
+                        <button class="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 add-to-cart" data-product-id="${element.id}" data-title="${element.title}" data-price="${element.price}" data-image="${element.image}">Add to cart</button>
                     </div>
                 </div>
-            `;
-        });
+            </div>
+        `;
+    });
 
-        // Add event listeners to all buttons
-        document.querySelectorAll('button[data-title]').forEach(button => {
-            button.addEventListener('click', function() {
-                const title = this.getAttribute('data-title');
-                const price = this.getAttribute('data-price');
-                const image = this.getAttribute('data-image');
-                addToCart(title, price, image);
-            });
+    document.querySelectorAll('button[data-title]').forEach(button => {
+        button.addEventListener('click', function() {
+            const productId = this.getAttribute('data-product-id');
+            const title = this.getAttribute('data-title');
+            const price = this.getAttribute('data-price');
+            const image = this.getAttribute('data-image');
+            addToCart(productId, title, price, image);
         });
-    }
-    async function addToCart(title, price, image) {
-const user = auth.currentUser;
-if (user) {
-    const uid = user.uid;
-    const product = { title, price, image };
-    selectedProducts.push(product);
-
-    try {
-        const docRef = await addDoc(collection(db, "users", uid, "cartItems"), product);
-        console.log("Document written with ID: ", docRef.id);
-        updateCartDetails();
-    } catch (error) {
-        console.error("Error adding document: ", error);
-    }
-} else {
-    
-    window.location.href = "./SIGNUP PAGE/index.html";
-}
+    });
 }
 
-    async function loadCartItems(uid) {
-        const cartDetailsElement = document.getElementById('cartDetails');
-        let cartHTML = '<h2>Cart</h2>';
-
-        const q = query(collection(db, "users", uid, "cartItems"));
-        const querySnapshot = await getDocs(q);
-
-        if (querySnapshot.empty) {
-            cartHTML += '<p>No items in cart</p>';
-        } else {
-            querySnapshot.forEach((doc) => {
-                const product = doc.data();
-                cartHTML += `
-                    <div class="flex items-center mb-2">
-                        <img src="${product.image}" alt="${product.title}" class="w-12 h-12 mr-2 rounded-md">
-                        <div>${product.title} - $${product.price}</div>
-                    </div>
-                `;
-            });
+   
+async function addToCart(productId, title, price, image) {
+    const user = auth.currentUser;
+    if (user) {
+        const uid = user.uid;
+        const product = { id: productId, title, price, image };
+        try {
+            const docRef = await addDoc(collection(db, "users", uid, "cartItems"), product);
+            console.log("Document written with ID: ", docRef.id);
+            updateCartDetails();
+        } catch (error) {
+            console.error("Error adding document: ", error);
         }
-        cartDetailsElement.innerHTML = cartHTML;
+    } else {
+        window.location.href = "./SIGNUP PAGE/index.html";
     }
-    async function updateCartDetails() {
+}
+async function loadCartItems(uid) {
+    const cartDetailsElement = document.getElementById('cartDetails');
+    let cartHTML = '';
+
+    const q = query(collection(db, "users", uid, "cartItems"));
+    const querySnapshot = await getDocs(q);
+
+    if (querySnapshot.empty) {
+        cartHTML += '<p>No items in cart</p>';
+    } else {
+      querySnapshot.forEach((doc) => {
+    const product = doc.data();
+    console.log('Product Data:', product); // Log product data to verify it's correct
+
+    let price = product.price;
+    if (typeof price === 'string' && price.trim().startsWith('$')) {
+        price = parseFloat(price.replace('$', '')).toFixed(2); 
+    } else {
+        price = parseFloat(price).toFixed(2); 
+    }
+
+    if (!isNaN(price)) {
+        console.log('Parsed Price:', price); 
+
+        cartHTML += `
+            <div class="list_item" data-id="${doc.id}">
+                <div class="pro">
+               
+                    <img src="${product.image}" alt="${product.title}" class="w-16 h-16">
+                    <span>${product.title}</span>
+                </div>
+                <div class="price">$${price}</div>
+                <div class="quantity">
+                    <input type="number" value="1" min="1" class="quantity_input">
+                </div>
+                <div class="subtotal">$${price}</div>
+                         <button class="delete-item text-red-700"><img src="../image/1840748.png" alt=""></button>
+            </div>
+        `;
+    } else {
+        console.error('Invalid price for product:', product);
+    }
+});
+        
+    }
+    cartDetailsElement.innerHTML = cartHTML;
+
+    document.querySelectorAll('.delete-item').forEach(button => {
+        button.addEventListener('click', function() {
+            const productId = this.parentElement.getAttribute('data-id');
+            deleteCartItem(uid, productId);
+        });
+    });
+}
+
+
+async function updateCartDetails() {
     const user = auth.currentUser;
     if (user) {
         const uid = user.uid;
@@ -159,10 +263,45 @@ if (user) {
         document.getElementById('cartItemCount').textContent = cartItemCount.toString(); // Update the cart item count
     } else {
         console.error("No user is signed in");
-        console.error("Element with ID 'cartItemCount' not found");
     }
 }
 
+async function deleteCartItem(uid, productId) {
+    const spinner = document.getElementById('spinner');
+    
+    try {
+        // Show the spinner
+        spinner.style.display = 'block';
+        
+        await deleteDoc(doc(db, "users", uid, "cartItems", productId));
+        console.log("Document successfully deleted!");
+
+        loadCartItems(uid); // Reload cart items to update the UI
+        updateCartDetails(); 
+
+    } catch (error) {
+        console.error("Error removing document: ", error);
+    } finally {
+        // Hide the spinner
+        spinner.style.display = 'none';
+    }
+}
+// Ensure the DOM content is fully loaded before adding the event listener
+document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('input', (event) => {
+        if (event.target.classList.contains('quantity_input')) {
+            const quantity = event.target.value;
+            const priceElement = event.target.closest('.list_item').querySelector('.price');
+            const subtotalElement = event.target.closest('.list_item').querySelector('.subtotal');
+            const price = parseFloat(priceElement.textContent.replace('$', ''));
+            const subtotal = price * quantity;
+            subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+        }
+    });
+});
+
+
 
 </script>
+<script src="../js/app.js"></script>
 </html>
