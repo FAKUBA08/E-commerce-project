@@ -185,18 +185,32 @@ async function addToCart(productId, title, price, image) {
     const user = auth.currentUser;
     if (user) {
         const uid = user.uid;
-        const product = { id: productId, title, price, image };
-        try {
-            const docRef = await addDoc(collection(db, "users", uid, "cartItems"), product);
-            console.log("Document written with ID: ", docRef.id);
-            updateCartDetails();
-        } catch (error) {
-            console.error("Error adding document: ", error);
+        const productRef = collection(db, "users", uid, "cartItems");
+        const q = query(productRef, where("id", "==", productId));
+        const querySnapshot = await getDocs(q);
+
+        if (!querySnapshot.empty) {
+            // Product exists, update its quantity and subtotal
+            const existingProductDoc = querySnapshot.docs[0];
+            const existingProduct = existingProductDoc.data();
+            existingProduct.quantity = (existingProduct.quantity || 1) + 1;
+            existingProduct.subtotal = parseFloat(existingProduct.price) * existingProduct.quantity;
+
+            await updateDoc(existingProductDoc.ref, existingProduct);
+            showPopup('Product quantity updated successfully!');
+        } else {
+            // New product, add to cart
+            const product = { id: productId, title, price: parseFloat(price), image, quantity: 1, subtotal: parseFloat(price) };
+            await addDoc(productRef, product);
+            showPopup('Product added to cart successfully!');
         }
+
+        updateCartDetails();
     } else {
         window.location.href = "./SIGNUP PAGE/index.html";
     }
 }
+
 async function loadCartItems(uid) {
     const cartDetailsElement = document.getElementById('cartDetails');
     let cartHTML = '';
@@ -207,41 +221,39 @@ async function loadCartItems(uid) {
     if (querySnapshot.empty) {
         cartHTML += '<p>No items in cart</p>';
     } else {
-      querySnapshot.forEach((doc) => {
-    const product = doc.data();
-    console.log('Product Data:', product); // Log product data to verify it's correct
+        querySnapshot.forEach((doc) => {
+            const product = doc.data();
+            let price = product.price;
+            if (typeof price === 'string' && price.trim().startsWith('$')) {
+                price = parseFloat(price.replace('$', '')).toFixed(2); 
+            } else {
+                price = parseFloat(price).toFixed(2); 
+            }
 
-    let price = product.price;
-    if (typeof price === 'string' && price.trim().startsWith('$')) {
-        price = parseFloat(price.replace('$', '')).toFixed(2); 
-    } else {
-        price = parseFloat(price).toFixed(2); 
+            const quantity = product.quantity || 1;
+            const subtotal = (price * quantity).toFixed(2);
+
+            if (!isNaN(price)) {
+                cartHTML += `
+                    <div class="list_item" data-id="${doc.id}">
+                        <div class="pro">
+                            <img src="${product.image}" alt="${product.title}" class="w-16 h-16">
+                            <span>${product.title}</span>
+                        </div>
+                        <div class="price">$${price}</div>
+                        <div class="quantity">
+                            <input type="number" value="${quantity}" min="1" class="quantity_input">
+                        </div>
+                        <div class="subtotal">$${subtotal}</div>
+                        <button class="delete-item text-red-700"><img src="../image/1840748.png" alt=""></button>
+                    </div>
+                `;
+            } else {
+                console.error('Invalid price for product:', product);
+            }
+        });
     }
 
-    if (!isNaN(price)) {
-        console.log('Parsed Price:', price); 
-
-        cartHTML += `
-            <div class="list_item" data-id="${doc.id}">
-                <div class="pro">
-               
-                    <img src="${product.image}" alt="${product.title}" class="w-16 h-16">
-                    <span>${product.title}</span>
-                </div>
-                <div class="price">$${price}</div>
-                <div class="quantity">
-                    <input type="number" value="1" min="1" class="quantity_input">
-                </div>
-                <div class="subtotal">$${price}</div>
-                         <button class="delete-item text-red-700"><img src="../image/1840748.png" alt=""></button>
-            </div>
-        `;
-    } else {
-        console.error('Invalid price for product:', product);
-    }
-});
-        
-    }
     cartDetailsElement.innerHTML = cartHTML;
 
     document.querySelectorAll('.delete-item').forEach(button => {
@@ -251,7 +263,6 @@ async function loadCartItems(uid) {
         });
     });
 }
-
 
 async function updateCartDetails() {
     const user = auth.currentUser;
@@ -286,7 +297,6 @@ async function deleteCartItem(uid, productId) {
         spinner.style.display = 'none';
     }
 }
-// Ensure the DOM content is fully loaded before adding the event listener
 document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('input', (event) => {
         if (event.target.classList.contains('quantity_input')) {
@@ -296,6 +306,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const price = parseFloat(priceElement.textContent.replace('$', ''));
             const subtotal = price * quantity;
             subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+
+            // Update Firestore with new quantity and subtotal
+            const listItemElement = event.target.closest('.list_item');
+            const productId = listItemElement.getAttribute('data-id');
+            const user = auth.currentUser;
+            if (user) {
+                const uid = user.uid;
+                const productRef = doc(db, "users", uid, "cartItems", productId);
+                updateDoc(productRef, {
+                    quantity: parseInt(quantity),
+                    subtotal: subtotal
+                }).then(() => {
+                    console.log('Cart item updated successfully');
+                }).catch((error) => {
+                    console.error('Error updating cart item: ', error);
+                });
+            }
         }
     });
 });
@@ -304,4 +331,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </script>
 <script src="../js/app.js"></script>
-</html>

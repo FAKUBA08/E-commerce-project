@@ -623,7 +623,7 @@
   <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, collection, addDoc, query, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc, query, getDocs, doc, getDoc,where,updateDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDPF--p3fzATWasmeh_Lhq8XIDfX7WII_o",
@@ -737,7 +737,6 @@ function addEventListenersToButtons() {
   });
 }
 
-
 function showPopup(message) {
   const popupContainer = document.getElementById('popupContainer');
   const popupText = document.getElementById('popupText');
@@ -754,25 +753,41 @@ function showPopup(message) {
     popupContainer.style.display = 'none';
   }, 3000); 
 }
+
 async function addToCart(title, price, image, button) {
   const user = auth.currentUser;
   const loader = document.getElementById('loader');
   if (user) {
     const uid = user.uid;
-    const product = { title, price, image };
-    selectedProducts.push(product);
+    const productRef = collection(db, "users", uid, "cartItems");
+    const q = query(productRef, where("title", "==", title));
+    const querySnapshot = await getDocs(q);
 
-   
+    console.log('Query Snapshot:', querySnapshot);
+
     loader.style.display = 'block';
     button.classList.add('disabled');
 
     try {
-      const docRef = await addDoc(collection(db, "users", uid, "cartItems"), product);
-      console.log("Document written with ID: ", docRef.id);
-      showPopup('Product added to cart successfully!');
-      updateCartDetails();
+      let product;
+      if (!querySnapshot.empty) {
+        const existingProductDoc = querySnapshot.docs[0];
+        product = existingProductDoc.data();
+        product.quantity = (product.quantity || 1) + 1;
+        product.subtotal = parseFloat(product.price) * product.quantity;
+
+        await updateDoc(existingProductDoc.ref, product);
+        console.log('Product quantity updated:', product);
+        showPopup('Product quantity updated successfully!');
+      } else {
+        product = { title, price: parseFloat(price), image, quantity: 1, subtotal: parseFloat(price) };
+        await addDoc(productRef, product);
+        console.log('Product added to cart:', product);
+        showPopup('Product added to cart successfully!');
+      }
+      await updateCartDetails();
     } catch (error) {
-      console.error("Error adding document: ", error);
+      console.error("Error updating cart details: ", error);
     } finally {
       // Hide loader and enable button
       loader.style.display = 'none';
@@ -782,7 +797,6 @@ async function addToCart(title, price, image, button) {
     window.location.href = "SIGNUP PAGE/index.html";
   }
 }
-
 
 async function updateCartDetails() {
   const user = auth.currentUser;
@@ -821,13 +835,30 @@ async function saveProductToFirestore(product, button) {
       return;
     }
     const uid = user.uid;
+    const productRef = collection(db, "users", uid, "cartItems");
+    const q = query(productRef, where("id", "==", product.id));
+    const querySnapshot = await getDocs(q);
 
     loader.style.display = 'block';
     button.classList.add('disabled');
 
-    const docRef = await addDoc(collection(db, "users", uid, "cartItems"), product);
-    console.log("Product added to Firestore with ID: ", docRef.id);
-    showPopup('Product added to cart successfully!');
+    if (!querySnapshot.empty) {
+      // Product exists, update its quantity and subtotal
+      const existingProductDoc = querySnapshot.docs[0];
+      const existingProduct = existingProductDoc.data();
+      existingProduct.quantity = (existingProduct.quantity || 1) + 1;
+      existingProduct.subtotal = parseFloat(existingProduct.price) * existingProduct.quantity;
+
+      await updateDoc(existingProductDoc.ref, existingProduct);
+      showPopup('Product quantity updated successfully!');
+    } else {
+  
+      product.quantity = 1;
+      product.subtotal = parseFloat(product.price);
+      await addDoc(productRef, product);
+      showPopup('Product added to cart successfully!');
+    }
+
     updateCartUI();
   } catch (error) {
     console.error("Error adding product to Firestore: ", error);
