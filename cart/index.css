@@ -158,3 +158,118 @@ transform: translateY(3rem);
     z-index: 1000;
 }
 
+.return{
+    display: flex;
+    justify-content: space-between;
+
+}
+.returnShop{
+    border: 1px solid black;
+    border: 1px solid black;
+    padding: .6rem 1rem .6rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+ 
+}
+.updateCart:hover{
+    transform: scale(.9);
+}
+.returnShop:hover{
+    transform: scale(.9);
+
+}
+.updateCart{
+    border: 1px solid black;
+    padding: .6rem 1rem .6rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.checkOut{
+    transform: translateY(8rem);
+    max-width: 80%;
+    margin: 0 auto;
+}
+#check{
+    padding: 1rem;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    
+    
+}
+.apply:hover{
+    transform: scale(.9);
+    background-color: #f86262 ;
+}
+.apply{
+    background-color: #DB4444 ;
+    color: white;
+    padding: 1.2rem;
+    position: relative;
+    left: 1.4%;
+    border-radius: 10px;
+}
+.seen{
+    /* display: flex; */
+    /* position: absolute; */
+    /* justify-content: space-between; */
+    /* padding-bottom: 5rem; */
+}
+.proceed{
+    border: 1.5px solid black;
+    position: relative;
+    left: -10%;
+    width: 35%;
+    line-height: 5rem;
+    padding: .4rem;
+    border-radius: 5px;
+    padding-bottom: 4rem;
+    float: right;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    /* display: none; */
+}
+.proceed-text{
+font-size: 20px;
+font-weight: 900;
+}
+.subTotal{
+    font-size: 18px;
+    }
+    .shipping{
+        font-size: 18px;
+        }
+        .total{
+            font-size: 18px;
+            }
+            .underlineProceed{
+                width: 100%;
+                height: 1px;
+                background-color: black;
+                margin-top: .3rem;
+
+            }
+            .processCheck{
+                background-color: #DB4444 ;
+                color: white;
+                /* padding: 1.2rem; */
+                position: relative;
+                /* left: 1.4%; */
+                border-radius: 5px;
+                width: 35%;
+                transform: translate(-50%,-50%);
+                top: 50%;
+                left: 35%;
+                align-items: center;
+                text-align: center;
+               transform: translateY(2rem);
+               cursor: pointer;
+            }
+            .processCheck:hover{
+                background-color: #f86262;
+            }
+         footer{
+            transform: translateY(45rem);
+            position: absolute;
+            width: 100%;
+         }

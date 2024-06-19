@@ -123,3 +123,11 @@ const set=setInterval(() => {
 cancelNew.addEventListener('click',function(){
     document.querySelector('.newLetter').style.display='none'
 })
+
+
+let accountUser= document.getElementById('accountUser')
+const  nav = document.querySelector(".detailsSeen");
+accountUser.addEventListener('click',function(){
+  nav.classList.toggle("details_User");
+  // detailsSeen.style.display="block"
+})

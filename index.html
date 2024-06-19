@@ -47,8 +47,13 @@
             <img src="./image/cart.png" alt="" class="nav_cart" />
             <span id="cartItemCount" class="cart_item_count">0</span>
           </a>
+      
         </div>
+        <span id="accountUser"> <img src="image/user.png" alt=""></span>
+  
         <p class="greetingP">HELLO,GUEST</p>
+        <img id="profileImg" src="default_avatar.jpg" alt="Profile Picture" class="profile-image">
+ 
         <span class="hamburger">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -65,6 +70,7 @@
         </span>
       </div>
     </nav>
+    
     <nav class="mobile_nav mobile_nav_hide">
       <ul class="mobile_nav_list">
         <li class="mobile_nav_item">
@@ -84,8 +90,78 @@
           <span id="cartItemCount" class="cart_item_count"></span>
         </li>
         <p class="greetingP"></p>
+        
       </ul>
+      
     </nav>
+    <div class="detailsSeen details_User">
+      <div class="account" id="navSeen">
+        <div class="acc-image">
+          <img src="image/user (1).png" alt="">
+        </div>
+        <div class="acc-text"  id="navText"><p>
+          Manage My Account
+        </p></div>
+      </div>
+      <div class="order" id="navSeen">
+        <div class="order-image">
+          <img src="image/icon-mallbag.png" alt="">
+        </div>
+        <div class="order-text"  id="navText">
+          <p>My Order</p>
+        </div>
+      </div>
+      <div class="review" id="navSeen">
+        <div class="review-image">
+          <img src="image/Vector (1).png" alt="">
+        </div>
+        <div class="review-text"  id="navText">
+          <p>My Reviews</p>
+        </div>
+      </div>
+      <div class="cancellation" id="navSeen">
+        <div class="cancellation-image">
+          <img src="image/icon-cancel.png" alt="">
+        </div>
+        <div class="cancellation-text"  id="navText">
+          <p>My Cancellation</p>
+        </div>
+      </div>
+      <div class="logout" id="navSeen">
+        <div class="logout-image">
+          <img src="image/Vector (2).png" alt="">
+        </div>
+        <div class="logOut"  id="navText">
+          <p>Logout</p>
+        </div>
+      </div>
+    </div>
+    <div id="accountModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Manage My Account</h2>
+        <form id="accountForm">
+          <div>
+            <label for="userNameInput">Name:</label>
+            <input type="text" id="userNameInput">
+          </div>
+          <div>
+            <label for="userEmailInput">Email:</label>
+            <input type="email" id="userEmailInput" disabled>
+          </div>
+          <div>
+            <label for="profileImageInput">Profile Picture:</label>
+            <input type="file" id="profileImageInput">
+          </div>
+       <div class="upload">
+        <button type="button" id="uploadProfilePicBtn">Upload Profile Picture</button>
+        <button type="submit" id="saveProfileBtn">Save</button>
+        <div id="spinner" class="spinner" style="display: none;"></div>
+       </div>
+          <div id="spinner" class="spinner" style="display: none;"></div> 
+        </form>
+      </div>
+    </div>
     <header class="header">
       <div class="container header_container">
         <div class="header_filter">
@@ -101,6 +177,7 @@
         </div>
         <img src="./image/header.png" alt="" class="header_img" />
       </div>
+
     </header>
     <div class="newLetter">
  <div class="newLetter-text">
@@ -114,7 +191,9 @@
     </div>
 
     <section class="section">
+      
       <div class="container">
+        
         <div class="section_category">
           <p class="section_category_p">Today's</p>
         </div>
@@ -624,6 +703,7 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { getFirestore, collection, addDoc, query, getDocs, doc, getDoc,where,updateDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDPF--p3fzATWasmeh_Lhq8XIDfX7WII_o",
@@ -637,8 +717,23 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore(app);
+const storage = getStorage(app);
 const greetingP = document.querySelector('.greetingP');
 let showJewelry = document.querySelector('.showJewelry');
+
+const profileImg = document.getElementById('profileImg');
+const navSeen = document.getElementById('navSeen');
+const accountModal = document.getElementById('accountModal');
+const closeModalBtn = document.querySelector('.close');
+const userNameInput = document.getElementById('userNameInput');
+const userEmailInput = document.getElementById('userEmailInput');
+const saveProfileBtn = document.getElementById('saveProfileBtn');
+const profileImageInput = document.getElementById('profileImageInput');
+const uploadProfilePicBtn = document.getElementById('uploadProfilePicBtn');
+const accountNav = document.getElementById('navSeen');
+const spinner = document.getElementById('spinner'); 
+const logOut= document.querySelector('.logOut'); 
+
 
 onAuthStateChanged(auth, async (user) => {
   if (user) {
@@ -647,13 +742,93 @@ onAuthStateChanged(auth, async (user) => {
     const userData = docSnapshot.data();
     if (userData) {
       greetingP.textContent = `HELLO, ${userData.name}`;
+      userNameInput.value = userData.name;
+      userEmailInput.value = user.email;
+      if (userData.profilePicture) {
+        profileImg.src = userData.profilePicture;
+      }
     }
     loadCartItems(user.uid);
     showCongratsAnimation();
   } else {
     greetingP.textContent = 'HELLO, GUEST';
+    profileImg.src = 'default_avatar.jpg';
   }
 });
+navSeen.addEventListener('click', () => {
+  accountModal.style.display = 'block';
+});
+
+closeModalBtn.addEventListener('click', () => {
+  accountModal.style.display = 'none';
+});
+
+closeModalBtn.addEventListener('click', () => {
+  document.querySelector('.modal-content').classList.remove('show');
+  accountModal.classList.remove('show');
+  
+
+  setTimeout(() => {
+    accountModal.style.display = 'none';
+  }, 300);
+});
+
+
+accountNav.addEventListener('click', () => {
+  accountModal.style.display = 'block';
+  setTimeout(() => {
+    accountModal.classList.add('show');
+    document.querySelector('.modal-content').classList.add('show');
+  }, 10);
+});
+
+saveProfileBtn.addEventListener('click', async (e) => {
+  e.preventDefault();
+  const user = auth.currentUser;
+  if (user) {
+    const uid = user.uid;
+    const userRef = doc(db, 'users', uid);
+    await updateDoc(userRef, { name: userNameInput.value });
+    greetingP.textContent = `HELLO, ${userNameInput.value}`;
+    accountModal.style.display = 'none';
+  }
+});
+
+
+uploadProfilePicBtn.addEventListener('click', async () => {
+  const file = profileImageInput.files[0];
+  if (file) {
+    try {
+      const user = auth.currentUser;
+      if (user) {
+        const storageRef = ref(storage, `users/${user.uid}/profile.jpg`);
+        await uploadBytes(storageRef, file);
+        const downloadURL = await getDownloadURL(storageRef);
+        await updateProfilePicture(user.uid, downloadURL);
+        profileImg.src = downloadURL;
+        showPopup('Profile picture updated successfully!');
+        spinner.style.display = 'block';
+      } else {
+        throw new Error('No user signed in');
+      }
+    } catch (error) {
+      console.error('Error uploading profile picture:', error);
+      showPopup('Error uploading profile picture.');
+    } finally {
+      spinner.style.display = 'none'; // Hide spinner
+    }
+  } else {
+    showPopup('Please select a file.');
+  }
+});
+
+async function updateProfilePicture(uid, imageUrl) {
+  const userRef = doc(db, 'users', uid);
+  await updateDoc(userRef, { profilePicture: imageUrl });
+}
+
+allProduct();
+
 
 const selectedProducts = [];
 
@@ -890,6 +1065,16 @@ function updateCartUI() {
     console.error("Element with ID 'cartItemCount' not found");
   }
 }
+
+logOut.addEventListener('click', async () => {
+            try {
+                await signOut(auth);
+                showPopup('Logout successfully!')
+            } catch (error) {
+                console.log(error);
+            }
+        })
+
 
 </script>
 </html>

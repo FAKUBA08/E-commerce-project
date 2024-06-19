@@ -1,116 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Management</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+      p{
+        background-image: url(/image/Account\ Dropdoen.png);
+        min-height: 50vh;
+      }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h2>Add Blog</h2>
-        <form id="signUpForm">
-            <div class="mb-3">
-                <label for="title" class="form-label">Title:</label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="Enter title of blog" required>
-            </div>
-            <div class="mb-3">
-                <label for="author" class="form-label">Author:</label>
-                <input type="text" class="form-control" id="author" name="author" placeholder="Enter author name" required>
-            </div>
-            <div class="mb-3">
-                <label for="description" class="form-label">Description:</label>
-                <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="image" class="form-label">Image:</label>
-                <input type="file" class="form-control" id="image" name="image" required>
-            </div>
-            <div class="form-check mb-3">
-                <input type="checkbox" class="form-check-input" id="confirmationCheck" required>
-                <label class="form-check-label" for="confirmationCheck">Are you sure?</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
-    
-    <div class="container mt-5">
-        <h2>Blog</h2>
-        <div id="display" class="row"></div>
-    </div>
-
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyBskUXkVYDG4D0zFPdRH3AeCY7LKWHdqUw",
-            authDomain: "blog-89fb6.firebaseapp.com",
-            projectId: "blog-89fb6",
-            storageBucket: "blog-89fb6.appspot.com",
-            messagingSenderId: "889660661363",
-            appId: "1:889660661363:web:5e0055fadb002677965406"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const storage = getStorage();
-
-        const signUpForm = document.getElementById('signUpForm');
-        const display = document.getElementById('display');
-
-        signUpForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const blogDetails = {
-                title: signUpForm.title.value,
-                author: signUpForm.author.value,
-                description: signUpForm.description.value,
-                image: '',
-                datePosted: new Date().getTime()
-            };
-            let image = signUpForm.image.files[0];
-            try {
-                const storageRef = ref(storage, `images/${Math.floor(Math.random() * 1000)}_${image.name}`);
-                await uploadBytes(storageRef, image);
-                const imageUrl = await getDownloadURL(storageRef);
-                blogDetails.image = imageUrl;
-                await addDoc(collection(db, 'blogs'), blogDetails);
-                alert('Blog added successfully');
-                displayAllBlogs();
-            } catch (error) {
-                console.error('Error adding document: ', error);
-            }
-        });
-
-        async function displayAllBlogs() {
-            try {
-                display.innerHTML = '';
-                const querySnapshot = await getDocs(collection(db, 'blogs'));
-                querySnapshot.forEach((doc) => {
-                    const blog = doc.data();
-                    display.innerHTML += `
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img src="${blog.image}" class="card-img-top" alt="${blog.title}">
-                            <div class="card-body">
-                                <h5 class="card-title">${blog.title}</h5>
-                                <p class="card-text">${blog.description.slice(0, 100)}...</p>
-                                <p class="card-text">Author: ${blog.author}</p>
-                                <p class="card-text">Date Published: ${new Date(blog.datePosted).toLocaleString()}</p>
-                            </div>
-                        </div>
-                    </div>
-                    `;
-                });
-            } catch (error) {
-                console.error('Error fetching documents: ', error);
-            }
-        }
-
-        displayAllBlogs();
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<p>fcgvbhjnmk</p>
 </body>
 </html>
