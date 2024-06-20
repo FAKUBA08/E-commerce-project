@@ -2099,14 +2099,21 @@ position: relative;
 left:-1rem;
 }
 .product-card{
-  max-width: 50rem;
+  max-width: 100rem;
   margin: 0 auto;
   
   }
   .product{
-    max-width: 180rem;
-  margin: 0 auto;
-  }
+    max-width: 89%;
+    column-gap: 2rem;
+    }
+    .loader{
+      left:17rem;
+    }
+    .popup-text{
+      width: 100%;
+    }
+
 }
 @media only  screen  and (max-width:393px){
 .display{
@@ -2124,11 +2131,7 @@ padding: 1rem;
 font-size: 15px;
 transform: translateY(-1.9rem);
 }
-/* .product-card{
-max-width: 50rem;
-margin: 0 auto;
 
-} */
 .header img{
 min-height: 20vh;
 margin-bottom: -4rem;

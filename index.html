@@ -163,10 +163,12 @@
        <div class="upload">
         <button type="button" id="uploadProfilePicBtn">Upload Profile Picture</button>
         <button type="submit" id="saveProfileBtn">Save</button>
+
         
         <div id="spinner" class="spinner" style="display: none;"></div>
         
        </div>
+       <button id="removeProfilePicBtn">Remove Profile Picture</button>
           <div id="spinner" class="spinner" style="display: none;"></div> 
         </form>
         
@@ -717,7 +719,7 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { getFirestore, collection, addDoc, query, getDocs, doc, getDoc,where,updateDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+import { getStorage, ref, uploadBytes, getDownloadURL,deleteObject  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDPF--p3fzATWasmeh_Lhq8XIDfX7WII_o",
@@ -747,6 +749,7 @@ const uploadProfilePicBtn = document.getElementById('uploadProfilePicBtn');
 const accountNav = document.getElementById('navSeen');
 const spinner = document.getElementById('spinner'); 
 const logOut= document.querySelector('.logOut'); 
+  const removeProfilePicBtn = document.getElementById('removeProfilePicBtn');
 
 
 onAuthStateChanged(auth, async (user) => {
@@ -833,6 +836,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         disableButton(saveProfileBtn, 'Loading...');
         disableButton(uploadProfilePicBtn, 'Loading...');
+        disableButton(removeProfilePicBtn, 'Loading...');
 
         const user = auth.currentUser;
         if (user) {
@@ -845,14 +849,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
         enableButton(saveProfileBtn, 'Save');
         enableButton(uploadProfilePicBtn, 'Upload Profile Picture');
+        enableButton(removeProfilePicBtn, 'Remove Profile Picture');
         showPopupMessage('Profile saved successfully!');
     });
+    removeProfilePicBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            disableButton(removeProfilePicBtn, 'Loading...');
+
+            const user = auth.currentUser;
+            if (user) {
+                const uid = user.uid;
+                const userRef = doc(db, 'users', uid);
+                const userProfilePicRef = ref(storage, `profilePictures/${uid}`);
+
+                try {
+                    // Check if the profile picture exists
+                    await getDownloadURL(userProfilePicRef);
+
+                    // If it exists, delete it
+                    await deleteObject(userProfilePicRef);
+                    await updateDoc(userRef, { profilePictureUrl: '' });
+                    showPopupMessage('Profile picture removed successfully!');
+                } catch (error) {
+                    if (error.code === 'storage/object-not-found') {
+                        showPopupMessage('Profile picture does not exist.');
+                    } else {
+                        console.error('Error removing profile picture: ', error);
+                        showPopupMessage('Failed to remove profile picture.');
+                    }
+                }
+            }
+
+            enableButton(removeProfilePicBtn, 'Remove Profile Picture');
+        });
 
     uploadProfilePicBtn.addEventListener('click', async () => {
         const file = profileImageInput.files[0];
         if (file) {
             disableButton(uploadProfilePicBtn, 'Loading...');
             disableButton(saveProfileBtn, 'Loading...');
+           
 
             try {
                 const user = auth.currentUser;
@@ -939,7 +975,7 @@ function seen(data) {
 
 function createProductCard(element) {
   return `
-    <div class="max-w-sm w-full shadow-md rounded-lg product-card">
+    <div class=" w-full shadow-md rounded-lg product-card">
       <a href="#">
         <img class="rounded-t-lg" src="${element.image}" alt="product image">
       </a>
