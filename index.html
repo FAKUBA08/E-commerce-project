@@ -52,7 +52,7 @@
         <span id="accountUser"> <img src="image/user.png" alt=""></span>
   
         <p class="greetingP">HELLO,GUEST</p>
-        <img id="profileImg" src="default_avatar.jpg" alt="Profile Picture" class="profile-image">
+        <img id="profileImg" src="/image/istockphoto-1905374785-612x612.jpg" alt="Profile Picture" class="profile-image">
  
         <span class="hamburger">
           <svg
@@ -95,6 +95,11 @@
       </ul>
       
     </nav>
+      <!-- Full Image View -->
+      <div id="fullImageView" class="full-image-view">
+        <span class="close-btn">&times;</span>
+        <img class="full-image-content" id="fullImage">
+    </div>
     <div class="detailsSeen details_User">
       <div class="account" id="navSeen">
         <div class="acc-image">
@@ -137,6 +142,7 @@
         </div>
       </div>
     </div>
+    
     <div id="accountModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
@@ -157,12 +163,19 @@
        <div class="upload">
         <button type="button" id="uploadProfilePicBtn">Upload Profile Picture</button>
         <button type="submit" id="saveProfileBtn">Save</button>
+        
         <div id="spinner" class="spinner" style="display: none;"></div>
+        
        </div>
           <div id="spinner" class="spinner" style="display: none;"></div> 
         </form>
+        
       </div>
+      
     </div>
+     <div id="spinner" class="spinner" style="display: none;"></div>
+     <div id="showPopuping" class="popuping" style="display: none;"></div>
+    
     <header class="header">
       <div class="container header_container">
         <div class="header_filter">
@@ -753,7 +766,7 @@ onAuthStateChanged(auth, async (user) => {
     showCongratsAnimation();
   } else {
     greetingP.textContent = 'HELLO, GUEST';
-    profileImg.src = 'default_avatar.jpg';
+    profileImg.src = '/image/istockphoto-1905374785-612x612.jpg';
   }
 });
 navSeen.addEventListener('click', () => {
@@ -783,45 +796,91 @@ accountNav.addEventListener('click', () => {
   }, 10);
 });
 
-saveProfileBtn.addEventListener('click', async (e) => {
-  e.preventDefault();
-  const user = auth.currentUser;
-  if (user) {
-    const uid = user.uid;
-    const userRef = doc(db, 'users', uid);
-    await updateDoc(userRef, { name: userNameInput.value });
-    greetingP.textContent = `HELLO, ${userNameInput.value}`;
-    accountModal.style.display = 'none';
-  }
-});
+document.addEventListener('DOMContentLoaded', () => {
+    spinner.className = 'spinner';
+    const showPopup = document.getElementById('showPopuping');
 
-
-uploadProfilePicBtn.addEventListener('click', async () => {
-  const file = profileImageInput.files[0];
-  if (file) {
-    try {
-      const user = auth.currentUser;
-      if (user) {
-        const storageRef = ref(storage, `users/${user.uid}/profile.jpg`);
-        await uploadBytes(storageRef, file);
-        const downloadURL = await getDownloadURL(storageRef);
-        await updateProfilePicture(user.uid, downloadURL);
-        profileImg.src = downloadURL;
-        showPopup('Profile picture updated successfully!');
-        spinner.style.display = 'block';
-      } else {
-        throw new Error('No user signed in');
-      }
-    } catch (error) {
-      console.error('Error uploading profile picture:', error);
-      showPopup('Error uploading profile picture.');
-    } finally {
-      spinner.style.display = 'none'; // Hide spinner
+    function showSpinner(button) {
+        button.appendChild(spinner);
+        spinner.style.display = 'inline-block';
     }
-  } else {
-    showPopup('Please select a file.');
-  }
+
+    function hideSpinner() {
+        spinner.style.display = 'none';
+    }
+
+    function disableButton(button, text) {
+        button.textContent = text;
+        button.disabled = true;
+        showSpinner(button);
+    }
+
+    function enableButton(button, text) {
+        button.textContent = text;
+        button.disabled = false;
+        hideSpinner();
+    }
+
+    function showPopupMessage(message) {
+        showPopup.textContent = message;
+        showPopup.style.display = 'block';
+        setTimeout(() => {
+            showPopup.style.display = 'none';
+        }, 3000);
+    }
+
+    saveProfileBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        disableButton(saveProfileBtn, 'Loading...');
+        disableButton(uploadProfilePicBtn, 'Loading...');
+
+        const user = auth.currentUser;
+        if (user) {
+            const uid = user.uid;
+            const userRef = doc(db, 'users', uid);
+            await updateDoc(userRef, { name: userNameInput.value });
+            greetingP.textContent = `HELLO, ${userNameInput.value}`;
+            accountModal.style.display = 'none';
+        }
+
+        enableButton(saveProfileBtn, 'Save');
+        enableButton(uploadProfilePicBtn, 'Upload Profile Picture');
+        showPopupMessage('Profile saved successfully!');
+    });
+
+    uploadProfilePicBtn.addEventListener('click', async () => {
+        const file = profileImageInput.files[0];
+        if (file) {
+            disableButton(uploadProfilePicBtn, 'Loading...');
+            disableButton(saveProfileBtn, 'Loading...');
+
+            try {
+                const user = auth.currentUser;
+                if (user) {
+                    const storageRef = ref(storage, `users/${user.uid}/profile.jpg`);
+                    await uploadBytes(storageRef, file);
+                    const downloadURL = await getDownloadURL(storageRef);
+                    await updateProfilePicture(user.uid, downloadURL);
+                    profileImg.src = downloadURL;
+                    showPopupMessage('Profile picture updated successfully!');
+                } else {
+                    throw new Error('No user signed in');
+                }
+            } catch (error) {
+                console.error('Error uploading profile picture:', error);
+                showPopupMessage('Error uploading profile picture.');
+            } finally {
+                enableButton(uploadProfilePicBtn, 'Upload Profile Picture');
+                enableButton(saveProfileBtn, 'Save');
+            }
+        } else {
+            showPopupMessage('Please select a file.');
+        }
+    });
+
+   
 });
+
 
 async function updateProfilePicture(uid, imageUrl) {
   const userRef = doc(db, 'users', uid);
@@ -1069,8 +1128,9 @@ function updateCartUI() {
 
 logOut.addEventListener('click', async () => {
             try {
+              showPopup('Logout successfully!')
                 await signOut(auth);
-                showPopup('Logout successfully!')
+                
             } catch (error) {
                 console.log(error);
             }

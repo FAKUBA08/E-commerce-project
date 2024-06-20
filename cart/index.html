@@ -50,7 +50,7 @@
           </div>
          
         <p class="greetingP">HELLO,GUEST</p>
-        <img id="profileImg" src="default_avatar.jpg" alt="Profile Picture" class="profile-image">
+        <img id="profileImg" src="/image/istockphoto-1905374785-612x612.jpg" alt="Profile Picture" class="profile-image">
           <span class="hamburger">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -89,6 +89,11 @@
         </ul>
       </nav>
 </div>
+     <!-- Full Image View -->
+     <div id="fullImageView" class="full-image-view">
+      <span class="close-btn">&times;</span>
+      <img class="full-image-content" id="fullImage">
+  </div>
 <div id="popupContainer" class="popup-container" style="display: none;">
   <div class="popup-content">
       <p id="popupText"></p>
@@ -523,7 +528,7 @@ if (userConfirmed) {
         console.error("Error removing document: ", error);
         showPopup('Error removing product from cart.');
     } finally {
-        // Hide the spinner
+  
         spinner.style.display = 'none';
     }
 } else {
@@ -533,4 +538,4 @@ if (userConfirmed) {
 }
 
 </script>
-<script src="../js/app.js"></script>
+<script src="/js/app.js"></script>
