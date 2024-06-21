@@ -401,6 +401,10 @@ font-size: 10px;
 width: 50%;
 left: 11rem;
 }
+.spinner {
+left: 17rem;
+   }
+   
 .list_item .pro {
    width: 37%;
    /* display: none; */

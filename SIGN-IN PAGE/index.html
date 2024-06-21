@@ -21,7 +21,37 @@
             <p>Shop Now</p>
         </div>
         </nav>
+        
     </header>
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Login successfully!</p>
+        </div>
+    </div>
+    <nav class="mobile_nav mobile_nav_hide">
+        <ul class="mobile_nav_list">
+          <li class="mobile_nav_item">
+            <a href="/index.html" class="mobile_nav_link">Home</a>
+          </li>
+          <li class="mobile_nav_item">
+            <a href="#" class="mobile_nav_link">About</a>
+          </li>
+          <li class="mobile_nav_item">
+            <a href="#" class="mobile_nav_link">Contact</a>
+          </li>
+          <li class="mobile_nav_item">
+            <a href="/SIGN-IN PAGE/index.html" class="mobile_nav_link">Log In</a>
+          </li>
+          <li class="mobile_nav_item">
+            <!-- <a href="cart/index.html" class="mobile_nav_link">Cart</a> -->
+            <span id="cartItemCount" class="cart_item_count"></span>
+            
+          </li>
+          
+        </ul>
+        
+      </nav>
     <!-- home  announcement -->
     <div class="home-header">
         <div class="home-header-inner">
@@ -34,6 +64,9 @@
                 <li>Contact</li>
                 <li>About</li>
                 <li class="signUp">Sign Up</li></ul>
+                <span class="hamburger">
+                    <img src="/image/icons_571506.svg" alt="">
+                      </span>
              </div>
              <div class="search">
                <input type="text"  placeholder="What are you looking for?">
@@ -44,6 +77,8 @@
         </div>
  
     </div>
+    
+
         <!-- home  announcement ends-->
     <!-- section start -->
   </div>
@@ -188,45 +223,53 @@ const db=getFirestore(app)
 let createAccount=document.querySelector('.createAccount')
 
 
-signInForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    let email = signInForm.email.value;
-    let password = signInForm.password.value;
-    let errorPS = document.getElementById('errorPS');
-    let spinner = document.querySelector('.boxRoll');
 
-    // Check if email and password are empty
-    if (!email.trim() || !password.trim()) {
-        alert('Please enter a valid email and password.');
-        return;
-    }
+        signInForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            let email = signInForm.email.value;
+            let password = signInForm.password.value;
 
-    try {
-    showSpinner();
-    const userCred = await signInWithEmailAndPassword(auth, email, password);
-    console.log('Signed in successfully');
-    // Clear the text content of createAccount
-    createAccount.textContent = '';
-    // Redirect or perform any other actions after successful login
-    window.location.href = '../index.html';
-    signInForm.disabled = true;
-} catch (error) {
-    console.log(error);
-    if (error.message === 'Firebase: Error (auth/invalid-credential).') {
-        errorPS.style.display = 'block';
-        const clear = setInterval(() => {
-            errorPS.style.display = 'none';
-            clearInterval(clear);
-        }, 3000);
-    }
-    // If login fails, revert back to 'Log In'
-    createAccount.textContent = 'Log In';
-} finally {
-    hideSpinner();
-}
+            if (!email.trim() || !password.trim()) {
+                alert('Please enter a valid email and password.');
+                return;
+            }
 
-});
+            try {
+                showSpinner();
+                const userCred = await signInWithEmailAndPassword(auth, email, password);
+                console.log('Signed in successfully');
+                signInForm.disabled = true;
 
+                // Show success modal
+                successModal.style.display = 'block';
+
+                // Close modal after 2 seconds and redirect
+                setTimeout(() => {
+                    successModal.style.display = 'none';
+                    window.location.href = '../index.html';
+                }, 2000);
+            } catch (error) {
+                console.log(error);
+                if (error.message.includes('auth/invalid-credential')) {
+                    errorPS.style.display = 'block';
+                    setTimeout(() => {
+                        errorPS.style.display = 'none';
+                    }, 3000);
+                }
+            } finally {
+                hideSpinner();
+            }
+        });
+
+        closeModal.onclick = function() {
+            successModal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == successModal) {
+                successModal.style.display = 'none';
+            }
+        }
 
 </script>
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

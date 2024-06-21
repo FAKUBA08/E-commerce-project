@@ -1,3 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;500;600;700;800;900&display=swap");
+:root {
+--font-main: "Inter", sans-serif;
+--colo-primary: #db4444;
+--colo-dark-1: #000000;
+--colo-dark-2: #7d8184;
+--colo-white-1: #ffffff;
+--colo-white-2: #f5f5f5;
+--color-green: #00d656;
+}
+
+    
+    
+    
+    
+    
     *{
     padding: 0;
     margin: 0;
@@ -50,7 +66,94 @@
     stroke-dashoffset: -125px;
     }
     }
-
+    .mobile_nav {
+        background-color: var(--colo-white-1);
+        position: absolute;
+        z-index: 99;
+        height: 59vh;
+        border-right: 1px solid var(--colo-dark-2);
+        transition: all 0.5s ease;
+        cursor: pointer;
+        }
+        .mobile_nav_item {
+        padding: 2rem 7rem 2rem 2rem;
+        border-bottom: 1px solid var(--colo-white-2);
+        }
+        .mobile_nav_link {
+        color: var(--colo-dark-1);
+        padding: 1.2rem 5rem 1.2rem 0rem;
+        }
+        .mobile_nav_hide {
+        display: none;
+        }
+        .mobile_nav_link:hover{
+            color: #ea1a1a;
+            /* transition: all ease 1rem; */
+        } 
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            position: absolute;
+            width: 30px;
+            top: .1rem;
+            }
+            .hamburger img {
+               
+                width: 30px;
+                }
+            .hamburger > svg {
+            width: 4.5rem;
+            height: 4.5rem;
+            }
+            @media only screen and (max-width: 800px) {
+            .top_nav {
+            display: none;
+            }
+            .nav_list {
+            display: none;
+            }
+            .nav_items {
+            display: none;
+            }
+            .hamburger {
+            display: block;
+            }
+            }
+            .modal {
+                display: none; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 1; /* Sit on top */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                background-color: rgb(0,0,0); /* Fallback color */
+                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            }
+    
+            .modal-content {
+                background-color: #fefefe;
+                margin: 15% auto; /* 15% from the top and centered */
+                padding: 20px;
+                border: 1px solid #888;
+                width: 30%; /* Could be more or less, depending on screen size */
+                text-align: center;
+            }
+    
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+    
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
     /* announcement bar */
     header{
     background-color: black;
@@ -499,6 +602,32 @@
 
 
     /* MEDIA QURIES START */
+    @media only  screen  and (max-width:800px){
+        .home-header{
+       /* display: none; */
+            }
+            .menus ul{
+            display: none;
+          
+            }
+            header{
+           display: none;
+                }
+                
+    .search{
+        display: none;
+    }
+    }
+    @media only  screen  and (max-width:800px){
+        .logo{
+           /* left: -15%; */
+           /* position: relative; */
+        }
+        .home-header-inner{
+           justify-content: space-between;
+           padding: 0 1rem 0 1rem;
+       
+        }}
     @media only  screen  and (max-width:1312px){
     .section-inner{
     display: flex;
@@ -917,9 +1046,11 @@
     }
     }
     @media only  screen  and (max-width:387px){
-    .footer-inner{
-    max-width: 97%;
-    }
+
+.footer-inner{
+max-width: 97%;
+left: -10%;
+}
     .announcement-text p {
     font-size: 7.7px;
     transform: translateY(.4rem);

@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
 
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
 
     <title>Document</title>
 </head>
@@ -14,59 +12,67 @@
     <!-- announcement  bar -->
 
 <!-- SIGN UP PAGE -->
-    <header>
-        <nav>
-        <div class="announcement-text">
-            <p>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!</p>
-        </div>
-        <div class="announcement-button">
-            <p>Shop Now</p>
-        </div>
-        </nav>
-    </header>
-    <!-- home  announcement -->
-    <div class="home-header">
-        <div class="home-header-inner">
-             <div class="logo">
-                <p>Exclusive</p>
-             </div>
-             <div class="menus">
-                <ul>
-                <li  class="clicked" >Home</li>
-                <li>Contact</li>
-                <li>About</li>
-                <li class="signUp">Sign Up</li></ul>
-             </div>
-             <div class="search">
-               <input type="text"  placeholder="What are you looking for?">
-               <!-- <div class="img-search"> -->
-                <img src="Pictures/flat-icon-design-of-magnifying-glass-or-search-icon-isolated-on-white-background-eps10-free-vector-removebg-preview.png" alt="">
-             <!-- </div> -->
-             </div>
-        </div>
+<header>
+    <nav>
+    <div class="announcement-text">
+        <p>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!</p>
     </div>
-    <nav class="mobile_nav mobile_nav_hide">
-        <ul class="mobile_nav_list">
-          <li class="mobile_nav_item">
-            <a href="/" class="mobile_nav_link">Home</a>
-          </li>
-          <li class="mobile_nav_item">
-            <a href="#" class="mobile_nav_link">About</a>
-          </li>
-          <li class="mobile_nav_item">
-            <a href="#" class="mobile_nav_link">Contact</a>
-          </li>
-          <li class="mobile_nav_item">
-            <a href="./SIGNUP PAGE/index.html" class="mobile_nav_link">Sign Up</a>
-          </li>
-          <li class="mobile_nav_item">
-            <a href="cart/index.html" class="mobile_nav_link">Cart</a>
-            <span id="cartItemCount" class="cart_item_count"></span>
-          </li>
-          <p class="greetingP"></p>
-        </ul>
-      </nav>
-        <!-- home  announcement ends-->
+    <div class="announcement-button">
+        <p>Shop Now</p>
+    </div>
+    </nav>
+</header>
+    
+<nav class="mobile_nav mobile_nav_hide">
+    <ul class="mobile_nav_list">
+      <li class="mobile_nav_item">
+        <a href="/index.html" class="mobile_nav_link">Home</a>
+      </li>
+      <li class="mobile_nav_item">
+        <a href="#" class="mobile_nav_link">About</a>
+      </li>
+      <li class="mobile_nav_item">
+        <a href="#" class="mobile_nav_link">Contact</a>
+      </li>
+      <li class="mobile_nav_item">
+        <a href="/SIGN-IN PAGE/index.html" class="mobile_nav_link">Log In</a>
+      </li>
+      <li class="mobile_nav_item">
+        <!-- <a href="cart/index.html" class="mobile_nav_link">Cart</a> -->
+        <span id="cartItemCount" class="cart_item_count"></span>
+        
+      </li>
+      
+    </ul>
+    
+  </nav>
+<!-- home  announcement -->
+<div class="home-header">
+    <div class="home-header-inner">
+         <div class="logo">
+            <p>Exclusive</p>
+         </div>
+         <div class="menus">
+            <ul>
+            <li  class="clicked" >Home</li>
+            <li>Contact</li>
+            <li>About</li>
+            <li class="signUp">Sign Up</li></ul>
+            <span class="hamburger">
+                <img src="/image/icons_571506.svg" alt="">
+                  </span>
+         </div>
+         <div class="search">
+           <input type="text"  placeholder="What are you looking for?">
+           <!-- <div class="img-search"> -->
+            <img src="Pictures/flat-icon-design-of-magnifying-glass-or-search-icon-isolated-on-white-background-eps10-free-vector-removebg-preview.png" alt="">
+         <!-- </div> -->
+          
+         </div>
+      
+    </div>
+
+</div>
     <!-- section start -->
   <div class="passwordValid">
     <p>*password must be at least 8 characters long.
@@ -339,18 +345,6 @@ console.error(error);
 });
 
 
-
-
-// const signOutBTN=document.getElementById('signOutBTN')
-//  signOutBTN.addEventListener('click', async () => {
-//         try {
-//             await signOut(auth);
-//             alert('Signed out Successfully')
-//             console.log('User signed out successfully');
-//         } catch (error) {
-//             console.log(error);
-//         }
-//     })
 const resetPassword=document.getElementById('resetPassword')
 resetPassword.addEventListener('submit',async(event)=>{
 event.preventDefault()
@@ -366,9 +360,6 @@ console.log(error);
 // const passwordInput = document.getElementById('password');
 
 </script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-crossorigin="anonymous"></script>
-     -->
+<script src="/js/app.js"></script>
 </html>
 </html> 

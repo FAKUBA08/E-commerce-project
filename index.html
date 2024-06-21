@@ -833,26 +833,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     saveProfileBtn.addEventListener('click', async (e) => {
-        e.preventDefault();
-        disableButton(saveProfileBtn, 'Loading...');
-        disableButton(uploadProfilePicBtn, 'Loading...');
-        disableButton(removeProfilePicBtn, 'Loading...');
+            e.preventDefault();
+            disableButton(saveProfileBtn, 'Loading...');
+            disableButton(uploadProfilePicBtn, 'Loading...');
+            disableButton(removeProfilePicBtn, 'Loading...');
 
-        const user = auth.currentUser;
-        if (user) {
-            const uid = user.uid;
-            const userRef = doc(db, 'users', uid);
-            await updateDoc(userRef, { name: userNameInput.value });
-            greetingP.textContent = `HELLO, ${userNameInput.value}`;
-            accountModal.style.display = 'none';
-        }
+            const user = auth.currentUser;
+            if (user) {
+                const uid = user.uid;
+                const userRef = doc(db, 'users', uid);
+                await updateDoc(userRef, { name: userNameInput.value });
+                greetingP.textContent = `HELLO, ${userNameInput.value}`;
+                accountModal.style.display = 'none';
+            }
 
-        enableButton(saveProfileBtn, 'Save');
-        enableButton(uploadProfilePicBtn, 'Upload Profile Picture');
-        enableButton(removeProfilePicBtn, 'Remove Profile Picture');
-        showPopupMessage('Profile saved successfully!');
-    });
-    removeProfilePicBtn.addEventListener('click', async (e) => {
+            enableButton(saveProfileBtn, 'Save');
+            enableButton(uploadProfilePicBtn, 'Upload Profile Picture');
+            enableButton(removeProfilePicBtn, 'Remove Profile Picture');
+            showPopupMessage('Profile saved successfully!');
+        });
+
+        removeProfilePicBtn.addEventListener('click', async (e) => {
             e.preventDefault();
             disableButton(removeProfilePicBtn, 'Loading...');
 
@@ -863,25 +864,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 const userProfilePicRef = ref(storage, `profilePictures/${uid}`);
 
                 try {
-                    // Check if the profile picture exists
-                    await getDownloadURL(userProfilePicRef);
-
-                    // If it exists, delete it
                     await deleteObject(userProfilePicRef);
                     await updateDoc(userRef, { profilePictureUrl: '' });
                     showPopupMessage('Profile picture removed successfully!');
                 } catch (error) {
-                    if (error.code === 'storage/object-not-found') {
-                        showPopupMessage('Profile picture does not exist.');
-                    } else {
-                        console.error('Error removing profile picture: ', error);
-                        showPopupMessage('Failed to remove profile picture.');
-                    }
+                    console.error('Error removing profile picture: ', error);
+                    showPopupMessage('Failed to remove profile picture.');
                 }
             }
 
             enableButton(removeProfilePicBtn, 'Remove Profile Picture');
         });
+
 
     uploadProfilePicBtn.addEventListener('click', async () => {
         const file = profileImageInput.files[0];
