@@ -113,7 +113,9 @@ line-height: 2rem;
 .cart_item_count {
 position: relative;
 }
-
+#cartText[hidden]{
+  display: none;
+}
 .nav_item {
 margin: 0rem 0.5rem;
 }

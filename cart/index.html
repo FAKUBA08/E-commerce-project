@@ -1,205 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="../css/styles.css" />
-    <link rel="stylesheet" href="index.css">
-    <title>Home - Exclusive E-Commerce Website</title>
-  </head>
-  <body>
-    <div class="top_nav">
-        <div class="container top_nav_container">
-          <div class="top_nav_wrapper">
-            <p class="tap_nav_p">
-              Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
-            </p>
-            <a href="#" class="top_nav_link">SHOP NOW</a>
-          </div>
-        </div>
-      </div>
-      <nav class="nav">
-        <div class="container nav_container">
-          <a href="#" class="nav_logo">EXCLUSIVE</a>
-          <ul class="nav_list">
-            <li class="nav_item"><a href="/" class="nav_link">Home</a></li>
-            <li class="nav_item"><a href="#" class="nav_link">About</a></li>
-            <li class="nav_item"><a href="#" class="nav_link">Contact</a></li>
-            <li class="nav_item">
-              <a href="SIGNUP PAGE/index.html" class="nav_link">Sign up</a>
-            </li>
-          </ul>
-          <div class="nav_items">
-            <form action="#" class="nav_form">
-              <input
-                type="text"
-                class="nav_input"
-                placeholder="search here...." />
-              <img src="../image/search.png" alt="" class="nav_search" />
-            </form>
-            <img src="../image/heart.png" alt="" class="nav_heart" />
-            <a href="cart/index.html">
-              <img src="../image/cart.png" alt="" class="nav_cart" />
-              <span id="cartItemCount" class="cart_item_count">0</span>
-            </a>
-          </div>
-         
-        <p class="greetingP">HELLO,GUEST</p>
-        <img id="profileImg" src="/image/istockphoto-1905374785-612x612.jpg" alt="Profile Picture" class="profile-image">
-          <span class="hamburger">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-6 h-6">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-          </span>
-        </div>
-      </nav>
-      <nav class="mobile_nav mobile_nav_hide">
-        <ul class="mobile_nav_list">
-          <li class="mobile_nav_item">
-            <a href="/" class="mobile_nav_link">Home</a>
-          </li>
-          <li class="mobile_nav_item">
-            <a href="#" class="mobile_nav_link">About</a>
-          </li>
-          <li class="mobile_nav_item">
-            <a href="#" class="mobile_nav_link">Contact</a>
-          </li>
-          <li class="mobile_nav_item">
-            <a href="./SIGNUP PAGE/index.html" class="mobile_nav_link">Sign Up</a>
-          </li>
-          <li class="mobile_nav_item">
-            <a href="cart/index.html" class="mobile_nav_link">Cart</a>
-            <span id="cartItemCount" class="cart_item_count"></span>
-          </li>
-          <p class="greetingP"></p>
-        </ul>
-      </nav>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+<link rel="stylesheet" href="../css/styles.css" />
+<link rel="stylesheet" href="index.css">
+<title>Home - Exclusive E-Commerce Website</title>
+</head>
+<body>
+<div class="top_nav">
+  <div class="container top_nav_container">
+    <div class="top_nav_wrapper">
+      <p class="tap_nav_p">
+        Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
+      </p>
+      <a href="#" class="top_nav_link">SHOP NOW</a>
+    </div>
+  </div>
 </div>
-     <!-- Full Image View -->
-     <div id="fullImageView" class="full-image-view">
-      <span class="close-btn">&times;</span>
-      <img class="full-image-content" id="fullImage">
+<nav class="nav">
+  <div class="container nav_container">
+    <a href="#" class="nav_logo">EXCLUSIVE</a>
+    <ul class="nav_list">
+      <li class="nav_item"><a href="/" class="nav_link">Home</a></li>
+      <li class="nav_item"><a href="#" class="nav_link">About</a></li>
+      <li class="nav_item"><a href="#" class="nav_link">Contact</a></li>
+      <li class="nav_item">
+        <a id="signText" class="nav_link">Sign Up</a>
+        
+      </li>
+    </ul>
+    <div class="nav_items">
+      <form action="#" class="nav_form">
+        <input
+          type="text"
+          class="nav_input"
+          placeholder="search here...." />
+        <img src="../image/search.png" alt="" class="nav_search" />
+      </form>
+      <img src="../image/heart.png" alt="" class="nav_heart" />
+      <a href="cart/index.html">
+        <img src="../image/cart.png" alt="" class="nav_cart" />
+        <span id="cartItemCount" class="cart_item_count">0</span>
+      </a>
+    </div>
+    
+  <p class="greetingP">HELLO,GUEST</p>
+  <img id="profileImg" src="/image/istockphoto-1905374785-612x612.jpg" alt="Profile Picture" class="profile-image">
+    <span class="hamburger">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+    </span>
   </div>
+</nav>
+<nav class="mobile_nav mobile_nav_hide">
+  <ul class="mobile_nav_list">
+    <li class="mobile_nav_item">
+      <a href="/" class="mobile_nav_link">Home</a>
+    </li>
+    <li class="mobile_nav_item">
+      <a href="#" class="mobile_nav_link">About</a>
+    </li>
+    <li class="mobile_nav_item">
+      <a href="#" class="mobile_nav_link">Contact</a>
+    </li>
+    <li class="mobile_nav_item">
+      <a class="mobile_nav_link"  id="sign2Text">Sign Up / Log In</a>
+    </li>
+
+    <p class="greetingP"></p>
+  </ul>
+</nav>
+</div>
+<!-- Full Image View -->
+<div id="fullImageView" class="full-image-view">
+<span class="close-btn">&times;</span>
+<img class="full-image-content" id="fullImage">
+</div>
 <div id="popupContainer" class="popup-container" style="display: none;">
-  <div class="popup-content">
-      <p id="popupText"></p>
-      <button id="closePopupBtn">Close</button>
-  </div>
+<div class="popup-content">
+<p id="popupText"></p>
+<button id="closePopupBtn">Close</button>
+</div>
 </div>
 <div id="spinner" class="spinner" style="display: none;">
-  <!-- <div class="loading">Loading...</div> -->
+<!-- <div class="loading">Loading...</div> -->
 </div>
 <div class="return">
-    <p class="home"><a href="/index.html">Home </a><span class="cart"><a href="/cart/index.css">/ Cart</a></span></p>
+<p class="home"><a href="/index.html">Home </a><span class="cart"><a href="/cart/index.css">/ Cart</a></span></p>
 </div>
 <div class="list">
-    <div class="pro">Product</div>
-    <div class="price">Price</div>
-    <div class="quantity">Quantity</div>
-    <div class="subtotal">Subtotal</div>
-    <!-- <div class="actions">Actions</div> -->
+<div class="pro">Product</div>
+<div class="price">Price</div>
+<div class="quantity">Quantity</div>
+<div class="subtotal">Subtotal</div>
+<!-- <div class="actions">Actions</div> -->
 </div>
 
 <div class="card">
-    <div id="cartDetails" class="p-4"></div> 
+<div id="cartDetails" class="p-4"></div> 
 </div>
 
 <div class="return">
-  <div class="returnShop">
-    <button><a href="/index.html">Return to Shop</a></button>
-  </div>
-  <div class="updateCart"><a href="/index.html">Update Cart</a></div>
+<div class="returnShop">
+<button><a href="/index.html">Return to Shop</a></button>
+</div>
+<div class="updateCart"><a href="/index.html">Update Cart</a></div>
 </div>
 <footer>
-  <div class="footer-inner">
-      <div class="footer-logo">
-          <p>Exclusive</p>
-          <ul>
-              <li>Subscribe</li>
-              <li>Get 10% of your first order</li>
-          </ul>
-          <input type="email" placeholder="Enter your Email"   id="email-footer">
-      </div>
-      <div class="footer-support">
-          <p>Support</p>
-          <ul>
-              <li>111 Bijoy sarani, Dhaka, <br> DH 1515, Bangladesh.</li>
-              <li>badmusfaruq@gmail.com</li>
-              <li>+234 9025-479-011</li>
-          </ul>
-      </div>
-      <div class="footer-account">
-          <p>Account</p>
-          <ul><li>My Account</li>
-          <li>Login / Register</li>
-          <li>Cart</li>
-          <li>Wishlist</li>
-         
-      </ul>
-      </div>
-      <div class="quick-link">
-          <p>Quick Link</p>
-          <ul><li>
-              Privacy Policy
-          </li>
-          <li>
-              Terms Of Use
-          </li>
-          <li>
-              FAQ
-          </li>
-          <li>
-              Contact
-          </li></ul>
-      </div>
+<div class="footer-inner">
+<div class="footer-logo">
+    <p>Exclusive</p>
+    <ul>
+        <li>Subscribe</li>
+        <li>Get 10% of your first order</li>
+    </ul>
+    <input type="email" placeholder="Enter your Email"   id="email-footer">
+</div>
+<div class="footer-support">
+    <p>Support</p>
+    <ul>
+        <li>111 Bijoy sarani, Dhaka, <br> DH 1515, Bangladesh.</li>
+        <li>badmusfaruq@gmail.com</li>
+        <li>+234 9025-479-011</li>
+    </ul>
+</div>
+<div class="footer-account">
+    <p>Account</p>
+    <ul><li>My Account</li>
+    <li>Login / Register</li>
+    <li>Cart</li>
+    <li>Wishlist</li>
     
-      <div class="download-app">
-          <p>Download App</p>
-          <ul><li>Save $3 with App New User Only</li></ul>
-          <div class="plays">
-              <div class="qr">
-                  <img src="../image/Qr Code.png" alt="">
-              </div>
-              <div class="goggle">
-                  <div class="playstore">
-                      <img src="../image/GooglePlay.png" alt="">
-                  </div>
-                  <div class="apple">
-                      <img src="../image/GooglePlay.png" alt="">
-                  </div>
-              </div>
-      
-          </div>
-          <div class="web">
-              <div class="facebook">
-                  <img src="../image/Icon-Facebook.png" alt="" srcset="">
-              </div>
-              <div class="instagram">
-                  <img src="../image/Group.png" alt="">
-              </div>
-              <div class="linkdeln">
-                  <img src="../image/Vector.png" alt="">
-              </div>
-              <div class="twitter"></div>
-          </div>
-      </div>
-      
+</ul>
+</div>
+<div class="quick-link">
+    <p>Quick Link</p>
+    <ul><li>
+        Privacy Policy
+    </li>
+    <li>
+        Terms Of Use
+    </li>
+    <li>
+        FAQ
+    </li>
+    <li>
+        Contact
+    </li></ul>
+</div>
 
-  </div>
+<div class="download-app">
+    <p>Download App</p>
+    <ul><li>Save $3 with App New User Only</li></ul>
+    <div class="plays">
+        <div class="qr">
+            <img src="../image/Qr Code.png" alt="">
+        </div>
+        <div class="goggle">
+            <div class="playstore">
+                <img src="../image/GooglePlay.png" alt="">
+            </div>
+            <div class="apple">
+                <img src="../image/GooglePlay.png" alt="">
+            </div>
+        </div>
+
+    </div>
+    <div class="web">
+        <div class="facebook">
+            <img src="../image/Icon-Facebook.png" alt="" srcset="">
+        </div>
+        <div class="instagram">
+            <img src="../image/Group.png" alt="">
+        </div>
+        <div class="linkdeln">
+            <img src="../image/Vector.png" alt="">
+        </div>
+        <div class="twitter"></div>
+    </div>
+</div>
+
+
+</div>
 </footer>
 
 
@@ -207,333 +205,416 @@
 
 
 <div class="proceed">
-  <div class="proceed-text">Cart Total</div>
-  <div class="subTotal">
-      <p>Subtotal: <span id="subtotalAmount">$0.00</span></p>
-  </div>
-  <div class="underlineProceed"></div>
-  <div class="shipping">
-      <label for="shippingSelect">Shipping:</label>
-      <select id="shippingSelect">
-          <option value="Free">Free</option>
-          <option value="Coupon">Coupon</option>
-      </select>
-  </div>
-  <div class="underlineProceed"></div>
-  <div class="coupon">
-      <label for="couponInput">Coupon:</label>
-      <input type="text" id="couponInput" placeholder="Enter coupon code">
-  </div>
-  <div class="underlineProceed"></div>
-  <div class="total">
-      <p>Total: <span id="totalAmount">$0.00</span></p>
-  </div>
-  <div class="processCheck">
-    Process to checkout</div>
+<div class="proceed-text">Cart Total</div>
+<div class="subTotal">
+<p>Subtotal: <span id="subtotalAmount">$0.00</span></p>
 </div>
-   
+<div class="underlineProceed"></div>
+<div class="shipping">
+<label for="shippingSelect">Shipping:</label>
+<select id="shippingSelect">
+    <option value="Free">Free</option>
+    <option value="Coupon">Coupon</option>
+</select>
+</div>
+<div class="underlineProceed"></div>
+<div class="coupon">
+<label for="couponInput">Coupon:</label>
+<input type="text" id="couponInput" placeholder="Enter coupon code">
+</div>
+<div class="underlineProceed"></div>
+<div class="total">
+<p>Total: <span id="totalAmount">$0.00</span></p>
+</div>
+<div class="processCheck">
+Process to checkout</div>
+</div>
 
-  </body>
 
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script src="./js/app.js"></script>
-    <script src="cart.js"></script>
-   <!-- Firebase SDKs -->
-   <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-    import { getFirestore, collection, addDoc, query, getDocs, doc, getDoc,deleteDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+</body>
 
-    const firebaseConfig = {
-        apiKey: "AIzaSyDPF--p3fzATWasmeh_Lhq8XIDfX7WII_o",
-        authDomain: "details-9e162.firebaseapp.com",
-        projectId: "details-9e162",
-        storageBucket: "details-9e162.appspot.com",
-        messagingSenderId: "91758916888",
-        appId: "1:91758916888:web:f72964b229d3af1b1ada6d"
-    };
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth();
-    const db = getFirestore(app);
-    const greetingP = document.querySelector('.greetingP');
-    const profileImg = document.getElementById('profileImg');
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script src="./js/app.js"></script>
+<script src="cart.js"></script>
+<!-- Firebase SDKs -->
+<script type="module">
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, collection, addDoc, query, getDocs, doc, getDoc,deleteDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
-    onAuthStateChanged(auth, async (user) => {
-  if (user) {
-    const docRef = doc(db, 'users', user.uid);
-    const docSnapshot = await getDoc(docRef);
-    const userData = docSnapshot.data();
-    if (userData) {
-      greetingP.textContent = `HELLO, ${userData.name}`;
-      displayProfilePicture(user.uid);  // Update the profile picture
-    }
-    loadCartItems(user.uid);
-    showCongratsAnimation();
-  } else {
-    greetingP.textContent = 'HELLO, GUEST';
-  }
+const firebaseConfig = {
+  apiKey: "AIzaSyDPF--p3fzATWasmeh_Lhq8XIDfX7WII_o",
+  authDomain: "details-9e162.firebaseapp.com",
+  projectId: "details-9e162",
+  storageBucket: "details-9e162.appspot.com",
+  messagingSenderId: "91758916888",
+  appId: "1:91758916888:web:f72964b229d3af1b1ada6d"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
+const db = getFirestore(app);
+const greetingP = document.querySelector('.greetingP');
+const profileImg = document.getElementById('profileImg');
+
+onAuthStateChanged(auth, async (user) => {
+if (user) {
+const docRef = doc(db, 'users', user.uid);
+const docSnapshot = await getDoc(docRef);
+const userData = docSnapshot.data();
+if (userData) {
+greetingP.textContent = `HELLO, ${userData.name}`;
+displayProfilePicture(user.uid);  // Update the profile picture
+}
+loadCartItems(user.uid);
+showCongratsAnimation();
+} else {
+greetingP.textContent = 'HELLO, GUEST';
+}
 });
 
-    async function displayProfilePicture(uid) {
-  try {
-    const userRef = doc(db, 'users', uid);
-    const docSnapshot = await getDoc(userRef);
-    if (docSnapshot.exists()) {
-      const userData = docSnapshot.data();
-      const profileImgSrc = userData.profilePicture ? userData.profilePicture : 'default_avatar.jpg';
-      profileImg.src = profileImgSrc;
-      const cartProfileImg = document.getElementById('cartProfileImg');
-      if (cartProfileImg) {
-        cartProfileImg.src = profileImgSrc;
-      }
-    } else {
-      profileImg.src = 'default_avatar.jpg';
-      const cartProfileImg = document.getElementById('cartProfileImg');
-      if (cartProfileImg) {
-        cartProfileImg.src = 'default_avatar.jpg';
-      }
-    }
-  } catch (error) {
-    console.error('Error fetching user data:', error);
-  }
+async function displayProfilePicture(uid) {
+try {
+const userRef = doc(db, 'users', uid);
+const docSnapshot = await getDoc(userRef);
+if (docSnapshot.exists()) {
+const userData = docSnapshot.data();
+const profileImgSrc = userData.profilePicture ? userData.profilePicture : 'default_avatar.jpg';
+profileImg.src = profileImgSrc;
+const cartProfileImg = document.getElementById('cartProfileImg');
+if (cartProfileImg) {
+  cartProfileImg.src = profileImgSrc;
+}
+} else {
+profileImg.src = 'default_avatar.jpg';
+const cartProfileImg = document.getElementById('cartProfileImg');
+if (cartProfileImg) {
+  cartProfileImg.src = 'default_avatar.jpg';
+}
+}
+} catch (error) {
+console.error('Error fetching user data:', error);
+}
 }
 
-    
-    function seen(data) {
-    data.splice(0, 7).forEach(element => {
-        document.getElementById('show').innerHTML += `
-            <div class="max-w-sm w-full bg-white shadow-md rounded-lg dark:bg-gray-800 dark:border-gray-700 product-card">
-                <a href="#">
-                    <img class="rounded-t-lg" src="${element.image}" alt="product image">
-                </a>
-                <div class="px-5 pb-5">
-                    <a href="#">
-                        <h3>${element.title}</h3>
-                    </a>
-                    <div class="rating mt-2.5 mb-5">
-                        <!-- Rating SVGs -->
-                    </div>
-                    <div class="flex items-center">
-                        <span class="price text-gray-900 dark:text-white">$${element.price}</span>
-                        <button class="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 add-to-cart" data-product-id="${element.id}" data-title="${element.title}" data-price="${element.price}" data-image="${element.image}">Add to cart</button>
-                    </div>
-                </div>
-            </div>
-        `;
-    });
 
-    document.querySelectorAll('button[data-title]').forEach(button => {
-        button.addEventListener('click', function() {
-            const productId = this.getAttribute('data-product-id');
-            const title = this.getAttribute('data-title');
-            const price = this.getAttribute('data-price');
-            const image = this.getAttribute('data-image');
-            addToCart(productId, title, price, image);
-        });
-    });
+function seen(data) {
+data.splice(0, 7).forEach(element => {
+  document.getElementById('show').innerHTML += `
+      <div class="max-w-sm w-full bg-white shadow-md rounded-lg dark:bg-gray-800 dark:border-gray-700 product-card">
+          <a href="#">
+              <img class="rounded-t-lg" src="${element.image}" alt="product image">
+          </a>
+          <div class="px-5 pb-5">
+              <a href="#">
+                  <h3>${element.title}</h3>
+              </a>
+              <div class="rating mt-2.5 mb-5">
+                  <!-- Rating SVGs -->
+              </div>
+              <div class="flex items-center">
+                  <span class="price text-gray-900 dark:text-white">$${element.price}</span>
+                  <button class="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 add-to-cart" data-product-id="${element.id}" data-title="${element.title}" data-price="${element.price}" data-image="${element.image}">Add to cart</button>
+              </div>
+          </div>
+      </div>
+  `;
+});
+
+document.querySelectorAll('button[data-title]').forEach(button => {
+  button.addEventListener('click', function() {
+      const productId = this.getAttribute('data-product-id');
+      const title = this.getAttribute('data-title');
+      const price = this.getAttribute('data-price');
+      const image = this.getAttribute('data-image');
+      addToCart(productId, title, price, image);
+  });
+});
 }
 function showPopup(message) {
-    const popupContainer = document.getElementById('popupContainer');
-    const popupText = document.getElementById('popupText');
-    popupText.textContent = message;
-    popupContainer.style.display = 'block';
+const popupContainer = document.getElementById('popupContainer');
+const popupText = document.getElementById('popupText');
+popupText.textContent = message;
+popupContainer.style.display = 'block';
 
-    const closePopupBtn = document.getElementById('closePopupBtn');
-    closePopupBtn.addEventListener('click', function() {
-        popupContainer.style.display = 'none';
-    });
+const closePopupBtn = document.getElementById('closePopupBtn');
+closePopupBtn.addEventListener('click', function() {
+  popupContainer.style.display = 'none';
+});
 
-    setTimeout(function() {
-        popupContainer.style.display = 'none';
-    }, 3000);
+setTimeout(function() {
+  popupContainer.style.display = 'none';
+}, 3000);
 }
-   
+
 async function addToCart(productId, title, price, image) {
-    const user = auth.currentUser;
-    if (user) {
-        const uid = user.uid;
-        const productRef = collection(db, "users", uid, "cartItems");
-        const q = query(productRef, where("id", "==", productId));
-        const querySnapshot = await getDocs(q);
+const user = auth.currentUser;
+if (user) {
+  const uid = user.uid;
+  const productRef = collection(db, "users", uid, "cartItems");
+  const q = query(productRef, where("id", "==", productId));
+  const querySnapshot = await getDocs(q);
 
-        if (!querySnapshot.empty) {
-            const existingProductDoc = querySnapshot.docs[0];
-            const existingProduct = existingProductDoc.data();
-            existingProduct.quantity = (existingProduct.quantity || 1) + 1;
-            existingProduct.subtotal = parseFloat(existingProduct.price) * existingProduct.quantity;
+  if (!querySnapshot.empty) {
+      const existingProductDoc = querySnapshot.docs[0];
+      const existingProduct = existingProductDoc.data();
+      existingProduct.quantity = (existingProduct.quantity || 1) + 1;
+      existingProduct.subtotal = parseFloat(existingProduct.price) * existingProduct.quantity;
 
-            await updateDoc(existingProductDoc.ref, existingProduct);
-            showPopup('Product quantity updated successfully!');
-        } else {
-            const product = { id: productId, title, price: parseFloat(price), image, quantity: 1, subtotal: parseFloat(price) };
-            await addDoc(productRef, product);
-            showPopup('Product added to cart successfully!');
-        }
+      await updateDoc(existingProductDoc.ref, existingProduct);
+      showPopup('Product quantity updated successfully!');
+  } else {
+      const product = { id: productId, title, price: parseFloat(price), image, quantity: 1, subtotal: parseFloat(price) };
+      await addDoc(productRef, product);
+      showPopup('Product added to cart successfully!');
+  }
 
-        updateCartDetails();
-    } else {
-        window.location.href = "./SIGNUP PAGE/index.html";
-    }
+  updateCartDetails();
+} else {
+  window.location.href = "./SIGNUP PAGE/index.html";
+}
 }
 
 async function loadCartItems(uid) {
-    const cartDetailsElement = document.getElementById('cartDetails');
-    let cartHTML = '';
-    let cartSubtotal = 0;
+const cartDetailsElement = document.getElementById('cartDetails');
+let cartHTML = '';
+let cartSubtotal = 0;
 
-    const q = query(collection(db, "users", uid, "cartItems"));
-    const querySnapshot = await getDocs(q);
+const q = query(collection(db, "users", uid, "cartItems"));
+const querySnapshot = await getDocs(q);
 
-    if (querySnapshot.empty) {
-        cartHTML += '<p>No items in cart</p>';
-    } else {
-        querySnapshot.forEach((doc) => {
-            const product = doc.data();
-            let price = product.price;
-            if (typeof price === 'string' && price.trim().startsWith('$')) {
-                price = parseFloat(price.replace('$', '')).toFixed(2); 
-            } else {
-                price = parseFloat(price).toFixed(2); 
-            }
+if (querySnapshot.empty) {
+  cartHTML += '<p>No items in cart</p>';
+} else {
+  querySnapshot.forEach((doc) => {
+      const product = doc.data();
+      let price = product.price;
+      if (typeof price === 'string' && price.trim().startsWith('$')) {
+          price = parseFloat(price.replace('$', '')).toFixed(2); 
+      } else {
+          price = parseFloat(price).toFixed(2); 
+      }
 
-            const quantity = product.quantity || 1;
-            const subtotal = (price * quantity).toFixed(2);
-            cartSubtotal += parseFloat(subtotal);
+      const quantity = product.quantity || 1;
+      const subtotal = (price * quantity).toFixed(2);
+      cartSubtotal += parseFloat(subtotal);
 
-            if (!isNaN(price)) {
-                cartHTML += `
-                    <div class="list_item" data-id="${doc.id}">
-                        <div class="pro">
-                            <img src="${product.image}" alt="${product.title}" class="w-16 h-16">
-                            <span>${product.title}</span>
-                        </div>
-                        <div class="price">$${price}</div>
-                        <div class="quantity">
-                            <input type="number" value="${quantity}" min="1" class="quantity_input">
-                        </div>
-                        <div class="subtotal">$${subtotal}</div>
-                        <button class="delete-item text-red-700"><img src="../image/1840748.png" alt=""></button>
-                    </div>
-                `;
-            } else {
-                console.error('Invalid price for product:', product);
-            }
-        });
-    }
+      if (!isNaN(price)) {
+          cartHTML += `
+              <div class="list_item" data-id="${doc.id}">
+                  <div class="pro">
+                      <img src="${product.image}" alt="${product.title}" class="w-16 h-16">
+                      <span>${product.title}</span>
+                  </div>
+                  <div class="price">$${price}</div>
+                  <div class="quantity">
+                      <input type="number" value="${quantity}" min="1" class="quantity_input">
+                  </div>
+                  <div class="subtotal">$${subtotal}</div>
+                  <button class="delete-item text-red-700"><img src="../image/1840748.png" alt=""></button>
+              </div>
+          `;
+      } else {
+          console.error('Invalid price for product:', product);
+      }
+  });
+}
 
-    cartDetailsElement.innerHTML = cartHTML;
+cartDetailsElement.innerHTML = cartHTML;
 
- 
-    updateCartTotals(cartSubtotal);
-    document.querySelectorAll('.delete-item').forEach(button => {
-        button.addEventListener('click', function() {
-            const productId = this.parentElement.getAttribute('data-id');
-            deleteCartItem(uid, productId);
-        });
-    });
+
+updateCartTotals(cartSubtotal);
+document.querySelectorAll('.delete-item').forEach(button => {
+  button.addEventListener('click', function() {
+      const productId = this.parentElement.getAttribute('data-id');
+      deleteCartItem(uid, productId);
+  });
+});
 
 }
 
 
 function updateCartTotals(subtotal) {
-    const shippingSelect = document.getElementById('shippingSelect');
-    const couponInput = document.getElementById('couponInput');
-    const totalElement = document.getElementById('totalAmount');
+const shippingSelect = document.getElementById('shippingSelect');
+const couponInput = document.getElementById('couponInput');
+const totalElement = document.getElementById('totalAmount');
 
-    let shippingCost = 0;
-    let discount = 0;
+let shippingCost = 0;
+let discount = 0;
 
-    shippingSelect.addEventListener('change', () => {
-        if (shippingSelect.value === 'Free') {
-            shippingCost = 0;
-        } else if (shippingSelect.value === 'Coupon') {
-            shippingCost = 5; // Example coupon discount
-        }
-        updateTotal();
-    });
+shippingSelect.addEventListener('change', () => {
+  if (shippingSelect.value === 'Free') {
+      shippingCost = 0;
+  } else if (shippingSelect.value === 'Coupon') {
+      shippingCost = 5; // Example coupon discount
+  }
+  updateTotal();
+});
 
-    couponInput.addEventListener('input', () => {
-        const couponCode = couponInput.value.trim();
-        if (couponCode === 'DISCOUNT10') {
-            discount = subtotal * 0.1; // Example 10% discount
-        } else {
-            discount = 0;
-        }
-        updateTotal();
-    });
+couponInput.addEventListener('input', () => {
+  const couponCode = couponInput.value.trim();
+  if (couponCode === 'DISCOUNT10') {
+      discount = subtotal * 0.1; // Example 10% discount
+  } else {
+      discount = 0;
+  }
+  updateTotal();
+});
 
-    function updateTotal() {
-        const total = subtotal + shippingCost - discount;
-        totalElement.textContent = `$${total.toFixed(2)}`;
-    }
+function updateTotal() {
+  const total = subtotal + shippingCost - discount;
+  totalElement.textContent = `$${total.toFixed(2)}`;
+}
 
-    document.getElementById('subtotalAmount').textContent = `$${subtotal.toFixed(2)}`;
-    updateTotal();
+document.getElementById('subtotalAmount').textContent = `$${subtotal.toFixed(2)}`;
+updateTotal();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.addEventListener('input', (event) => {
-        if (event.target.classList.contains('quantity_input')) {
-            const quantity = event.target.value;
-            const priceElement = event.target.closest('.list_item').querySelector('.price');
-            const subtotalElement = event.target.closest('.list_item').querySelector('.subtotal');
-            const price = parseFloat(priceElement.textContent.replace('$', ''));
-            const subtotal = price * quantity;
-            subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+document.addEventListener('input', (event) => {
+  if (event.target.classList.contains('quantity_input')) {
+      const quantity = event.target.value;
+      const priceElement = event.target.closest('.list_item').querySelector('.price');
+      const subtotalElement = event.target.closest('.list_item').querySelector('.subtotal');
+      const price = parseFloat(priceElement.textContent.replace('$', ''));
+      const subtotal = price * quantity;
+      subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
 
-        
-            let newCartSubtotal = 0;
-            document.querySelectorAll('.list_item').forEach(item => {
-                const itemSubtotal = parseFloat(item.querySelector('.subtotal').textContent.replace('$', ''));
-                newCartSubtotal += itemSubtotal;
-            });
-            updateCartTotals(newCartSubtotal);
-        }
-        
-    });
+  
+      let newCartSubtotal = 0;
+      document.querySelectorAll('.list_item').forEach(item => {
+          const itemSubtotal = parseFloat(item.querySelector('.subtotal').textContent.replace('$', ''));
+          newCartSubtotal += itemSubtotal;
+      });
+      updateCartTotals(newCartSubtotal);
+  }
+  
+});
 });
 
 
-async function updateCartDetails() {
-    const user = auth.currentUser;
-    if (user) {
-        const uid = user.uid;
-        const q = query(collection(db, "users", uid, "cartItems"));
-        const querySnapshot = await getDocs(q);
-        const cartItemCount = querySnapshot.size;
-        document.getElementById('cartItemCount').textContent = cartItemCount.toString();
-    } else {
-        console.error("No user is signed in");
-    }
+
+async function fetchCartCount(uid) {
+try {
+  const cartItemsCollectionRef = collection(db, "users", uid, "cartItems");
+  const querySnapshot = await getDocs(cartItemsCollectionRef);
+  const cartItemCount = querySnapshot.size;
+  document.getElementById('cartItemCount').textContent = cartItemCount.toString();
+} catch (error) {
+  console.error("Error fetching cart count: ", error);
 }
-async function deleteCartItem(uid, productId) {
-    const spinner = document.getElementById('spinner');
-    const userConfirmed = confirm("Do you want to proceed?");
-if (userConfirmed) {
-     
-    try {
-        // Show the spinner
-        spinner.style.display = 'block';
-         
-        await deleteDoc(doc(db, "users", uid, "cartItems", productId));
-        console.log("Document successfully deleted!");
+}
 
-        loadCartItems(uid); 
-        updateCartDetails(); 
 
-    } catch (error) {
-        console.error("Error removing document: ", error);
-        showPopup('Error removing product from cart.');
-    } finally {
-  
-        spinner.style.display = 'none';
-    }
+function updateCartDetails() {
+const user = auth.currentUser;
+if (user) {
+  const uid = user.uid;
+  const cartItemsCollectionRef = collection(db, "users", uid, "cartItems");
+  const q = query(cartItemsCollectionRef);
+  fetchCartCount(uid);
+
+
+  onSnapshot(q, (querySnapshot) => {
+      const cartItemCount = querySnapshot.size;
+      document.getElementById('cartItemCount').textContent = cartItemCount.toString();
+  });
 } else {
-  console.log("User clicked Cancel");
+  console.error("No user is signed in");
 }
+}
+
+onAuthStateChanged(auth, (user) => {
+if (user) {
+  updateCartDetails();
+} else {
+  console.error("No user is signed in");
+  document.getElementById('cartItemCount').textContent = '0';
+}
+})
+
+// allProduct();
+async function deleteCartItem(uid, productId) {
+const spinner = document.getElementById('spinner');
+const userConfirmed = confirm("Do you want to proceed?");
+if (userConfirmed) {
+
+try {
+  spinner.style.display = 'block';
+    
+  await deleteDoc(doc(db, "users", uid, "cartItems", productId));
+  console.log("Document successfully deleted!");
+  // showPopup('Product added to cart successfully!');
+  alert('Document successfully deleted!')
+
+  loadCartItems(uid); 
+  updateCartDetails(); 
+
+} catch (error) {
+  console.error("Error removing document: ", error);
+  // showPopup('Error removing product from cart.');
+} finally {
+
+  spinner.style.display = 'none';
+}
+} else {
+console.log("User clicked Cancel");
+}
+
+}
+onAuthStateChanged(auth, (user) => {
+const cartTextElement = document.getElementById('cartText');
+if (user) {
+          signText.textContent='Cart'
+          sign2Text.textContent='Cart'
+          sign()
+  updateCartDetails();
+  // cartTextElement.textContent = 'Cart';
+  cartTextElement.style.cursor = 'pointer';
+  cartTextElement.addEventListener('click', () => {
+  });
+} else {
+sign()
+cartTextElement.textContent = 'Sign Up';
+  sign2Text.textContent='Sign Up / Log In'
+  signText.style.cursor = 'pointer';
+  document.getElementById('cartItemCount').textContent = '0';
+  sign()
+}
+});
+
+function sign(){
+if (sign2Text.textContent==='Cart' && sign2Text.textContent!=='Sign Up / Log In' ) {
+          sign2Text.addEventListener('click',function(){
+            window.location.href = "/cart/index.html";
+          })
+        
+        
+          
+          }
+          if (signText.textContent==='Cart' && signText.textContent!=='Sign Up' ) {
+            signText.addEventListener('click',function(){
+            window.location.href = "/cart/index.html";
+          })
+        
+          
+          }
+
+          if (sign2Text.textContent==='Sign Up / Log In' && sign2Text.textContent!=='Cart' ) {
+          sign2Text.addEventListener('click',function(){
+            window.location.href = "/SIGNUP PAGE/index.html";
+          })
+        
+        }
+        if (signText.textContent==='Sign Up' && signText.textContent!=='Cart' ) {
+            signText.addEventListener('click',function(){
+              window.location.href = "/SIGNUP PAGE/index.html";
+          })
+        
+          
+          }
 
 }
 

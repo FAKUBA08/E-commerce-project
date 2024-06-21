@@ -1,733 +1,733 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Link Swiper's CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="./css/styles.css" />
-    <title>Home - Exclusive E-Commerce Website</title>
-  </head>
-  <body>
-    <div class="top_nav">
-      <div class="container top_nav_container">
-        <div class="top_nav_wrapper">
-          <p class="tap_nav_p">
-            Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
-          </p>
-          <a href="#" class="top_nav_link">SHOP NOW</a>
-        </div>
-      </div>
-    </div>
-    <nav class="nav">
-      <div class="container nav_container">
-        <a href="#" class="nav_logo">EXCLUSIVE</a>
-        <ul class="nav_list">
-          <li class="nav_item"><a href="/" class="nav_link">Home</a></li>
-          <li class="nav_item"><a href="#" class="nav_link">About</a></li>
-          <li class="nav_item"><a href="#" class="nav_link">Contact</a></li>
-          <li class="nav_item">
-            <a href="SIGNUP PAGE/index.html" class="nav_link">Sign up</a>
-          </li>
-        </ul>
-        <div class="nav_items">
-          <form action="#" class="nav_form">
-            <input
-              type="text"
-              class="nav_input"
-              placeholder="search here...." />
-            <img src="./image/search.png" alt="" class="nav_search" />
-          </form>
-          <img src="./image/heart.png" alt="" class="nav_heart" />
-          <a href="cart/index.html">
-            <img src="./image/cart.png" alt="" class="nav_cart" />
-            <span id="cartItemCount" class="cart_item_count">0</span>
-          </a>
-      
-        </div>
-        <span id="accountUser"> <img src="image/user.png" alt=""></span>
-  
-        <p class="greetingP">HELLO,GUEST</p>
-        <img id="profileImg" src="/image/istockphoto-1905374785-612x612.jpg" alt="Profile Picture" class="profile-image">
- 
-        <span class="hamburger">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-6 h-6">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-        </span>
-      </div>
-    </nav>
-    
-    <nav class="mobile_nav mobile_nav_hide">
-      <ul class="mobile_nav_list">
-        <li class="mobile_nav_item">
-          <a href="/" class="mobile_nav_link">Home</a>
-        </li>
-        <li class="mobile_nav_item">
-          <a href="#" class="mobile_nav_link">About</a>
-        </li>
-        <li class="mobile_nav_item">
-          <a href="#" class="mobile_nav_link">Contact</a>
-        </li>
-        <li class="mobile_nav_item">
-          <a href="./SIGNUP PAGE/index.html" class="mobile_nav_link">Sign Up</a>
-        </li>
-        <li class="mobile_nav_item">
-          <a href="cart/index.html" class="mobile_nav_link">Cart</a>
-          <span id="cartItemCount" class="cart_item_count"></span>
-          
-        </li>
-        <p class="greetingP"></p>
-        
-      </ul>
-      
-    </nav>
-      <!-- Full Image View -->
-      <div id="fullImageView" class="full-image-view">
-        <span class="close-btn">&times;</span>
-        <img class="full-image-content" id="fullImage">
-    </div>
-    <div class="detailsSeen details_User">
-      <div class="account" id="navSeen">
-        <div class="acc-image">
-          <img src="image/user (1).png" alt="">
-        </div>
-        <div class="acc-text"  id="navText"><p>
-          Manage My Account
-        </p></div>
-      </div>
-      <div class="order" id="navSeen">
-        <div class="order-image">
-          <img src="image/icon-mallbag.png" alt="">
-        </div>
-        <div class="order-text"  id="navText">
-          <p>My Order</p>
-        </div>
-      </div>
-      <div class="review" id="navSeen">
-        <div class="review-image">
-          <img src="image/Vector (1).png" alt="">
-        </div>
-        <div class="review-text"  id="navText">
-          <p>My Reviews</p>
-        </div>
-      </div>
-      <div class="cancellation" id="navSeen">
-        <div class="cancellation-image">
-          <img src="image/icon-cancel.png" alt="">
-        </div>
-        <div class="cancellation-text"  id="navText">
-          <p>My Cancellation</p>
-        </div>
-      </div>
-      <div class="logout" id="navSeen">
-        <div class="logout-image">
-          <img src="image/Vector (2).png" alt="">
-        </div>
-        <div class="logOut"  id="navText">
-          <p>Logout</p>
-        </div>
-      </div>
-    </div>
-    
-    <div id="accountModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Manage My Account</h2>
-        <form id="accountForm">
-          <div>
-            <label for="userNameInput">Name:</label>
-            <input type="text" id="userNameInput">
-          </div>
-          <div>
-            <label for="userEmailInput">Email:</label>
-            <input type="email" id="userEmailInput" disabled>
-          </div>
-          <div>
-            <label for="profileImageInput">Profile Picture:</label>
-            <input type="file" id="profileImageInput">
-          </div>
-       <div class="upload">
-        <button type="button" id="uploadProfilePicBtn">Upload Profile Picture</button>
-        <button type="submit" id="saveProfileBtn">Save</button>
-
-        
-        <div id="spinner" class="spinner" style="display: none;"></div>
-        
-       </div>
-       <button id="removeProfilePicBtn">Remove Profile Picture</button>
-          <div id="spinner" class="spinner" style="display: none;"></div> 
-        </form>
-        
-      </div>
-      
-    </div>
-     <div id="spinner" class="spinner" style="display: none;"></div>
-     <div id="showPopuping" class="popuping" style="display: none;"></div>
-    
-    <header class="header">
-      <div class="container header_container">
-        <div class="header_filter">
-          <a href="#" class="header_filter_link">Woman’s Fashion</a>
-          <a href="#" class="header_filter_link">Men’s Fashion</a>
-          <a href="#" class="header_filter_link">Electronics</a>
-          <a href="#" class="header_filter_link">Home & Lifestyle</a>
-          <a href="#" class="header_filter_link">Medicine</a>
-          <a href="#" class="header_filter_link">Sports & Outdoor</a>
-          <a href="#" class="header_filter_link">Baby’s & Toys</a>
-          <a href="#" class="header_filter_link">Groceries & Pets</a>
-          <a href="#" class="header_filter_link">Health & Beauty</a>
-        </div>
-        <img src="./image/header.png" alt="" class="header_img" />
-      </div>
-
-    </header>
-    <div class="newLetter">
- <div class="newLetter-text">
-  <div class="cancelNew">
-    <img src="image/items/966928-200.png" alt="">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Link Swiper's CSS -->
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+<link rel="stylesheet" href="./css/styles.css" />
+<title>Home - Exclusive E-Commerce Website</title>
+</head>
+<body>
+<div class="top_nav">
+<div class="container top_nav_container">
+  <div class="top_nav_wrapper">
+    <p class="tap_nav_p">
+      Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
+    </p>
+    <a href="#" class="top_nav_link">SHOP NOW</a>
   </div>
-  <p>NEW<br>
-     SEASON<span>The great year ends sales is back </span></p>
- </div>
- <button class="news"><a href="index.html">EXPLORE MORE</a></button>
-    </div>
-
-    <section class="section">
+</div>
+</div>
+<nav class="nav">
+<div class="container nav_container">
+  <a href="#" class="nav_logo">EXCLUSIVE</a>
+  <ul class="nav_list">
+    <li class="nav_item"><a href="/" class="nav_link">Home</a></li>
+    <li class="nav_item"><a href="#" class="nav_link">About</a></li>
+    <li class="nav_item"><a href="#" class="nav_link">Contact</a></li>
+    <li class="nav_item">
+      <a class="nav_link" id="signText">Sign Up</a>
       
-      <div class="container">
-        
-        <div class="section_category">
-          <p class="section_category_p">Today's</p>
-        </div>
-        <p class="display"><span class="days">DAYS </span> <span class="hours"> HOURS  </span>  <span class="minutes"> MINUTES </span>  <span class="seconds">  SECONDS</span></p>
-        <div class="section_header">
-          <h3 class="section_title">Flash Sale</h3>
-          <p id="demo"></p>
-        </div>
-        <!-- Swiper -->
+    </li>
+  </ul>
+  <div class="nav_items">
+    <form action="#" class="nav_form">
+      <input
+        type="text"
+        class="nav_input"
+        placeholder="search here...." />
+      <img src="./image/search.png" alt="" class="nav_search" />
+    </form>
+    <img src="./image/heart.png" alt="" class="nav_heart" />
+    <a href="cart/index.html">
+      <img src="./image/cart.png" alt="" class="nav_cart" />
+      <span id="cartItemCount" class="cart_item_count">0</span>
+    </a>
+
+  </div>
+  <span id="accountUser"> <img src="image/user.png" alt=""></span>
+
+  <p class="greetingP">HELLO,GUEST</p>
+  <img id="profileImg" src="/image/istockphoto-1905374785-612x612.jpg" alt="Profile Picture" class="profile-image">
+
+  <span class="hamburger">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-6 h-6">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+    </svg>
+  </span>
+</div>
+</nav>
+
+<nav class="mobile_nav mobile_nav_hide">
+<ul class="mobile_nav_list">
+  <li class="mobile_nav_item">
+    <a href="/" class="mobile_nav_link">Home</a>
+  </li>
+  <li class="mobile_nav_item">
+    <a href="#" class="mobile_nav_link">About</a>
+  </li>
+  <li class="mobile_nav_item">
+    <a href="#" class="mobile_nav_link">Contact</a>
+  </li>
+  <li class="mobile_nav_item" id="seenCart">
+    <a href="/cart/index.html" class="mobile_nav_link">Cart</a>
+  </li>
+  <li class="mobile_nav_item">
+    <a   id="sign2Text">Sign Up / Log In</a>
+  </li>
+
+  <p class="greetingP"></p>
   
-    </section>
-    
-     <div class="showApi">
-      <div id="show" class="flex justify-center gap-16 flex-wrap p-18"></div>
-      <div id="loader" class="loader" style="display: none;"></div>
-      <div class="showAllCon"><button class="showAll" id="toggleProductsBtn">
-          View All Products
-      </button></div>
-     </div>
-     <div id="spinner" class="spinner" style="display: none;">
-      <img src="spinner.gif" alt="Loading...">
-     </div>
-    <!-- Popup container -->
+</ul>
+
+</nav>
+<!-- Full Image View -->
+<div id="fullImageView" class="full-image-view">
+  <span class="close-btn">&times;</span>
+  <img class="full-image-content" id="fullImage">
+</div>
+<div class="detailsSeen details_User">
+<div class="account" id="navSeen">
+  <div class="acc-image">
+    <img src="image/user (1).png" alt="">
+  </div>
+  <div class="acc-text"  id="navText"><p>
+    Manage My Account
+  </p></div>
+</div>
+<div class="order" id="navSeen">
+  <div class="order-image">
+    <img src="image/icon-mallbag.png" alt="">
+  </div>
+  <div class="order-text"  id="navText">
+    <p>My Order</p>
+  </div>
+</div>
+<div class="review" id="navSeen">
+  <div class="review-image">
+    <img src="image/Vector (1).png" alt="">
+  </div>
+  <div class="review-text"  id="navText">
+    <p>My Reviews</p>
+  </div>
+</div>
+<div class="cancellation" id="navSeen">
+  <div class="cancellation-image">
+    <img src="image/icon-cancel.png" alt="">
+  </div>
+  <div class="cancellation-text"  id="navText">
+    <p>My Cancellation</p>
+  </div>
+</div>
+<div class="logout" id="navSeen">
+  <div class="logout-image">
+    <img src="image/Vector (2).png" alt="">
+  </div>
+  <div class="logOut"  id="navText">
+    <p>Logout</p>
+  </div>
+</div>
+</div>
+
+<div id="accountModal" class="modal">
+<div class="modal-content">
+  <span class="close">&times;</span>
+  <h2>Manage My Account</h2>
+  <form id="accountForm">
+    <div>
+      <label for="userNameInput">Name:</label>
+      <input type="text" id="userNameInput">
+    </div>
+    <div>
+      <label for="userEmailInput">Email:</label>
+      <input type="email" id="userEmailInput" disabled>
+    </div>
+    <div>
+      <label for="profileImageInput">Profile Picture:</label>
+      <input type="file" id="profileImageInput">
+    </div>
+  <div class="upload">
+  <button type="button" id="uploadProfilePicBtn">Upload Profile Picture</button>
+  <button type="submit" id="saveProfileBtn">Save</button>
+
+  
+  <div id="spinner" class="spinner" style="display: none;"></div>
+  
+  </div>
+  <button id="removeProfilePicBtn">Remove Profile Picture</button>
+    <div id="spinner" class="spinner" style="display: none;"></div> 
+  </form>
+  
+</div>
+
+</div>
+<div id="spinner" class="spinner" style="display: none;"></div>
+<div id="showPopuping" class="popuping" style="display: none;"></div>
+
+<header class="header">
+<div class="container header_container">
+  <div class="header_filter">
+    <a href="#" class="header_filter_link">Woman’s Fashion</a>
+    <a href="#" class="header_filter_link">Men’s Fashion</a>
+    <a href="#" class="header_filter_link">Electronics</a>
+    <a href="#" class="header_filter_link">Home & Lifestyle</a>
+    <a href="#" class="header_filter_link">Medicine</a>
+    <a href="#" class="header_filter_link">Sports & Outdoor</a>
+    <a href="#" class="header_filter_link">Baby’s & Toys</a>
+    <a href="#" class="header_filter_link">Groceries & Pets</a>
+    <a href="#" class="header_filter_link">Health & Beauty</a>
+  </div>
+  <img src="./image/header.png" alt="" class="header_img" />
+</div>
+
+</header>
+<div class="newLetter">
+<div class="newLetter-text">
+<div class="cancelNew">
+<img src="image/items/966928-200.png" alt="">
+</div>
+<p>NEW<br>
+SEASON<span>The great year ends sales is back </span></p>
+</div>
+<button class="news"><a href="index.html">EXPLORE MORE</a></button>
+</div>
+
+<section class="section">
+
+<div class="container">
+  
+  <div class="section_category">
+    <p class="section_category_p">Today's</p>
+  </div>
+  <p class="display"><span class="days">DAYS </span> <span class="hours"> HOURS  </span>  <span class="minutes"> MINUTES </span>  <span class="seconds">  SECONDS</span></p>
+  <div class="section_header">
+    <h3 class="section_title">Flash Sale</h3>
+    <p id="demo"></p>
+  </div>
+  <!-- Swiper -->
+
+</section>
+
+<div class="showApi">
+<div id="show" class="flex justify-center gap-16 flex-wrap p-18"></div>
+<div id="loader" class="loader" style="display: none;"></div>
+<div class="showAllCon"><button class="showAll" id="toggleProductsBtn">
+    View All Products
+</button></div>
+</div>
+<div id="spinner" class="spinner" style="display: none;">
+<img src="spinner.gif" alt="Loading...">
+</div>
+<!-- Popup container -->
 <div id="popupContainer" class="popup-container">
-  <div id="popup" class="popup">
-    <span id="popupText" class="popup-text">Product added to cart successfully!</span>
-    <button id="closePopupBtn" class="close-popup-btn">Close</button>
-  </div>
+<div id="popup" class="popup">
+<span id="popupText" class="popup-text">Product added to cart successfully!</span>
+<button id="closePopupBtn" class="close-popup-btn">Close</button>
+</div>
 </div>
 
-     <div class="container" id="categories">
-      <div class="section_category">
-        <p class="section_category_p" >Categories</p>
-      </div>
-      <div class="section_header">
-        <h3 class="section_title">Browse By Categories</h3>
-      </div>
-     <div class="secCategory">
+<div class="container" id="categories">
+<div class="section_category">
+  <p class="section_category_p" >Categories</p>
+</div>
+<div class="section_header">
+  <h3 class="section_title">Browse By Categories</h3>
+</div>
+<div class="secCategory">
 
-      <div class="elctronics">
-        <div class="img-elc"><img src="image/Category-Computer.png" alt=""></div>
-        <div class="elc-text">Electronics</div>
-      </div>
-      <div class="mens-clothing">
-        <div class="mens-cloc">
-          <img src="image/personality_2856147.png" alt="">
-        </div>
-        <div class="mens-text">Men's Fashion</div>
-        
-       </div>
-       <div class="womens-cloc">
-        <div class="mens-cloc">
-          <img src="image/women_16487511.png" alt="">
-        </div>
-        <div class="womens-text">Women's Fashion</div>
-        
-       </div>
-         
-            <div class="head-phone">
-          <div class="head-cloc">
-            <img src="image/Category-Headphone.png" alt="">
-          </div>
-          <div class="head-text">Head phone</div>
-        </div>
-        <div class="gaming">
-          <div class="gaming-cloc">
-            <img src="image/Category-Gamepad.png" alt="">
-          </div>
-          <div class="gaming-text">Gaming</div>
-        </div>
-        
-      </div>
-    <!-- <div id="cartDetails" class="p-4"></div> This is where selected products will be displayed -->
-    <div class="container" id="categories">
-      <div class="section_category">
-        <p class="section_category_p" >This Month</p>
-      </div>
-      <div class="section_header">
-        <h3 class="section_title">Best Selling Products</h3>
-      </div>
-      <div class="Best-selling">
-
-      </div>
-      <div class="product" id="productSeen">
-        <div class="product-1">
-          <div class="product-1-img">
-            <img src="image/items/item-1.png" alt="" />
-          </div>
-          <div class="product-1-title">HAVIT HV-G92 Gamepad</div>
-          <div class="product-1-prize">$220.00 <span class="discount">$250.00</span></div>
-          <div class="product-1-cart">
-            <img src="image/Frame 566.png" alt="">
-            <button id="product1" class="add-to-cart" data-product-id="1">Add to cart</button>
-          </div>
-          <div class="tag" id="tagSeen">
-            <img src="image/items/Frame 568.png" alt="">
-          </div>
-        </div>
-        <div class="product-2">
-          <div class="product-1-img">
-            <img src="image/items/item-2.png" alt="" />
-          </div>
-          <div class="product-1-title">
-          AK-900 Wired Keyboard</div>
-          <div class="product-1-prize">$150.00 <span class="discount">$200.00</span></div>
-          <div class="product-1-cart">
-            <img src="image/items/Frame 566.png" alt="">
-            <button id="product2" class="add-to-cart" data-product-id="2">Add to cart</button>
-          </div>
-          <div class="tag"  id="tagSeen">
-            <img src="image/items/Frame 568.png" alt="">
-          </div>
-        </div>
-        <div class="product-3">
-          <div class="product-1-img">
-            <img src="image/items/item-3.png" alt="" />
-          </div>
-          <div class="product-1-title">IPS LCD Gaming Monitor</div>
-          <div class="product-1-prize">$370.00 <span class="discount">$400.00</span></div>
-          <div class="product-1-cart">
-            <img src="image/Frame 566.png" alt="">
-            <button id="product3" class="add-to-cart" data-product-id="3">Add to cart</button>
-          </div>
-          <div class="tag"  id="tagSeen">
-            <img src="image/items/Frame 568.png" alt="">
-          </div>
-        </div>
-        <div class="product-4">
-          <div class="product-1-img">
-            <img src="image/items/item-4.png" alt="" />
-          </div>
-          <div class="product-1-title">S-Series Comfort Chair</div>
-          <div class="product-1-prize">$300.00 <span class="discount">$320.00</span></div>
-          <div class="product-1-cart">
-            <img src="image/items/Frame 566.png" alt="">
-            <button id="product4" class="add-to-cart" data-product-id="4">Add to cart</button>
-          </div>
-          <div class="tag"  id="tagSeen">
-            <img src="image/items/Frame 568.png" alt="">
-          </div>
-        </div>
-        <div class="product-5">
-          <div class="product-1-img">
-            <img src="image/items/item-5.png" alt="" />
-          </div>
-          <div class="product-1-title">AVI-400 Wireless Headphone</div>
-          <div class="product-1-prize">$150.00 <span class="discount">$200.00</span></div>
-          <div class="product-1-cart">
-            <img src="image/items/Frame 566.png" alt="">
-            <button id="product5" class="add-to-cart" data-product-id="5">Add to cart</button>
-          </div>
-          <div class="tag"  id="tagSeen">
-            <img src="image/items/Frame 568.png" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="elctronics">
+  <div class="img-elc"><img src="image/Category-Computer.png" alt=""></div>
+  <div class="elc-text">Electronics</div>
+</div>
+<div class="mens-clothing">
+  <div class="mens-cloc">
+    <img src="image/personality_2856147.png" alt="">
   </div>
-  <div class="arrival">
-    <div class="arrival-inner">
-      <div class="arrival-text">
-        <p>Categories <span>
-          Enhance Your<br>
-          Music Experience
-        </span> <span id="count"></span></p>
-       <div class="date">
-        <span class="d">days</span><span class="h">hours</span><span class="m">minutes</span><span class="s">seconds</span></span>
-       </div>
-        <button class="arrival-btn">BUY NOW</button>
-      </div>
-      <div class="arrival-img">
-        <img src="image/speaker.png" alt="">
-      </div>
-      
-    </div>
+  <div class="mens-text">Men's Fashion</div>
+  
   </div>
-  <div class="container" id="categories">
-    <div class="section_category">
-      <p class="section_category_p" >Our Products</p>
+  <div class="womens-cloc">
+  <div class="mens-cloc">
+    <img src="image/women_16487511.png" alt="">
+  </div>
+  <div class="womens-text">Women's Fashion</div>
+  
+  </div>
+    
+      <div class="head-phone">
+    <div class="head-cloc">
+      <img src="image/Category-Headphone.png" alt="">
     </div>
-    <div class="section_header">
-      <h3 class="section_title">Explore Our Products</h3>
+    <div class="head-text">Head phone</div>
+  </div>
+  <div class="gaming">
+    <div class="gaming-cloc">
+      <img src="image/Category-Gamepad.png" alt="">
     </div>
-    <div class="product" id="productLook">
-      <div class="product-1">
-        <div class="product-1-img">
-          <img src="image/items/item-6.png" alt="" />
-        </div>
-        <div class="product-1-title">RGB liquid CPU Cooler</div>
-        <div class="product-1-prize">170.00 <span class="discount">$100.00</span></div>
-        <div class="product-1-cart">
-          <img src="image/items/Frame 573 (1).png" alt="">
-          <button id="product1" class="add-to-cart" data-product-id="1">Add to cart</button>
-        </div>
-        <div class="tag"  id="tagSeen">
-          <img src="image/items/Frame 568.png" alt="">
-        </div>
-      </div>
-      <div class="product-1">
-        <div class="product-1-img">
-          <img src="image/items/item-7.png" alt="" />
-        </div>
-        <div class="product-1-title">Gucci duffle bag</div>
-        <div class="product-1-prize">$960.00 <span class="discount">$1150.00</span></div>
-        <div class="product-1-cart">
-          <img src="image/items/Frame 573 (2).png" alt="">
-          <button id="product1" class="add-to-cart" data-product-id="1">Add to cart</button>
-        </div>
-        <div class="tag" id="tagSeen">
-          <img src="image/items/Frame 568.png" alt="">
-        </div>
-      </div>
-      <div class="product-1">
-        <div class="product-1-img">
-          <img src="image/items/item-8.png" alt="" />
-        </div>
-        <div class="product-1-title">Small BookSelf</div>
-        <div class="product-1-prize">$360.00 <span class="discount"></span></div>
-        <div class="product-1-cart">
-          <img src="image/items/Frame 573 (1).png" alt="">
-          <button id="product1" class="add-to-cart" data-product-id="1">Add to cart</button>
-        </div>
-        <div class="tag"  id="tagSeen">
-          <img src="image/items/Frame 568.png" alt="">
-        </div>
-      </div>
-      <div class="product-1">
-        <div class="product-1-img">
-          <img src="image/items/item-9.png" alt="" />
-        </div>
-        <div class="product-1-title">Breed Dry Dog Food</div>
-        <div class="product-1-prize">$220.00 <span class="discount">$250.00</span></div>
-        <div class="product-1-cart">
-          <img src="image/Frame 566.png" alt="">
-          <button id="product1" class="add-to-cart" data-product-id="1">Add to cart</button>
-        </div>
-        <div class="tag"  id="tagSeen">
-          <img src="image/items/Frame 568.png" alt="">
-        </div>
-      </div>
-      <div class="product-1">
-        <div class="product-1-img">
-          <img src="image/items/item-10.png" alt="" />
-        </div>
-        <div class="product-1-title">CANON EOS DSLR Camera</div>
-        <div class="product-1-prize">$220.00 <span class="discount">$250.00</span></div>
-        <div class="product-1-cart">
-          <img src="image/items/Frame 573.png" alt="">
-          <button id="product1" class="add-to-cart" data-product-id="1">Add to cart</button>
-        </div>
-        <div class="tag"  id="tagSeen">
-          <img src="image/items/Frame 568.png" alt="">
-        </div>
-      </div>
-      <div class="product-1">
-        <div class="product-1-img">
-          <img src="image/items/item-11.png" alt="" />
-        </div>
-        <div class="product-1-title">ASUS FHD Gaming Laptop</div>
-        <div class="product-1-prize">$700.00 <span class="discount"></span></div>
-        <div class="product-1-cart">
-            <img src="image/items/Frame 573 (2).png" alt="">
-          <button id="product1" class="add-to-cart" data-product-id="1">Add to cart</button>
-        </div>
-        <div class="tag"  id="tagSeen">
-          <img src="image/items/Frame 568.png" alt="">
-        </div>
-      </div>
-      
-      <div class="product-2">
-        <div class="product-1-img">
-          <img src="image/items/item-12.png" alt="" />
-        </div>
-        <div class="product-1-title">
-          Kids Electric Car</div>
-        <div class="product-1-prize">$350.00 <span class="discount">$150.00</span></div>
-        <div class="product-1-cart">
-          <img src="image/items/Frame 566.png" alt="">
-          <button id="product2" class="add-to-cart" data-product-id="2">Add to cart</button>
-        </div>
-        <div class="tag"  id="tagSeen">
-          <img src="image/items/Frame 568.png" alt="">
-        </div>
-      </div>
-      <div class="product-3">
-        <div class="product-1-img">
-          <img src="image/items/item-13.png" alt="" />
-        </div>
-        <div class="product-1-title">Jr. Zoom Soccer Cleats</div>
-        <div class="product-1-prize">$1160.00 <span class="discount"></span></div>
-        <div class="product-1-cart">
-          <img src="image/Frame 566.png" alt="">
-          <button id="product3" class="add-to-cart" data-product-id="3">Add to cart</button>
-        </div>
-        <div class="tag"  id="tagSeen">
-          <img src="image/items/Frame 568.png" alt="">
-        </div>
-      </div>
-      <div class="product-4">
-        <div class="product-1-img">
-          <img src="image/items/item-14.png" alt="" />
-        </div>
-        <div class="product-1-title">GP11 Shooter USB Gamepadr</div>
-        <div class="product-1-prize">$660.00 <span class="discount"></span></div>
-        <div class="product-1-cart">
-          <img src="image/items/Frame 566 (1).png" alt="">
-          <button id="product4" class="add-to-cart" data-product-id="4">Add to cart</button>
-        </div>
-        <div class="tag"  id="tagSeen">
-          <img src="image/items/Frame 568.png" alt="">
-        </div>
-      </div>
-      <div class="product-5">
-        <div class="product-1-img">
-          <img src="image/items/item-15.png" alt="" />
-        </div>
-        <div class="product-1-title">Quilted Satin Jacket</div>
-        <div class="product-1-prize">$300 <span class="discount">$420.00</span></div>
-        <div class="product-1-cart">
-          <img src="image/items/Frame 566 (1).png" alt="">
-          <button id="product5" class="add-to-cart" data-product-id="5">Add to cart</button>
-        </div>
-        <div class="tag"  id="tagSeen">
-          <img src="image/items/Frame 568.png" alt="">
-        </div>
-      </div>
-    </div>
+    <div class="gaming-text">Gaming</div>
   </div>
   
 </div>
-    <section class="section">
-      <div class="container">
-        <div class="section_category">
-          <p class="section_category_p">Featured</p>
-        </div>
-        <div class="section_header">
-          <h3 class="section_title">New Arrivals</h3>
-        </div>
-       
-        <div class="gallery">
-          <div class="gallery_item gallery_item_1">
-            <img
-              src="./image/gallery/gallery-1.png"
-              alt=""
-              class="gallery_item_img" />
-            <div class="gallery_item_content">
-              <div class="gallery_item_title">Playstation 5</div>
-              <p class="gallery_item_p">
-                Lorem ipsum dolor sit amet consectetur adipisicing.
-              </p>
-              <a href="#" class="gallery_item_link">SHOP NOW</a>
-            </div>
-          </div>
-          <div class="gallery_item gallery_item_2">
-            <img
-              src="./image/gallery/gallery-2.png"
-              alt=""
-              class="gallery_item_img" />
-            <div class="gallery_item_content">
-              <div class="gallery_item_title">Playstation 5</div>
-              <p class="gallery_item_p">
-                Lorem ipsum dolor sit amet consectetur adipisicing.
-              </p>
-              <a href="#" class="gallery_item_link">SHOP NOW</a>
-            </div>
-          </div>
-          <div class="gallery_item gallery_item_3">
-            <img
-              src="./image/gallery/gallery-3.png"
-              alt=""
-              class="gallery_item_img" />
-            <div class="gallery_item_content">
-              <div class="gallery_item_title">Playstation 5</div>
-              <p class="gallery_item_p">
-                Lorem ipsum dolor sit amet consectetur adipisicing.
-              </p>
-              <a href="#" class="gallery_item_link">SHOP NOW</a>
-            </div>
-          </div>
-          <div class="gallery_item gallery_item_4">
-            <img
-              src="./image/gallery/gallery-4.png"
-              alt=""
-              class="gallery_item_img" />
-            <div class="gallery_item_content">
-              <div class="gallery_item_title">Playstation 5</div>
-              <p class="gallery_item_p">
-                Lorem ipsum dolor sit amet consectetur adipisicing.
-              </p>
-              <a href="#" class="gallery_item_link">SHOP NOW</a>
-            </div>
-          </div>
-        </div>
+<!-- <div id="cartDetails" class="p-4"></div> This is where selected products will be displayed -->
+<div class="container" id="categories">
+<div class="section_category">
+  <p class="section_category_p" >This Month</p>
+</div>
+<div class="section_header">
+  <h3 class="section_title">Best Selling Products</h3>
+</div>
+<div class="Best-selling">
+
+</div>
+<div class="product" id="productSeen">
+  <div class="product-1">
+    <div class="product-1-img">
+      <img src="image/items/item-1.png" alt="" />
+    </div>
+    <div class="product-1-title">HAVIT HV-G92 Gamepad</div>
+    <div class="product-1-prize">$220.00 <span class="discount">$250.00</span></div>
+    <div class="product-1-cart">
+      <img src="image/Frame 566.png" alt="">
+      <button id="product1" class="add-to-cart" data-product-id="1">Add to cart</button>
+    </div>
+    <div class="tag" id="tagSeen">
+      <img src="image/items/Frame 568.png" alt="">
+    </div>
+  </div>
+  <div class="product-2">
+    <div class="product-1-img">
+      <img src="image/items/item-2.png" alt="" />
+    </div>
+    <div class="product-1-title">
+    AK-900 Wired Keyboard</div>
+    <div class="product-1-prize">$150.00 <span class="discount">$200.00</span></div>
+    <div class="product-1-cart">
+      <img src="image/items/Frame 566.png" alt="">
+      <button id="product2" class="add-to-cart" data-product-id="2">Add to cart</button>
+    </div>
+    <div class="tag"  id="tagSeen">
+      <img src="image/items/Frame 568.png" alt="">
+    </div>
+  </div>
+  <div class="product-3">
+    <div class="product-1-img">
+      <img src="image/items/item-3.png" alt="" />
+    </div>
+    <div class="product-1-title">IPS LCD Gaming Monitor</div>
+    <div class="product-1-prize">$370.00 <span class="discount">$400.00</span></div>
+    <div class="product-1-cart">
+      <img src="image/Frame 566.png" alt="">
+      <button id="product3" class="add-to-cart" data-product-id="3">Add to cart</button>
+    </div>
+    <div class="tag"  id="tagSeen">
+      <img src="image/items/Frame 568.png" alt="">
+    </div>
+  </div>
+  <div class="product-4">
+    <div class="product-1-img">
+      <img src="image/items/item-4.png" alt="" />
+    </div>
+    <div class="product-1-title">S-Series Comfort Chair</div>
+    <div class="product-1-prize">$300.00 <span class="discount">$320.00</span></div>
+    <div class="product-1-cart">
+      <img src="image/items/Frame 566.png" alt="">
+      <button id="product4" class="add-to-cart" data-product-id="4">Add to cart</button>
+    </div>
+    <div class="tag"  id="tagSeen">
+      <img src="image/items/Frame 568.png" alt="">
+    </div>
+  </div>
+  <div class="product-5">
+    <div class="product-1-img">
+      <img src="image/items/item-5.png" alt="" />
+    </div>
+    <div class="product-1-title">AVI-400 Wireless Headphone</div>
+    <div class="product-1-prize">$150.00 <span class="discount">$200.00</span></div>
+    <div class="product-1-cart">
+      <img src="image/items/Frame 566.png" alt="">
+      <button id="product5" class="add-to-cart" data-product-id="5">Add to cart</button>
+    </div>
+    <div class="tag"  id="tagSeen">
+      <img src="image/items/Frame 568.png" alt="">
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div class="arrival">
+<div class="arrival-inner">
+<div class="arrival-text">
+  <p>Categories <span>
+    Enhance Your<br>
+    Music Experience
+  </span> <span id="count"></span></p>
+  <div class="date">
+  <span class="d">days</span><span class="h">hours</span><span class="m">minutes</span><span class="s">seconds</span></span>
+  </div>
+  <button class="arrival-btn">BUY NOW</button>
+</div>
+<div class="arrival-img">
+  <img src="image/speaker.png" alt="">
+</div>
+
+</div>
+</div>
+<div class="container" id="categories">
+<div class="section_category">
+<p class="section_category_p" >Our Products</p>
+</div>
+<div class="section_header">
+<h3 class="section_title">Explore Our Products</h3>
+</div>
+<div class="product" id="productLook">
+<div class="product-1">
+  <div class="product-1-img">
+    <img src="image/items/item-6.png" alt="" />
+  </div>
+  <div class="product-1-title">RGB liquid CPU Cooler</div>
+  <div class="product-1-prize">170.00 <span class="discount">$100.00</span></div>
+  <div class="product-1-cart">
+    <img src="image/items/Frame 573 (1).png" alt="">
+    <button id="product1" class="add-to-cart" data-product-id="1">Add to cart</button>
+  </div>
+  <div class="tag"  id="tagSeen">
+    <img src="image/items/Frame 568.png" alt="">
+  </div>
+</div>
+<div class="product-1">
+  <div class="product-1-img">
+    <img src="image/items/item-7.png" alt="" />
+  </div>
+  <div class="product-1-title">Gucci duffle bag</div>
+  <div class="product-1-prize">$960.00 <span class="discount">$1150.00</span></div>
+  <div class="product-1-cart">
+    <img src="image/items/Frame 573 (2).png" alt="">
+    <button id="product1" class="add-to-cart" data-product-id="1">Add to cart</button>
+  </div>
+  <div class="tag" id="tagSeen">
+    <img src="image/items/Frame 568.png" alt="">
+  </div>
+</div>
+<div class="product-1">
+  <div class="product-1-img">
+    <img src="image/items/item-8.png" alt="" />
+  </div>
+  <div class="product-1-title">Small BookSelf</div>
+  <div class="product-1-prize">$360.00 <span class="discount"></span></div>
+  <div class="product-1-cart">
+    <img src="image/items/Frame 573 (1).png" alt="">
+    <button id="product1" class="add-to-cart" data-product-id="1">Add to cart</button>
+  </div>
+  <div class="tag"  id="tagSeen">
+    <img src="image/items/Frame 568.png" alt="">
+  </div>
+</div>
+<div class="product-1">
+  <div class="product-1-img">
+    <img src="image/items/item-9.png" alt="" />
+  </div>
+  <div class="product-1-title">Breed Dry Dog Food</div>
+  <div class="product-1-prize">$220.00 <span class="discount">$250.00</span></div>
+  <div class="product-1-cart">
+    <img src="image/Frame 566.png" alt="">
+    <button id="product1" class="add-to-cart" data-product-id="1">Add to cart</button>
+  </div>
+  <div class="tag"  id="tagSeen">
+    <img src="image/items/Frame 568.png" alt="">
+  </div>
+</div>
+<div class="product-1">
+  <div class="product-1-img">
+    <img src="image/items/item-10.png" alt="" />
+  </div>
+  <div class="product-1-title">CANON EOS DSLR Camera</div>
+  <div class="product-1-prize">$220.00 <span class="discount">$250.00</span></div>
+  <div class="product-1-cart">
+    <img src="image/items/Frame 573.png" alt="">
+    <button id="product1" class="add-to-cart" data-product-id="1">Add to cart</button>
+  </div>
+  <div class="tag"  id="tagSeen">
+    <img src="image/items/Frame 568.png" alt="">
+  </div>
+</div>
+<div class="product-1">
+  <div class="product-1-img">
+    <img src="image/items/item-11.png" alt="" />
+  </div>
+  <div class="product-1-title">ASUS FHD Gaming Laptop</div>
+  <div class="product-1-prize">$700.00 <span class="discount"></span></div>
+  <div class="product-1-cart">
+      <img src="image/items/Frame 573 (2).png" alt="">
+    <button id="product1" class="add-to-cart" data-product-id="1">Add to cart</button>
+  </div>
+  <div class="tag"  id="tagSeen">
+    <img src="image/items/Frame 568.png" alt="">
+  </div>
+</div>
+
+<div class="product-2">
+  <div class="product-1-img">
+    <img src="image/items/item-12.png" alt="" />
+  </div>
+  <div class="product-1-title">
+    Kids Electric Car</div>
+  <div class="product-1-prize">$350.00 <span class="discount">$150.00</span></div>
+  <div class="product-1-cart">
+    <img src="image/items/Frame 566.png" alt="">
+    <button id="product2" class="add-to-cart" data-product-id="2">Add to cart</button>
+  </div>
+  <div class="tag"  id="tagSeen">
+    <img src="image/items/Frame 568.png" alt="">
+  </div>
+</div>
+<div class="product-3">
+  <div class="product-1-img">
+    <img src="image/items/item-13.png" alt="" />
+  </div>
+  <div class="product-1-title">Jr. Zoom Soccer Cleats</div>
+  <div class="product-1-prize">$1160.00 <span class="discount"></span></div>
+  <div class="product-1-cart">
+    <img src="image/Frame 566.png" alt="">
+    <button id="product3" class="add-to-cart" data-product-id="3">Add to cart</button>
+  </div>
+  <div class="tag"  id="tagSeen">
+    <img src="image/items/Frame 568.png" alt="">
+  </div>
+</div>
+<div class="product-4">
+  <div class="product-1-img">
+    <img src="image/items/item-14.png" alt="" />
+  </div>
+  <div class="product-1-title">GP11 Shooter USB Gamepadr</div>
+  <div class="product-1-prize">$660.00 <span class="discount"></span></div>
+  <div class="product-1-cart">
+    <img src="image/items/Frame 566 (1).png" alt="">
+    <button id="product4" class="add-to-cart" data-product-id="4">Add to cart</button>
+  </div>
+  <div class="tag"  id="tagSeen">
+    <img src="image/items/Frame 568.png" alt="">
+  </div>
+</div>
+<div class="product-5">
+  <div class="product-1-img">
+    <img src="image/items/item-15.png" alt="" />
+  </div>
+  <div class="product-1-title">Quilted Satin Jacket</div>
+  <div class="product-1-prize">$300 <span class="discount">$420.00</span></div>
+  <div class="product-1-cart">
+    <img src="image/items/Frame 566 (1).png" alt="">
+    <button id="product5" class="add-to-cart" data-product-id="5">Add to cart</button>
+  </div>
+  <div class="tag"  id="tagSeen">
+    <img src="image/items/Frame 568.png" alt="">
+  </div>
+</div>
+</div>
+</div>
+
+</div>
+<section class="section">
+<div class="container">
+  <div class="section_category">
+    <p class="section_category_p">Featured</p>
+  </div>
+  <div class="section_header">
+    <h3 class="section_title">New Arrivals</h3>
+  </div>
+  
+  <div class="gallery">
+    <div class="gallery_item gallery_item_1">
+      <img
+        src="./image/gallery/gallery-1.png"
+        alt=""
+        class="gallery_item_img" />
+      <div class="gallery_item_content">
+        <div class="gallery_item_title">Playstation 5</div>
+        <p class="gallery_item_p">
+          Lorem ipsum dolor sit amet consectetur adipisicing.
+        </p>
+        <a href="#" class="gallery_item_link">SHOP NOW</a>
       </div>
-    </section>
-   
-    <section class="section">
-      <div class="container services_container">
-        <div class="service">
-          <img src="./image/icons/service-1.png" alt="" class="service_img" />
-          <h3 class="service_title">FAST AND FREE DELIVERY</h3>
-          <p class="service_p">Lorem ipsum dolor sit amet consectetur.</p>
-        </div>
-        <div class="service">
-          <img src="./image/icons/service-2.png" alt="" class="service_img" />
-          <h3 class="service_title">24/7 SUPPORT</h3>
-          <p class="service_p">Lorem ipsum dolor sit amet consectetur.</p>
-        </div>
-        <div class="service">
-          <img src="./image/icons/service-3.png" alt="" class="service_img" />
-          <h3 class="service_title">MONEY BACK GUARANTY</h3>
-          <p class="service_p">Lorem ipsum dolor sit amet consectetur.</p>
-        </div>
+    </div>
+    <div class="gallery_item gallery_item_2">
+      <img
+        src="./image/gallery/gallery-2.png"
+        alt=""
+        class="gallery_item_img" />
+      <div class="gallery_item_content">
+        <div class="gallery_item_title">Playstation 5</div>
+        <p class="gallery_item_p">
+          Lorem ipsum dolor sit amet consectetur adipisicing.
+        </p>
+        <a href="#" class="gallery_item_link">SHOP NOW</a>
       </div>
-    </section>
-    <!-- <div id="show" class="flex justify-center gap-4 flex-wrap p-4"></div> -->
-   
-    <footer>
-      <div class="footer-inner">
-          <div class="footer-logo">
-              <p>Exclusive</p>
-              <ul>
-                  <li>Subscribe</li>
-                  <li>Get 10% of your first order</li>
-              </ul>
-              <input type="email" placeholder="Enter your Email"   id="email-footer">
-          </div>
-          <div class="footer-support">
-              <p>Support</p>
-              <ul>
-                  <li>111 Bijoy sarani, Dhaka, <br> DH 1515, Bangladesh.</li>
-                  <li>badmusfaruq@gmail.com</li>
-                  <li>+234 9025-479-011</li>
-              </ul>
-          </div>
-          <div class="footer-account">
-              <p>Account</p>
-              <ul><li>My Account</li>
-              <li>Login / Register</li>
-              <li>Cart</li>
-              <li>Wishlist</li>
-             
-          </ul>
-          </div>
-          <div class="quick-link">
-              <p>Quick Link</p>
-              <ul><li>
-                  Privacy Policy
-              </li>
-              <li>
-                  Terms Of Use
-              </li>
-              <li>
-                  FAQ
-              </li>
-              <li>
-                  Contact
-              </li></ul>
-          </div>
+    </div>
+    <div class="gallery_item gallery_item_3">
+      <img
+        src="./image/gallery/gallery-3.png"
+        alt=""
+        class="gallery_item_img" />
+      <div class="gallery_item_content">
+        <div class="gallery_item_title">Playstation 5</div>
+        <p class="gallery_item_p">
+          Lorem ipsum dolor sit amet consectetur adipisicing.
+        </p>
+        <a href="#" class="gallery_item_link">SHOP NOW</a>
+      </div>
+    </div>
+    <div class="gallery_item gallery_item_4">
+      <img
+        src="./image/gallery/gallery-4.png"
+        alt=""
+        class="gallery_item_img" />
+      <div class="gallery_item_content">
+        <div class="gallery_item_title">Playstation 5</div>
+        <p class="gallery_item_p">
+          Lorem ipsum dolor sit amet consectetur adipisicing.
+        </p>
+        <a href="#" class="gallery_item_link">SHOP NOW</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section">
+<div class="container services_container">
+  <div class="service">
+    <img src="./image/icons/service-1.png" alt="" class="service_img" />
+    <h3 class="service_title">FAST AND FREE DELIVERY</h3>
+    <p class="service_p">Lorem ipsum dolor sit amet consectetur.</p>
+  </div>
+  <div class="service">
+    <img src="./image/icons/service-2.png" alt="" class="service_img" />
+    <h3 class="service_title">24/7 SUPPORT</h3>
+    <p class="service_p">Lorem ipsum dolor sit amet consectetur.</p>
+  </div>
+  <div class="service">
+    <img src="./image/icons/service-3.png" alt="" class="service_img" />
+    <h3 class="service_title">MONEY BACK GUARANTY</h3>
+    <p class="service_p">Lorem ipsum dolor sit amet consectetur.</p>
+  </div>
+</div>
+</section>
+<!-- <div id="show" class="flex justify-center gap-4 flex-wrap p-4"></div> -->
+
+<footer>
+<div class="footer-inner">
+    <div class="footer-logo">
+        <p>Exclusive</p>
+        <ul>
+            <li>Subscribe</li>
+            <li>Get 10% of your first order</li>
+        </ul>
+        <input type="email" placeholder="Enter your Email"   id="email-footer">
+    </div>
+    <div class="footer-support">
+        <p>Support</p>
+        <ul>
+            <li>111 Bijoy sarani, Dhaka, <br> DH 1515, Bangladesh.</li>
+            <li>badmusfaruq@gmail.com</li>
+            <li>+234 9025-479-011</li>
+        </ul>
+    </div>
+    <div class="footer-account">
+        <p>Account</p>
+        <ul><li>My Account</li>
+        <li>Login / Register</li>
+        <li>Cart</li>
+        <li>Wishlist</li>
         
-          <div class="download-app">
-              <p>Download App</p>
-              <ul><li>Save $3 with App New User Only</li></ul>
-              <div class="plays">
-                  <div class="qr">
-                      <img src="image/Qr Code.png" alt="">
-                  </div>
-                  <div class="goggle">
-                      <div class="playstore">
-                          <img src="image/GooglePlay.png" alt="">
-                      </div>
-                      <div class="apple">
-                          <img src="image/download-appstore.png" alt="">
-                      </div>
-                  </div>
-          
-              </div>
-              <div class="web">
-                  <div class="facebook">
-                      <img src="image/Icon-Facebook.png" alt="" srcset="">
-                  </div>
-                  <div class="instagram">
-                      <img src="image/Group.png" alt="">
-                  </div>
-                  <div class="linkdeln">
-                      <img src="image/Vector.png" alt="">
-                  </div>
-                  <div class="twitter"></div>
-              </div>
-          </div>
-          
-
-      </div>
-  </footer>
-
+    </ul>
+    </div>
+    <div class="quick-link">
+        <p>Quick Link</p>
+        <ul><li>
+            Privacy Policy
+        </li>
+        <li>
+            Terms Of Use
+        </li>
+        <li>
+            FAQ
+        </li>
+        <li>
+            Contact
+        </li></ul>
+    </div>
+  
+    <div class="download-app">
+        <p>Download App</p>
+        <ul><li>Save $3 with App New User Only</li></ul>
+        <div class="plays">
+            <div class="qr">
+                <img src="image/Qr Code.png" alt="">
+            </div>
+            <div class="goggle">
+                <div class="playstore">
+                    <img src="image/GooglePlay.png" alt="">
+                </div>
+                <div class="apple">
+                    <img src="image/download-appstore.png" alt="">
+                </div>
+            </div>
     
+        </div>
+        <div class="web">
+            <div class="facebook">
+                <img src="image/Icon-Facebook.png" alt="" srcset="">
+            </div>
+            <div class="instagram">
+                <img src="image/Group.png" alt="">
+            </div>
+            <div class="linkdeln">
+                <img src="image/Vector.png" alt="">
+            </div>
+            <div class="twitter"></div>
+        </div>
+    </div>
+  
+<a href="/SIGNUP PAGE/index.html"></a>
+</div>
+</footer>
+
+
 </div>
 
 
 
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script src="./js/app.js"></script>
-    
-  </body>
-  <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script src="./js/app.js"></script>
+
+</body>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { getFirestore, collection, addDoc, query, getDocs, doc, getDoc,where,updateDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL,deleteObject  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDPF--p3fzATWasmeh_Lhq8XIDfX7WII_o",
-  authDomain: "details-9e162.firebaseapp.com",
-  projectId: "details-9e162",
-  storageBucket: "details-9e162.appspot.com",
-  messagingSenderId: "91758916888",
-  appId: "1:91758916888:web:f72964b229d3af1b1ada6d"
+apiKey: "AIzaSyDPF--p3fzATWasmeh_Lhq8XIDfX7WII_o",
+authDomain: "details-9e162.firebaseapp.com",
+projectId: "details-9e162",
+storageBucket: "details-9e162.appspot.com",
+messagingSenderId: "91758916888",
+appId: "1:91758916888:web:f72964b229d3af1b1ada6d"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -749,172 +749,179 @@ const uploadProfilePicBtn = document.getElementById('uploadProfilePicBtn');
 const accountNav = document.getElementById('navSeen');
 const spinner = document.getElementById('spinner'); 
 const logOut= document.querySelector('.logOut'); 
-  const removeProfilePicBtn = document.getElementById('removeProfilePicBtn');
-
+const removeProfilePicBtn = document.getElementById('removeProfilePicBtn');
+const cartText= document.getElementById('cartText');
+const cart2Text= document.getElementById('cart2Text');
+const signText=document.getElementById('signText')
+const sign2Text=document.getElementById('sign2Text')
 
 onAuthStateChanged(auth, async (user) => {
-  if (user) {
-    const docRef = doc(db, 'users', user.uid);
-    const docSnapshot = await getDoc(docRef);
-    const userData = docSnapshot.data();
-    if (userData) {
-      greetingP.textContent = `HELLO, ${userData.name}`;
-      userNameInput.value = userData.name;
-      userEmailInput.value = user.email;
-      if (userData.profilePicture) {
-        profileImg.src = userData.profilePicture;
-      }
-    }
-    loadCartItems(user.uid);
-    showCongratsAnimation();
-  } else {
-    greetingP.textContent = 'HELLO, GUEST';
-    profileImg.src = '/image/istockphoto-1905374785-612x612.jpg';
-  }
+if (user) {
+const docRef = doc(db, 'users', user.uid);
+const docSnapshot = await getDoc(docRef);
+const userData = docSnapshot.data();
+if (userData) {
+greetingP.textContent = `HELLO, ${userData.name}`;
+userNameInput.value = userData.name;
+userEmailInput.value = user.email;
+
+
+if (userData.profilePicture) {
+  profileImg.src = userData.profilePicture;
+}
+}
+loadCartItems(user.uid);
+showCongratsAnimation();
+} else {
+greetingP.textContent = 'HELLO, GUEST';
+profileImg.src = '/image/istockphoto-1905374785-612x612.jpg';
+
+
+}
 });
 navSeen.addEventListener('click', () => {
-  accountModal.style.display = 'block';
+accountModal.style.display = 'block';
 });
 
 closeModalBtn.addEventListener('click', () => {
-  accountModal.style.display = 'none';
+accountModal.style.display = 'none';
 });
 
 closeModalBtn.addEventListener('click', () => {
-  document.querySelector('.modal-content').classList.remove('show');
-  accountModal.classList.remove('show');
-  
+document.querySelector('.modal-content').classList.remove('show');
+accountModal.classList.remove('show');
 
-  setTimeout(() => {
-    accountModal.style.display = 'none';
-  }, 300);
+
+setTimeout(() => {
+accountModal.style.display = 'none';
+}, 300);
 });
 
 
 accountNav.addEventListener('click', () => {
-  accountModal.style.display = 'block';
-  setTimeout(() => {
-    accountModal.classList.add('show');
-    document.querySelector('.modal-content').classList.add('show');
-  }, 10);
+accountModal.style.display = 'block';
+setTimeout(() => {
+accountModal.classList.add('show');
+document.querySelector('.modal-content').classList.add('show');
+}, 10);
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    spinner.className = 'spinner';
-    const showPopup = document.getElementById('showPopuping');
+spinner.className = 'spinner';
+const showPopup = document.getElementById('showPopuping');
 
-    function showSpinner(button) {
-        button.appendChild(spinner);
-        spinner.style.display = 'inline-block';
-    }
+function showSpinner(button) {
+  button.appendChild(spinner);
+  spinner.style.display = 'inline-block';
+}
 
-    function hideSpinner() {
-        spinner.style.display = 'none';
-    }
+function hideSpinner() {
+  spinner.style.display = 'none';
+}
 
-    function disableButton(button, text) {
-        button.textContent = text;
-        button.disabled = true;
-        showSpinner(button);
-    }
+function disableButton(button, text) {
+  button.textContent = text;
+  button.disabled = true;
+  showSpinner(button);
+}
 
-    function enableButton(button, text) {
-        button.textContent = text;
-        button.disabled = false;
-        hideSpinner();
-    }
+function enableButton(button, text) {
+  button.textContent = text;
+  button.disabled = false;
+  hideSpinner();
+}
 
-    function showPopupMessage(message) {
-        showPopup.textContent = message;
-        showPopup.style.display = 'block';
-        setTimeout(() => {
-            showPopup.style.display = 'none';
-        }, 3000);
-    }
+function showPopupMessage(message) {
+  showPopup.textContent = message;
+  showPopup.style.display = 'block';
+  setTimeout(() => {
+      showPopup.style.display = 'none';
+  }, 3000);
+}
 
-    saveProfileBtn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            disableButton(saveProfileBtn, 'Loading...');
-            disableButton(uploadProfilePicBtn, 'Loading...');
-            disableButton(removeProfilePicBtn, 'Loading...');
+saveProfileBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      disableButton(saveProfileBtn, 'Loading...');
+      disableButton(uploadProfilePicBtn, 'Loading...');
+      disableButton(removeProfilePicBtn, 'Loading...');
 
-            const user = auth.currentUser;
-            if (user) {
-                const uid = user.uid;
-                const userRef = doc(db, 'users', uid);
-                await updateDoc(userRef, { name: userNameInput.value });
-                greetingP.textContent = `HELLO, ${userNameInput.value}`;
-                accountModal.style.display = 'none';
-            }
+      const user = auth.currentUser;
+      if (user) {
+          const uid = user.uid;
+          const userRef = doc(db, 'users', uid);
+          await updateDoc(userRef, { name: userNameInput.value });
+          greetingP.textContent = `HELLO, ${userNameInput.value}`;
+          accountModal.style.display = 'none';
+      }
 
-            enableButton(saveProfileBtn, 'Save');
-            enableButton(uploadProfilePicBtn, 'Upload Profile Picture');
-            enableButton(removeProfilePicBtn, 'Remove Profile Picture');
-            showPopupMessage('Profile saved successfully!');
-        });
+      enableButton(saveProfileBtn, 'Save');
+      enableButton(uploadProfilePicBtn, 'Upload Profile Picture');
+      enableButton(removeProfilePicBtn, 'Remove Profile Picture');
+      showPopupMessage('Profile saved successfully!');
+  });
 
-        removeProfilePicBtn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            disableButton(removeProfilePicBtn, 'Loading...');
+  removeProfilePicBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      disableButton(removeProfilePicBtn, 'Loading...');
 
-            const user = auth.currentUser;
-            if (user) {
-                const uid = user.uid;
-                const userRef = doc(db, 'users', uid);
-                const userProfilePicRef = ref(storage, `profilePictures/${uid}`);
+      const user = auth.currentUser;
+      if (user) {
+          const uid = user.uid;
+          const userRef = doc(db, 'users', uid);
+          const userProfilePicRef = ref(storage, `profilePictures/${uid}`);
 
-                try {
-                    await deleteObject(userProfilePicRef);
-                    await updateDoc(userRef, { profilePictureUrl: '' });
-                    showPopupMessage('Profile picture removed successfully!');
-                } catch (error) {
-                    console.error('Error removing profile picture: ', error);
-                    showPopupMessage('Failed to remove profile picture.');
-                }
-            }
+          try {
+              await deleteObject(userProfilePicRef);
+              await updateDoc(userRef, { profilePictureUrl: '' });
+              showPopupMessage('Profile picture removed successfully!');
+          } catch (error) {
+              console.error('Error removing profile picture: ', error);
+              showPopupMessage('Failed to remove profile picture.');
+          }
+      }
 
-            enableButton(removeProfilePicBtn, 'Remove Profile Picture');
-        });
+      enableButton(removeProfilePicBtn, 'Remove Profile Picture');
+  });
 
 
-    uploadProfilePicBtn.addEventListener('click', async () => {
-        const file = profileImageInput.files[0];
-        if (file) {
-            disableButton(uploadProfilePicBtn, 'Loading...');
-            disableButton(saveProfileBtn, 'Loading...');
-           
+uploadProfilePicBtn.addEventListener('click', async () => {
+  const file = profileImageInput.files[0];
+  if (file) {
+      disableButton(uploadProfilePicBtn, 'Loading...');
+      disableButton(saveProfileBtn, 'Loading...');
+      
 
-            try {
-                const user = auth.currentUser;
-                if (user) {
-                    const storageRef = ref(storage, `users/${user.uid}/profile.jpg`);
-                    await uploadBytes(storageRef, file);
-                    const downloadURL = await getDownloadURL(storageRef);
-                    await updateProfilePicture(user.uid, downloadURL);
-                    profileImg.src = downloadURL;
-                    showPopupMessage('Profile picture updated successfully!');
-                } else {
-                    throw new Error('No user signed in');
-                }
-            } catch (error) {
-                console.error('Error uploading profile picture:', error);
-                showPopupMessage('Error uploading profile picture.');
-            } finally {
-                enableButton(uploadProfilePicBtn, 'Upload Profile Picture');
-                enableButton(saveProfileBtn, 'Save');
-            }
-        } else {
-            showPopupMessage('Please select a file.');
-        }
-    });
+      try {
+          const user = auth.currentUser;
+          if (user) {
+              const storageRef = ref(storage, `users/${user.uid}/profile.jpg`);
+              await uploadBytes(storageRef, file);
+              const downloadURL = await getDownloadURL(storageRef);
+              await updateProfilePicture(user.uid, downloadURL);
+              profileImg.src = downloadURL;
+              showPopupMessage('Profile picture updated successfully!');
+          } else {
+              throw new Error('No user signed in');
+          }
+      } catch (error) {
+          console.error('Error uploading profile picture:', error);
+          showPopupMessage('Error uploading profile picture.');
+      } finally {
+          enableButton(uploadProfilePicBtn, 'Upload Profile Picture');
+          enableButton(saveProfileBtn, 'Save');
+      }
+  } else {
+      showPopupMessage('Please select a file.');
+  }
+});
 
-   
+
 });
 
 
 async function updateProfilePicture(uid, imageUrl) {
-  const userRef = doc(db, 'users', uid);
-  await updateDoc(userRef, { profilePicture: imageUrl });
+const userRef = doc(db, 'users', uid);
+await updateDoc(userRef, { profilePicture: imageUrl });
 }
 
 allProduct();
@@ -923,249 +930,330 @@ allProduct();
 const selectedProducts = [];
 
 async function allProduct() {
-  try {
-    const res = await fetch("https://fakestoreapi.com/products");
-    if (res.ok) {
-      const data = await res.json();
-      seen(data);
-    }
-  } catch (error) {
-    console.log(error);
-  }
+try {
+const res = await fetch("https://fakestoreapi.com/products");
+if (res.ok) {
+const data = await res.json();
+seen(data);
+}
+} catch (error) {
+console.log(error);
+}
 }
 
 function seen(data) {
-  const showContainer = document.getElementById('show');
-  const toggleButton = document.getElementById('toggleProductsBtn');
+const showContainer = document.getElementById('show');
+const toggleButton = document.getElementById('toggleProductsBtn');
 
-  data.slice(0, 10).forEach(element => {
-    showContainer.innerHTML += createProductCard(element);
-  });
+data.slice(0, 10).forEach(element => {
+showContainer.innerHTML += createProductCard(element);
+});
 
-  let showingAll = false;
+let showingAll = false;
 
-  toggleButton.addEventListener('click', function () {
-    showContainer.innerHTML = '';
+toggleButton.addEventListener('click', function () {
+showContainer.innerHTML = '';
 
-    if (!showingAll) {
-      data.slice(0, 20).forEach(element => {
-        showContainer.innerHTML += createProductCard(element);
-      });
-      toggleButton.textContent = 'Show Less';
-    } else {
-      data.slice(0, 10).forEach(element => {
-        showContainer.innerHTML += createProductCard(element);
-      });
-      toggleButton.textContent = 'View All Products';
-    }
+if (!showingAll) {
+data.slice(0, 20).forEach(element => {
+  showContainer.innerHTML += createProductCard(element);
+});
+toggleButton.textContent = 'Show Less';
+} else {
+data.slice(0, 10).forEach(element => {
+  showContainer.innerHTML += createProductCard(element);
+});
+toggleButton.textContent = 'View All Products';
+}
 
-    addEventListenersToButtons();
+addEventListenersToButtons();
 
-    showingAll = !showingAll;
-  });
+showingAll = !showingAll;
+});
 
-  addEventListenersToButtons();
+addEventListenersToButtons();
 }
 
 function createProductCard(element) {
-  return `
-    <div class=" w-full shadow-md rounded-lg product-card">
-      <a href="#">
-        <img class="rounded-t-lg" src="${element.image}" alt="product image">
-      </a>
-      <div class="card-content">
-        <div>
-          <a href="#">
-            <h3>${element.title}</h3>
-          </a>
-          <div class="rating mt-2.5 mb-5">
-            <!-- Rating SVGs -->
-          </div>
-        </div>
-        <div class="card-footer">
-          <span class="price text-gray-900">$${element.price}</span>
-          <button class="add-to-cart-btn" data-title="${element.title}" data-price="${element.price}" data-image="${element.image}">Add to cart</button>
-        </div>
-      </div>
+return `
+<div class=" w-full shadow-md rounded-lg product-card">
+<a href="#">
+  <img class="rounded-t-lg" src="${element.image}" alt="product image">
+</a>
+<div class="card-content">
+  <div>
+    <a href="#">
+      <h3>${element.title}</h3>
+    </a>
+    <div class="rating mt-2.5 mb-5">
+      <!-- Rating SVGs -->
     </div>
-  `;
+  </div>
+  <div class="card-footer">
+    <span class="price text-gray-900">$${element.price}</span>
+    <button class="add-to-cart-btn" data-title="${element.title}" data-price="${element.price}" data-image="${element.image}">Add to cart</button>
+  </div>
+</div>
+</div>
+`;
 }
 
 function addEventListenersToButtons() {
-  document.querySelectorAll('button[data-title]').forEach(button => {
-    button.addEventListener('click', function() {
-      const title = this.getAttribute('data-title');
-      const price = this.getAttribute('data-price');
-      const image = this.getAttribute('data-image');
-      addToCart(title, price, image, this);
-    });
-  });
+document.querySelectorAll('button[data-title]').forEach(button => {
+button.addEventListener('click', function() {
+const title = this.getAttribute('data-title');
+const price = this.getAttribute('data-price');
+const image = this.getAttribute('data-image');
+addToCart(title, price, image, this);
+});
+});
 }
 
 function showPopup(message) {
-  const popupContainer = document.getElementById('popupContainer');
-  const popupText = document.getElementById('popupText');
-  popupText.textContent = message;
-  popupContainer.style.display = 'block';
+const popupContainer = document.getElementById('popupContainer');
+const popupText = document.getElementById('popupText');
+popupText.textContent = message;
+popupContainer.style.display = 'block';
 
 
-  const closePopupBtn = document.getElementById('closePopupBtn');
-  closePopupBtn.addEventListener('click', function() {
-    popupContainer.style.display = 'none';
-  });
+const closePopupBtn = document.getElementById('closePopupBtn');
+closePopupBtn.addEventListener('click', function() {
+popupContainer.style.display = 'none';
+});
 
-  setTimeout(function() {
-    popupContainer.style.display = 'none';
-  }, 3000); 
+setTimeout(function() {
+popupContainer.style.display = 'none';
+}, 3000); 
 }
 
 async function addToCart(title, price, image, button) {
-  const user = auth.currentUser;
-  const loader = document.getElementById('loader');
-  if (user) {
-    const uid = user.uid;
-    const productRef = collection(db, "users", uid, "cartItems");
-    const q = query(productRef, where("title", "==", title));
-    const querySnapshot = await getDocs(q);
+const user = auth.currentUser;
+const loader = document.getElementById('loader');
+if (user) {
+const uid = user.uid;
+const productRef = collection(db, "users", uid, "cartItems");
+const q = query(productRef, where("title", "==", title));
+const querySnapshot = await getDocs(q);
 
-    console.log('Query Snapshot:', querySnapshot);
+console.log('Query Snapshot:', querySnapshot);
 
-    loader.style.display = 'block';
-    button.classList.add('disabled');
+loader.style.display = 'block';
+button.classList.add('disabled');
 
-    try {
-      let product;
-      if (!querySnapshot.empty) {
-        const existingProductDoc = querySnapshot.docs[0];
-        product = existingProductDoc.data();
-        product.quantity = (product.quantity || 1) + 1;
-        product.subtotal = parseFloat(product.price) * product.quantity;
+try {
+let product;
+if (!querySnapshot.empty) {
+  const existingProductDoc = querySnapshot.docs[0];
+  product = existingProductDoc.data();
+  product.quantity = (product.quantity || 1) + 1;
+  product.subtotal = parseFloat(product.price) * product.quantity;
 
-        await updateDoc(existingProductDoc.ref, product);
-        console.log('Product quantity updated:', product);
-        showPopup('Product quantity updated successfully!');
-      } else {
-        product = { title, price: parseFloat(price), image, quantity: 1, subtotal: parseFloat(price) };
-        await addDoc(productRef, product);
-        console.log('Product added to cart:', product);
-        showPopup('Product added to cart successfully!');
-      }
-      await updateCartDetails();
-    } catch (error) {
-      console.error("Error updating cart details: ", error);
-    } finally {
-      // Hide loader and enable button
-      loader.style.display = 'none';
-      button.classList.remove('disabled');
-    }
-  } else {
-    window.location.href = "SIGNUP PAGE/index.html";
-  }
+  await updateDoc(existingProductDoc.ref, product);
+  console.log('Product quantity updated:', product);
+  showPopup('Product quantity updated successfully!');
+} else {
+  product = { title, price: parseFloat(price), image, quantity: 1, subtotal: parseFloat(price) };
+  await addDoc(productRef, product);
+  console.log('Product added to cart:', product);
+  showPopup('Product added to cart successfully!');
+}
+await updateCartDetails();
+} catch (error) {
+console.error("Error updating cart details: ", error);
+} finally {
+// Hide loader and enable button
+loader.style.display = 'none';
+button.classList.remove('disabled');
+}
+} else {
+window.location.href = "SIGNUP PAGE/index.html";
+}
 }
 
-async function updateCartDetails() {
-  const user = auth.currentUser;
-  if (user) {
-    const uid = user.uid;
-    const q = query(collection(db, "users", uid, "cartItems"));
-    const querySnapshot = await getDocs(q);
-    const cartItemCount = querySnapshot.size;
-    document.getElementById('cartItemCount').textContent = cartItemCount.toString();
-  } else {
-    console.error("No user is signed in");
-    console.error("Element with ID 'cartItemCount' not found");
-  }
+async function fetchCartCount(uid) {
+try {
+  const cartItemsCollectionRef = collection(db, "users", uid, "cartItems");
+  const querySnapshot = await getDocs(cartItemsCollectionRef);
+  const cartItemCount = querySnapshot.size;
+  document.getElementById('cartItemCount').textContent = cartItemCount.toString();
+} catch (error) {
+  console.error("Error fetching cart count: ", error);
 }
+}
+
+function updateCartDetails() {
+const user = auth.currentUser;
+if (user) {
+  const uid = user.uid;
+  const cartItemsCollectionRef = collection(db, "users", uid, "cartItems");
+  const q = query(cartItemsCollectionRef);
+  fetchCartCount(uid);
+
+
+  onSnapshot(q, (querySnapshot) => {
+      const cartItemCount = querySnapshot.size;
+      document.getElementById('cartItemCount').textContent = cartItemCount.toString();
+  });
+} else {
+  console.error("No user is signed in");
+}
+}
+
+onAuthStateChanged(auth, (user) => {
+if (user) {
+  updateCartDetails();
+} else {
+  console.error("No user is signed in");
+  document.getElementById('cartItemCount').textContent = '0';
+}
+})
 
 allProduct();
 
 document.querySelectorAll('.add-to-cart').forEach(button => {
-  button.addEventListener('click', function() {
-    const productId = this.getAttribute('data-product-id');
-    const productTitle = this.parentElement.previousElementSibling.textContent;
-    const productPrice = this.parentElement.previousElementSibling.previousElementSibling.textContent;
-    const productImage = this.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.src;
-    const product = { id: productId, title: productPrice, price: productTitle, image: productImage };
+button.addEventListener('click', function() {
+const productId = this.getAttribute('data-product-id');
+const productTitle = this.parentElement.previousElementSibling.textContent;
+const productPrice = this.parentElement.previousElementSibling.previousElementSibling.textContent;
+const productImage = this.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.src;
+const product = { id: productId, title: productPrice, price: productTitle, image: productImage };
 
-    saveProductToFirestore(product, this);
-  });
+saveProductToFirestore(product, this);
+});
 });
 
 async function saveProductToFirestore(product, button) {
-  const loader = document.getElementById('loader');
-  try {
-    const user = auth.currentUser;
-    if (!user) {
-      window.location.href = "SIGNUP PAGE/index.html";
-      return;
-    }
-    const uid = user.uid;
-    const productRef = collection(db, "users", uid, "cartItems");
-    const q = query(productRef, where("id", "==", product.id));
-    const querySnapshot = await getDocs(q);
+const loader = document.getElementById('loader');
+try {
+const user = auth.currentUser;
+if (!user) {
+window.location.href = "SIGNUP PAGE/index.html";
+return;
+}
+const uid = user.uid;
+const productRef = collection(db, "users", uid, "cartItems");
+const q = query(productRef, where("id", "==", product.id));
+const querySnapshot = await getDocs(q);
 
-    loader.style.display = 'block';
-    button.classList.add('disabled');
+loader.style.display = 'block';
+button.classList.add('disabled');
 
-    if (!querySnapshot.empty) {
-      // Product exists, update its quantity and subtotal
-      const existingProductDoc = querySnapshot.docs[0];
-      const existingProduct = existingProductDoc.data();
-      existingProduct.quantity = (existingProduct.quantity || 1) + 1;
-      existingProduct.subtotal = parseFloat(existingProduct.price) * existingProduct.quantity;
+if (!querySnapshot.empty) {
+// Product exists, update its quantity and subtotal
+const existingProductDoc = querySnapshot.docs[0];
+const existingProduct = existingProductDoc.data();
+existingProduct.quantity = (existingProduct.quantity || 1) + 1;
+existingProduct.subtotal = parseFloat(existingProduct.price) * existingProduct.quantity;
 
-      await updateDoc(existingProductDoc.ref, existingProduct);
-      showPopup('Product quantity updated successfully!');
-    } else {
-  
-      product.quantity = 1;
-      product.subtotal = parseFloat(product.price);
-      await addDoc(productRef, product);
-      showPopup('Product added to cart successfully!');
-    }
+await updateDoc(existingProductDoc.ref, existingProduct);
+showPopup('Product quantity updated successfully!');
+} else {
 
-    updateCartUI();
-  } catch (error) {
-    console.error("Error adding product to Firestore: ", error);
-  } finally {
-    loader.style.display = 'none';
-    button.classList.remove('disabled');
-  }
+product.quantity = 1;
+product.subtotal = parseFloat(product.price);
+await addDoc(productRef, product);
+showPopup('Product added to cart successfully!');
+}
+
+updateCartUI();
+} catch (error) {
+console.error("Error adding product to Firestore: ", error);
+} finally {
+loader.style.display = 'none';
+button.classList.remove('disabled');
+}
 }
 
 function updateCartUI() {
-  const cartItemCountElement = document.getElementById('cartItemCount');
-  if (cartItemCountElement) {
-    const user = auth.currentUser;
-    if (user) {
-      const uid = user.uid;
-      const q = query(collection(db, "users", uid, "cartItems"));
-      getDocs(q)
-        .then((querySnapshot) => {
-          const cartItemCount = querySnapshot.size;
-          cartItemCountElement.textContent = cartItemCount.toString();
-        })
-        .catch((error) => {
-          console.error("Error getting cart items: ", error);
-        });
-    } else {
-      console.error("No user is signed in");
-    }
-  } else {
-    console.error("Element with ID 'cartItemCount' not found");
-  }
+const cartItemCountElement = document.getElementById('cartItemCount');
+if (cartItemCountElement) {
+const user = auth.currentUser;
+if (user) {
+const uid = user.uid;
+const q = query(collection(db, "users", uid, "cartItems"));
+getDocs(q)
+  .then((querySnapshot) => {
+    const cartItemCount = querySnapshot.size;
+    cartItemCountElement.textContent = cartItemCount.toString();
+  })
+  .catch((error) => {
+    console.error("Error getting cart items: ", error);
+  });
+} else {
+console.error("No user is signed in");
+}
+} else {
+console.error("Element with ID 'cartItemCount' not found");
+}
 }
 
 logOut.addEventListener('click', async () => {
-            try {
-              showPopup('Logout successfully!')
-                await signOut(auth);
-                
-            } catch (error) {
-                console.log(error);
-            }
-        })
+      try {
+        showPopup('Logout successfully!')
+          await signOut(auth);
+          
+      } catch (error) {
+          console.log(error);
+      }
+  })
+  onAuthStateChanged(auth, (user) => {
+const cartTextElement = document.getElementById('cartText');
+const seenCart = document.getElementById('seenCart');
 
+if (user) {
+          signText.textContent='Cart'
+          sign2Text.textContent='Cart'
+          seenCart.style.display='none'
+          sign()
+  updateCartDetails();
+  // cartTextElement.textContent = 'Cart';
+  cartTextElement.style.cursor = 'pointer';
+  cartTextElement.addEventListener('click', () => {
+  });
+} else {
+sign()
+cartTextElement.textContent = 'Sign Up / Log In';
+  sign2Text.textContent='Sign Up'
+  signText.style.cursor = 'pointer';
+  document.getElementById('cartItemCount').textContent = '0';
+  sign()
+     seenCart.style.display='block'
+       
+}
+});
+
+function sign(){
+if (sign2Text.textContent==='Cart' && sign2Text.textContent!=='Sign Up / Log In' ) {
+          sign2Text.addEventListener('click',function(){
+            window.location.href = "/cart/index.html";
+          })
+        
+        
+          
+          }
+          if (signText.textContent==='Cart' && signText.textContent!=='Sign Up' ) {
+            signText.addEventListener('click',function(){
+            window.location.href = "/cart/index.html";
+          })
+        
+          
+          }
+
+          if (sign2Text.textContent==='Sign Up / Log In' && sign2Text.textContent!=='Cart' ) {
+          sign2Text.addEventListener('click',function(){
+            window.location.href = "/SIGNUP PAGE/index.html";
+          })
+        
+        }
+        if (signText.textContent==='Sign Up' && signText.textContent!=='Cart' ) {
+            signText.addEventListener('click',function(){
+              window.location.href = "/SIGNUP PAGE/index.html";
+          })
+        
+          
+          }
+
+}
 
 </script>
 </html>
