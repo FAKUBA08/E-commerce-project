@@ -114,7 +114,7 @@ href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <img src="image/icon-mallbag.png" alt="">
   </div>
   <div class="order-text"  id="navText">
-    <p>My Order</p>
+    <p><a href="/Account/index.html">My Order</a></p>
   </div>
 </div>
 <div class="review" id="navSeen">
@@ -1206,7 +1206,8 @@ if (user) {
           seenCart.style.display='none'
           sign()
   updateCartDetails();
-
+  sign2Text.style.cursor = 'pointer';
+  signText.style.cursor = 'pointer';
   cartTextElement.style.cursor = 'pointer';
   cartTextElement.addEventListener('click', () => {
   });
@@ -1215,6 +1216,8 @@ sign()
 cartTextElement.textContent = 'Sign Up / Log In';
   sign2Text.textContent='Sign Up'
   signText.style.cursor = 'pointer';
+  sign2Text.style.cursor = 'pointer';
+  // signText.style.cursor = 'pointer';
   document.getElementById('cartItemCount').textContent = '0';
   sign()
      seenCart.style.display='block'

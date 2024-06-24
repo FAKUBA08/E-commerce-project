@@ -116,6 +116,12 @@ position: relative;
 #cartText[hidden]{
   display: none;
 }
+#signText{
+  cursor: pointer;
+}
+#sign2Text{
+  cursor: pointer;
+}
 .nav_item {
 margin: 0rem 0.5rem;
 }

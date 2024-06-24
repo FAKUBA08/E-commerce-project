@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device=width, initial-scale=1.0" />
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+<link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/cart/index.css">
+<link rel="stylesheet" href="index.css">
+<title>Home - Exclusive E-Commerce Website</title>
+</head>
+<body>
+<div class="top_nav">
+  <div class="container top_nav_container">
+    <div class="top_nav_wrapper">
+      <p class="tap_nav_p">
+        Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
+      </p>
+      <a href="#" class="top_nav_link">SHOP NOW</a>
+    </div>
+  </div>
+</div>
+<nav class="nav">
+  <div class="container nav_container">
+    <a href="#" class="nav_logo">EXCLUSIVE</a>
+    <ul class="nav_list">
+      <li class="nav_item"><a href="/" class="nav_link">Home</a></li>
+      <li class="nav_item"><a href="#" class="nav_link">About</a></li>
+      <li class="nav_item"><a href="#" class="nav_link">Contact</a></li>
+      <li class="nav_item">
+        <a id="signText" class="nav_link">Sign Up</a>
+      </li>
+      <li class="nav_item" >
+        <button id="notificationButton">
+            <a    class="nav_notification" id="notificationIcon">My order</a>
+          </button>
+      </li>
+    </ul>
+    <div class="nav_items">
+      <form action="#" class="nav_form">
+        <input
+          type="text"
+          class="nav_input"
+          placeholder="search here...." />
+        <img src="../image/search.png" alt="" class="nav_search" />
+      </form>
+      <img src="../image/heart.png" alt="" class="nav_heart" />
+      <a href="cart/index.html">
+        <img src="../image/cart.png" alt="" class="nav_cart" />
+        <span id="cartItemCount" class="cart_item_count">0</span>
+      </a>
+  
+    </div>
+    <p class="greetingP">HELLO,GUEST</p>
+    <img id="profileImg" src="/image/istockphoto-1905374785-612x612.jpg" alt="Profile Picture" class="profile-image">
+    <span class="hamburger">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+    </span>
+  </div>
+</nav>
+<nav class="mobile_nav mobile_nav_hide">
+  <ul class="mobile_nav_list">
+    <li class="mobile_nav_item">
+      <a href="/" class="mobile_nav_link">Home</a>
+    </li>
+    <li class="mobile_nav_item">
+      <a href="#" class="mobile_nav_link">About</a>
+    </li>
+    <li class="mobile_nav_item">
+      <a href="#" class="mobile_nav_link">Contact</a>
+    </li>
+    <li class="mobile_nav_item">
+        <button id="notificationButton">
+            <a    class="nav_notification seen" id="notificationIcon">My order</a>
+          </button>
+      </li>
+    <li class="mobile_nav_item">
+      <a class="mobile_nav_link"  id="sign2Text">Sign Up / Log In</a>
+    </li>
+    <p class="greetingP"></p>
+  </ul>
+</nav>
+
+<!-- Full Image View -->
+<div id="fullImageView" class="full-image-view">
+  <span class="close-btn">&times;</span>
+  <img class="full-image-content" id="fullImage">
+</div>
+<div id="popupContainer" class="popup">
+    <div class="popup-content">
+      <span id="closePopupBtn" class="close">&times;</span>
+      <p id="popupText" class="popup-message"></p>
+    </div>
+  </div>
+  
+
+<div id="spinner" class="spinner" style="display: none;"></div>
+
+<div class="return">
+  <p class="home"><a href="/index.html">Home </a><span class="cart"><a href="/cart/index.html">/ Cart</a></span></p>
+</div>
+
+<div class="list"></div>
+
+<div class="card">
+  <div>
+    <form id="userDetailsForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="companyName">Company Name</label>
+        <input type="text" id="companyName" name="companyName">
+      </div>
+      <div class="form-group">
+        <label for="apartmentFloor">Apartment Floor (optional)</label>
+        <input type="text" id="apartmentFloor" name="apartmentFloor">
+      </div>
+      <div class="form-group">
+        <label for="townCity">Town/City</label>
+        <input type="text" id="townCity" name="townCity" required>
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input type="number" id="phoneNumber" name="phoneNumber" required>
+      </div>
+      <div class="form-group">
+        <label for="emailAddress">Email Address</label>
+        <input type="email" id="emailAddress" name="emailAddress" required>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <div id="cartDetails" class="p-4"></div>
+</div>
+ 
+
+<!-- Side Navigation for Order Details -->
+<div id="orderDetailsNav" class="side-nav">
+  <a href="javascript:void(0)" class="closebtn" id="closeNav">&times;</a>
+  <h2 class="order-head">Order Details</h2>
+  <div id="orderDetailsContent"></div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <p>Exclusive</p>
+      <ul>
+        <li>Subscribe</li>
+        <li>Get 10% off your first order</li>
+      </ul>
+      <input type="email" placeholder="Enter your Email" id="email-footer">
+    </div>
+    <div class="footer-support">
+      <p>Support</p>
+      <ul>
+        <li>111 Bijoy sarani, Dhaka, <br> DH 1515, Bangladesh.</li>
+        <li>badmusfaruq@gmail.com</li>
+        <li>+234 9025-479-011</li>
+      </ul>
+    </div>
+    <div class="footer-account">
+      <p>Account</p>
+      <ul>
+        <li>My Account</li>
+        <li>Login / Register</li>
+        <li>Cart</li>
+        <li>Wishlist</li>
+      </ul>
+    </div>
+    <div class="quick-link">
+      <p>Quick Link</p>
+      <ul>
+        <li>Privacy Policy</li>
+        <li>Terms Of Use</li>
+        <li>FAQ</li>
+        <li>Contact</li>
+      </ul>
+    </div>
+    <div class="download-app">
+      <p>Download App</p>
+      <ul>
+        <li>Save $3 with App New User Only</li>
+      </ul>
+      <div class="plays">
+        <div class="qr">
+          <img src="../image/Qr Code.png" alt="">
+        </div>
+        <div class="google">
+          <div class="playstore">
+            <img src="../image/GooglePlay.png" alt="">
+          </div>
+          <div class="apple">
+            <img src="../image/GooglePlay.png" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="web">
+        <div class="facebook">
+          <img src="../image/Icon awesome-facebook-f.png" alt="">
+        </div>
+        <div class="linkedin">
+          <img src="../image/Icon awesome-linkedin.png" alt="">
+        </div>
+        <div class="twitter">
+          <img src="../image/Icon awesome-twitter.png" alt="">
+        </div>
+        <div class="instagram">
+          <img src="../image/Icon awesome-instagram.png" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<div class="proceed">
+    <div class="subTotal">
+      <p>Subtotal: <span id="subtotalAmount">$0.00</span></p>
+    </div>
+    <div class="underlineProceed"></div>
+    <div class="shipping">
+      <label for="shippingSelect">Shipping:</label>
+      <select id="shippingSelect">
+        <option value="Free">Free</option>
+        <option value="Coupon">Coupon</option>
+      </select>
+    </div>
+    <div class="underlineProceed"></div>
+    <div class="coupon">
+      <label for="couponInput">Coupon:</label>
+      <input type="text" id="couponInput" placeholder="Enter coupon code">
+    </div>
+    <div class="underlineProceed"></div>
+    <div class="total">
+      <p>Total: <span id="totalAmount">$0.00</span></p>
+    </div>
+    <div class="processCheck">
+      <button id="placeOrderBtn">Place Order</button>
+    </div>
+  </div>
+
+  
+<script src="/js/main.js"></script>
+<script src="/main.js"></script>
+</body>
+</html>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script src="./js/app.js"></script>
+<script src="cart.js"></script>
+<script src="index.js"></script>
+<!-- Firebase SDKs -->
+<script type="module">
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, collection, addDoc, query, getDocs, doc, getDoc,deleteDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDPF--p3fzATWasmeh_Lhq8XIDfX7WII_o",
+  authDomain: "details-9e162.firebaseapp.com",
+  projectId: "details-9e162",
+  storageBucket: "details-9e162.appspot.com",
+  messagingSenderId: "91758916888",
+  appId: "1:91758916888:web:f72964b229d3af1b1ada6d"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
+const db = getFirestore(app);
+const greetingP = document.querySelector('.greetingP');
+const profileImg = document.getElementById('profileImg');
+
+onAuthStateChanged(auth, async (user) => {
+if (user) {
+const docRef = doc(db, 'users', user.uid);
+const docSnapshot = await getDoc(docRef);
+const userData = docSnapshot.data();
+if (userData) {
+greetingP.textContent = `HELLO, ${userData.name}`;
+displayProfilePicture(user.uid);  // Update the profile picture
+}
+
+loadCartItems(user.uid);
+showCongratsAnimation();
+} else {
+greetingP.textContent = 'HELLO, GUEST';
+}
+});
+
+async function displayProfilePicture(uid) {
+try {
+const userRef = doc(db, 'users', uid);
+const docSnapshot = await getDoc(userRef);
+if (docSnapshot.exists()) {
+const userData = docSnapshot.data();
+const profileImgSrc = userData.profilePicture ? userData.profilePicture : "/image/istockphoto-1905374785-612x612.jpg" ;
+profileImg.src = profileImgSrc;
+const cartProfileImg = document.getElementById('cartProfileImg');
+if (cartProfileImg) {
+  cartProfileImg.src = profileImgSrc;
+}
+} else {
+profileImg.src = "/image/istockphoto-1905374785-612x612.jpg" ;
+const cartProfileImg = document.getElementById('cartProfileImg');
+if (cartProfileImg) {
+  cartProfileImg.src = "/image/istockphoto-1905374785-612x612.jpg" ;
+}
+}
+} catch (error) {
+console.error('Error fetching user data:', error);
+}
+}
+function showPopup(message) {
+  const popupContainer = document.getElementById('popupContainer');
+  const popupText = document.getElementById('popupText');
+  popupText.textContent = message;
+  popupContainer.style.display = 'block';
+
+  const closePopupBtn = document.getElementById('closePopupBtn');
+  closePopupBtn.addEventListener('click', function() {
+    popupContainer.style.display = 'none';
+  });
+
+  setTimeout(function() {
+    popupContainer.style.display = 'none';
+  }, 3000); 
+}
+
+
+async function addToCart(productId, title, price, image) {
+const user = auth.currentUser;
+if (user) {
+  const uid = user.uid;
+  const productRef = collection(db, "users", uid, "cartItems");
+  const q = query(productRef, where("id", "==", productId));
+  const querySnapshot = await getDocs(q);
+
+  if (!querySnapshot.empty) {
+      const existingProductDoc = querySnapshot.docs[0];
+      const existingProduct = existingProductDoc.data();
+      existingProduct.quantity = (existingProduct.quantity || 1) + 1;
+      existingProduct.subtotal = parseFloat(existingProduct.price) * existingProduct.quantity;
+
+      await updateDoc(existingProductDoc.ref, existingProduct);
+      showPopup('Product quantity updated successfully!');
+  } else {
+      const product = { id: productId, title, price: parseFloat(price), image, quantity: 1, subtotal: parseFloat(price) };
+      await addDoc(productRef, product);
+      showPopup('Product added to cart successfully!');
+  }
+
+  updateCartDetails();
+} else {
+  window.location.href = "./SIGNUP PAGE/index.html";
+}
+}
+auth.onAuthStateChanged(user => {
+  if (user) {
+    addDefaultStatusToOrders(user.uid);
+  }
+});
+async function loadCartItems(uid) {
+const cartDetailsElement = document.getElementById('cartDetails');
+let cartHTML = '';
+let cartSubtotal = 0;
+
+const q = query(collection(db, "users", uid, "cartItems"));
+const querySnapshot = await getDocs(q);
+
+if (querySnapshot.empty) {
+  cartHTML += '<p>No items in cart</p>';
+} else {
+  querySnapshot.forEach((doc) => {
+      const product = doc.data();
+      let price = product.price;
+      if (typeof price === 'string' && price.trim().startsWith('$')) {
+          price = parseFloat(price.replace('$', '')).toFixed(2); 
+      } else {
+          price = parseFloat(price).toFixed(2); 
+      }
+
+      const quantity = product.quantity || 1;
+      const subtotal = (price * quantity).toFixed(2);
+      cartSubtotal += parseFloat(subtotal);
+
+      if (!isNaN(price)) {
+          cartHTML += `
+              <div class="list_item" data-id="${doc.id}">
+                  <div class="pro">
+                      <img src="${product.image}" alt="${product.title}" class="w-16 h-16">
+                      <span>${product.title}</span>
+                  </div>
+                  
+                  <div class="subtotal">$${subtotal}</div>
+               
+              </div>
+          `;
+      } else {
+          console.error('Invalid price for product:', product);
+      }
+  });
+}
+
+cartDetailsElement.innerHTML = cartHTML;
+
+
+updateCartTotals(cartSubtotal);
+document.querySelectorAll('.delete-item').forEach(button => {
+  button.addEventListener('click', function() {
+      const productId = this.parentElement.getAttribute('data-id');
+      deleteCartItem(uid, productId);
+  });
+});
+
+}
+
+async function saveOrderDetails(uid, cartItems, subtotal) {
+  try {
+    const ordersRef = collection(db, "users", uid, "orders");
+    const newOrder = {
+      items: cartItems,
+      subtotal: subtotal,
+      date: new Date().toISOString()
+    };
+    await addDoc(ordersRef, newOrder);
+    showPopup('Order placed successfully!');
+  } catch (error) {
+    console.error("Error saving order details: ", error);
+  }
+}
+
+async function fetchOrderDetails(uid) {
+  try {
+    const ordersRef = collection(db, "users", uid, "orders");
+    const ordersSnapshot = await getDocs(ordersRef);
+    const orders = ordersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    displayOrderDetails(orders);
+  } catch (error) {
+    console.error("Error fetching order details: ", error);
+  }
+}
+
+function displayOrderDetails(orders) {
+  const orderDetailsContent = document.getElementById('orderDetailsContent');
+  orderDetailsContent.innerHTML = '';
+
+  if (orders.length === 0) {
+    orderDetailsContent.innerHTML = '<p>No orders found.</p>';
+    return;
+  }
+
+  orders.forEach(order => {
+    const orderDiv = document.createElement('div');
+    orderDiv.classList.add('order-detail');
+
+    const orderInfo = `
+      <div class="order-header">
+        <p><strong>Order ID:</strong> ${order.id}</p>
+        <p><strong>Date:</strong> ${new Date(order.date).toLocaleDateString()}</p>
+        <p><strong>Subtotal:</strong> $${order.subtotal.toFixed(2)}</p>
+        <p><strong>Status:</strong> ${order.status ? order.status : 'Successful'}</p>
+      </div>
+
+      <div class="order-items">
+        <p><strong>Items:</strong></p>
+        <ul>
+          ${order.items.map(item => `
+            <li class="order-item">
+              <img src="${item.image}" alt="${item.title}" class="order-item-image">
+              <div class="order-item-details">
+                <p class="item-title">${item.title}</p>
+                <p class="item-price">$${item.price} x ${item.quantity}</p>
+              </div>
+            </li>
+          `).join('')}
+        </ul>
+      </div>
+    `;
+
+    orderDiv.innerHTML = orderInfo;
+    orderDetailsContent.appendChild(orderDiv);
+  });
+}
+
+// Ensure to call fetchOrderDetails with the correct user ID when needed
+onAuthStateChanged(auth, user => {
+  if (user) {
+    addDefaultStatusToOrders(user.uid);
+    fetchOrderDetails(user.uid);
+  }
+});
+
+async function addDefaultStatusToOrders(uid) {
+  try {
+    const ordersRef = collection(db, "users", uid, "orders");
+    const ordersSnapshot = await getDocs(ordersRef);
+
+    for (const docSnap of ordersSnapshot.docs) {
+      const orderData = docSnap.data();
+      if (!orderData.status) {
+        await updateDoc(doc(db, "users", uid, "orders", docSnap.id), { status: 'Pending' });
+        console.log(`Updated order ID ${docSnap.id} with default status.`);
+      } else {
+        console.log(`Order ID ${docSnap.id} already has status: ${orderData.status}`);
+      }
+    }
+  } catch (error) {
+    console.error("Error updating orders with default status: ", error);
+  }
+}
+
+// Call this function with the appropriate user ID
+onAuthStateChanged(auth, user => {
+  if (user) {
+    addDefaultStatusToOrders(user.uid);
+  }
+});
+
+
+
+
+
+
+document.getElementById('placeOrderBtn').addEventListener('click', async () => {
+  const user = auth.currentUser;
+  let name=document.getElementById('name').value
+  let townCity=document.getElementById('townCity').value
+  let phoneNumber=document.getElementById('phoneNumber').value
+  let emailAddress=document.getElementById('emailAddress').value
+  if (name.length===0 ) {
+    showPopup('Please provide your details above');
+    return;
+  }
+  if ( emailAddress.length===0 ) {
+    showPopup('Please provide your details above');
+    return;
+  }
+  if (townCity==='') {
+    showPopup('Please provide your details above');
+    return;
+  }
+  if (phoneNumber==='') {
+    showPopup('Please provide your details above');
+    return;
+  }
+  if (user) {
+    const uid = user.uid;
+    const docRef = doc(db, 'users', uid);
+    const docSnapshot = await getDoc(docRef);
+    const userData = docSnapshot.data();
+
+    const cartItems = await getCartItems(uid);
+    const subtotal = parseFloat(document.getElementById('subtotalAmount').textContent.replace('$', ''));
+    await saveOrderDetails(uid, cartItems, subtotal);
+
+    await clearCart(uid);
+    updateCartDetails();
+  } else {
+    window.location.href = "/SIGNUP PAGE/index.html";
+  }
+});
+
+
+// Function to fetch cart items
+async function getCartItems(uid) {
+  const cartItemsCollectionRef = collection(db, "users", uid, "cartItems");
+  const querySnapshot = await getDocs(cartItemsCollectionRef);
+  return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+}
+
+// Function to clear cart items
+async function clearCart(uid) {
+  const cartItemsCollectionRef = collection(db, "users", uid, "cartItems");
+  const querySnapshot = await getDocs(cartItemsCollectionRef);
+  querySnapshot.forEach(async doc => {
+    await deleteDoc(doc.ref);
+  });
+}
+
+
+// Add click event listener to all elements matching #notificationIcon
+document.querySelectorAll('#notificationIcon').forEach(button => {
+  button.addEventListener('click', () => {
+    const user = auth.currentUser;
+    if (user) {
+      fetchOrderDetails(user.uid);
+      document.getElementById('orderDetailsNav').style.width = '300px';
+    }
+  });
+});
+
+// Add click event listener to the close button for orderDetailsNav
+document.getElementById('closeNav').addEventListener('click', () => {
+  document.getElementById('orderDetailsNav').style.width = '0';
+});
+
+
+function updateCartTotals(subtotal) {
+const shippingSelect = document.getElementById('shippingSelect');
+const couponInput = document.getElementById('couponInput');
+const totalElement = document.getElementById('totalAmount');
+
+let shippingCost = 0;
+let discount = 0;
+
+shippingSelect.addEventListener('change', () => {
+  if (shippingSelect.value === 'Free') {
+      shippingCost = 0;
+  } else if (shippingSelect.value === 'Coupon') {
+      shippingCost = 5; // Example coupon discount
+  }
+  updateTotal();
+});
+
+couponInput.addEventListener('input', () => {
+  const couponCode = couponInput.value.trim();
+  if (couponCode === 'DISCOUNT10') {
+      discount = subtotal * 0.1; // Example 10% discount
+  } else {
+      discount = 0;
+  }
+  updateTotal();
+});
+
+function updateTotal() {
+  const total = subtotal + shippingCost - discount;
+  totalElement.textContent = `$${total.toFixed(2)}`;
+}
+
+document.getElementById('subtotalAmount').textContent = `$${subtotal.toFixed(2)}`;
+updateTotal();
+}
+
+
+
+
+async function fetchCartCount(uid) {
+try {
+  const cartItemsCollectionRef = collection(db, "users", uid, "cartItems");
+  const querySnapshot = await getDocs(cartItemsCollectionRef);
+  const cartItemCount = querySnapshot.size;
+  document.getElementById('cartItemCount').textContent = cartItemCount.toString();
+} catch (error) {
+  console.error("Error fetching cart count: ", error);
+}
+}
+
+
+function updateCartDetails() {
+const user = auth.currentUser;
+if (user) {
+  const uid = user.uid;
+  const cartItemsCollectionRef = collection(db, "users", uid, "cartItems");
+  const q = query(cartItemsCollectionRef);
+  fetchCartCount(uid);
+
+
+  onSnapshot(q, (querySnapshot) => {
+      const cartItemCount = querySnapshot.size;
+      document.getElementById('cartItemCount').textContent = cartItemCount.toString();
+  });
+} else {
+  console.error("No user is signed in");
+}
+}
+
+onAuthStateChanged(auth, (user) => {
+if (user) {
+  updateCartDetails();
+} else {
+  console.error("No user is signed in");
+  document.getElementById('cartItemCount').textContent = '0';
+}
+})
+onAuthStateChanged(auth, (user) => {
+const cartTextElement = document.getElementById('cartText');
+if (user) {
+          signText.textContent='Cart'
+          sign2Text.textContent='Cart'
+          sign()
+  updateCartDetails();
+
+  cartTextElement.style.cursor = 'pointer';
+  cartTextElement.addEventListener('click', () => {
+  });
+} else {
+sign()
+cartTextElement.textContent = 'Sign Up';
+  sign2Text.textContent='Sign Up / Log In'
+  signText.style.cursor = 'pointer';
+  document.getElementById('cartItemCount').textContent = '0';
+  sign()
+}
+});
+
+function sign(){
+if (sign2Text.textContent==='Cart' && sign2Text.textContent!=='Sign Up / Log In' ) {
+          sign2Text.addEventListener('click',function(){
+            window.location.href = "/cart/index.html";
+          })
+        
+        
+          
+          }
+          if (signText.textContent==='Cart' && signText.textContent!=='Sign Up' ) {
+            signText.addEventListener('click',function(){
+            window.location.href = "/cart/index.html";
+          })
+        
+          
+          }
+
+          if (sign2Text.textContent==='Sign Up / Log In' && sign2Text.textContent!=='Cart' ) {
+          sign2Text.addEventListener('click',function(){
+            window.location.href = "/SIGNUP PAGE/index.html";
+          })
+        
+        }
+        if (signText.textContent==='Sign Up' && signText.textContent!=='Cart' ) {
+            signText.addEventListener('click',function(){
+              window.location.href = "/SIGNUP PAGE/index.html";
+          })
+        
+          
+          }
+
+}
+
+</script>
+<script src="/js/app.js"></script>
