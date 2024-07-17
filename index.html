@@ -1061,7 +1061,6 @@ await updateCartDetails();
 } catch (error) {
 console.error("Error updating cart details: ", error);
 } finally {
-// Hide loader and enable button
 loader.style.display = 'none';
 button.classList.remove('disabled');
 }
@@ -1139,7 +1138,6 @@ loader.style.display = 'block';
 button.classList.add('disabled');
 
 if (!querySnapshot.empty) {
-// Product exists, update its quantity and subtotal
 const existingProductDoc = querySnapshot.docs[0];
 const existingProduct = existingProductDoc.data();
 existingProduct.quantity = (existingProduct.quantity || 1) + 1;
@@ -1210,14 +1208,14 @@ if (user) {
   signText.style.cursor = 'pointer';
   cartTextElement.style.cursor = 'pointer';
   cartTextElement.addEventListener('click', () => {
-  });
+  }); 
 } else {
 sign()
 cartTextElement.textContent = 'Sign Up / Log In';
   sign2Text.textContent='Sign Up'
   signText.style.cursor = 'pointer';
   sign2Text.style.cursor = 'pointer';
-  // signText.style.cursor = 'pointer';
+
   document.getElementById('cartItemCount').textContent = '0';
   sign()
      seenCart.style.display='block'

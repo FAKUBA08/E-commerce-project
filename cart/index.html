@@ -281,17 +281,17 @@ const userRef = doc(db, 'users', uid);
 const docSnapshot = await getDoc(userRef);
 if (docSnapshot.exists()) {
 const userData = docSnapshot.data();
-const profileImgSrc = userData.profilePicture ? userData.profilePicture : 'default_avatar.jpg';
+const profileImgSrc = userData.profilePicture ? userData.profilePicture :"/image/istockphoto-1905374785-612x612.jpg";
 profileImg.src = profileImgSrc;
 const cartProfileImg = document.getElementById('cartProfileImg');
 if (cartProfileImg) {
   cartProfileImg.src = profileImgSrc;
 }
 } else {
-profileImg.src = 'default_avatar.jpg';
+profileImg.src = "/image/istockphoto-1905374785-612x612.jpg";
 const cartProfileImg = document.getElementById('cartProfileImg');
 if (cartProfileImg) {
-  cartProfileImg.src = 'default_avatar.jpg';
+  cartProfileImg.src = "/image/istockphoto-1905374785-612x612.jpg";
 }
 }
 } catch (error) {
